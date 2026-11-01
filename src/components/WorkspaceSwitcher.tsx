@@ -1,4 +1,5 @@
 import { useI18n } from "@/lib/i18n";
+import { DocHelpLink } from "@/components/seo/DocHelpLink";
 import { useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
@@ -114,6 +115,8 @@ export function WorkspaceSwitcher({ alwaysShow = false }: { alwaysShow?: boolean
         <DropdownMenuItem onClick={newWorkspace}>
           <Plus className="mr-2 h-4 w-4" /> {t("workspace.new")}
         </DropdownMenuItem>
+        <DropdownMenuSeparator />
+        <div className="px-2 py-2"><DocHelpLink to="/support/workspace/getting-started/what-is-a-workspace">Hoe werken bedrijfsaccounts?</DocHelpLink></div>
       </DropdownMenuContent>
     </DropdownMenu>
   );
