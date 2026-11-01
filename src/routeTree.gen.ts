@@ -130,10 +130,13 @@ import { Route as InfoIndexRouteImport } from './routes/info.index'
 import { Route as InfoAccountMergeRouteImport } from './routes/info.account-merge'
 import { Route as InfoAccountSecurityRouteImport } from './routes/info.account-security'
 import { Route as InfoBadgesRouteImport } from './routes/info.badges'
+import { Route as InfoBookingsRouteImport } from './routes/info.bookings'
 import { Route as InfoCredentialsRouteImport } from './routes/info.credentials'
 import { Route as InfoCustomBadgesRouteImport } from './routes/info.custom-badges'
+import { Route as InfoGuestbookRouteImport } from './routes/info.guestbook'
 import { Route as InfoProfilesRouteImport } from './routes/info.profiles'
 import { Route as InfoQrStudioRouteImport } from './routes/info.qr-studio'
+import { Route as InfoTipsRouteImport } from './routes/info.tips'
 import { Route as InfoUsernamesRouteImport } from './routes/info.usernames'
 import { Route as InfoWalletRouteImport } from './routes/info.wallet'
 import { Route as OauthAuthorizeRouteImport } from './routes/oauth.authorize'
@@ -938,6 +941,11 @@ const InfoBadgesRoute = InfoBadgesRouteImport.update({
   path: '/badges',
   getParentRoute: () => InfoRoute,
 } as any)
+const InfoBookingsRoute = InfoBookingsRouteImport.update({
+  id: '/bookings',
+  path: '/bookings',
+  getParentRoute: () => InfoRoute,
+} as any)
 const InfoCredentialsRoute = InfoCredentialsRouteImport.update({
   id: '/credentials',
   path: '/credentials',
@@ -948,6 +956,11 @@ const InfoCustomBadgesRoute = InfoCustomBadgesRouteImport.update({
   path: '/custom-badges',
   getParentRoute: () => InfoRoute,
 } as any)
+const InfoGuestbookRoute = InfoGuestbookRouteImport.update({
+  id: '/guestbook',
+  path: '/guestbook',
+  getParentRoute: () => InfoRoute,
+} as any)
 const InfoProfilesRoute = InfoProfilesRouteImport.update({
   id: '/profiles',
   path: '/profiles',
@@ -956,6 +969,11 @@ const InfoProfilesRoute = InfoProfilesRouteImport.update({
 const InfoQrStudioRoute = InfoQrStudioRouteImport.update({
   id: '/qr-studio',
   path: '/qr-studio',
+  getParentRoute: () => InfoRoute,
+} as any)
+const InfoTipsRoute = InfoTipsRouteImport.update({
+  id: '/tips',
+  path: '/tips',
   getParentRoute: () => InfoRoute,
 } as any)
 const InfoUsernamesRoute = InfoUsernamesRouteImport.update({
@@ -2146,10 +2164,13 @@ export interface FileRoutesByFullPath {
   '/info/account-merge': typeof InfoAccountMergeRoute
   '/info/account-security': typeof InfoAccountSecurityRoute
   '/info/badges': typeof InfoBadgesRoute
+  '/info/bookings': typeof InfoBookingsRoute
   '/info/credentials': typeof InfoCredentialsRoute
   '/info/custom-badges': typeof InfoCustomBadgesRoute
+  '/info/guestbook': typeof InfoGuestbookRoute
   '/info/profiles': typeof InfoProfilesRoute
   '/info/qr-studio': typeof InfoQrStudioRoute
+  '/info/tips': typeof InfoTipsRoute
   '/info/usernames': typeof InfoUsernamesRoute
   '/info/wallet': typeof InfoWalletRoute
   '/oauth/authorize': typeof OauthAuthorizeRoute
@@ -2454,10 +2475,13 @@ export interface FileRoutesByTo {
   '/info/account-merge': typeof InfoAccountMergeRoute
   '/info/account-security': typeof InfoAccountSecurityRoute
   '/info/badges': typeof InfoBadgesRoute
+  '/info/bookings': typeof InfoBookingsRoute
   '/info/credentials': typeof InfoCredentialsRoute
   '/info/custom-badges': typeof InfoCustomBadgesRoute
+  '/info/guestbook': typeof InfoGuestbookRoute
   '/info/profiles': typeof InfoProfilesRoute
   '/info/qr-studio': typeof InfoQrStudioRoute
+  '/info/tips': typeof InfoTipsRoute
   '/info/usernames': typeof InfoUsernamesRoute
   '/info/wallet': typeof InfoWalletRoute
   '/oauth/authorize': typeof OauthAuthorizeRoute
@@ -2775,10 +2799,13 @@ export interface FileRoutesById {
   '/info/account-merge': typeof InfoAccountMergeRoute
   '/info/account-security': typeof InfoAccountSecurityRoute
   '/info/badges': typeof InfoBadgesRoute
+  '/info/bookings': typeof InfoBookingsRoute
   '/info/credentials': typeof InfoCredentialsRoute
   '/info/custom-badges': typeof InfoCustomBadgesRoute
+  '/info/guestbook': typeof InfoGuestbookRoute
   '/info/profiles': typeof InfoProfilesRoute
   '/info/qr-studio': typeof InfoQrStudioRoute
+  '/info/tips': typeof InfoTipsRoute
   '/info/usernames': typeof InfoUsernamesRoute
   '/info/wallet': typeof InfoWalletRoute
   '/oauth/authorize': typeof OauthAuthorizeRoute
@@ -3099,10 +3126,13 @@ export interface FileRouteTypes {
     | '/info/account-merge'
     | '/info/account-security'
     | '/info/badges'
+    | '/info/bookings'
     | '/info/credentials'
     | '/info/custom-badges'
+    | '/info/guestbook'
     | '/info/profiles'
     | '/info/qr-studio'
+    | '/info/tips'
     | '/info/usernames'
     | '/info/wallet'
     | '/oauth/authorize'
@@ -3407,10 +3437,13 @@ export interface FileRouteTypes {
     | '/info/account-merge'
     | '/info/account-security'
     | '/info/badges'
+    | '/info/bookings'
     | '/info/credentials'
     | '/info/custom-badges'
+    | '/info/guestbook'
     | '/info/profiles'
     | '/info/qr-studio'
+    | '/info/tips'
     | '/info/usernames'
     | '/info/wallet'
     | '/oauth/authorize'
@@ -3727,10 +3760,13 @@ export interface FileRouteTypes {
     | '/info/account-merge'
     | '/info/account-security'
     | '/info/badges'
+    | '/info/bookings'
     | '/info/credentials'
     | '/info/custom-badges'
+    | '/info/guestbook'
     | '/info/profiles'
     | '/info/qr-studio'
+    | '/info/tips'
     | '/info/usernames'
     | '/info/wallet'
     | '/oauth/authorize'
@@ -4953,6 +4989,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InfoBadgesRouteImport
       parentRoute: typeof InfoRoute
     }
+    '/info/bookings': {
+      id: '/info/bookings'
+      path: '/bookings'
+      fullPath: '/info/bookings'
+      preLoaderRoute: typeof InfoBookingsRouteImport
+      parentRoute: typeof InfoRoute
+    }
     '/info/credentials': {
       id: '/info/credentials'
       path: '/credentials'
@@ -4967,6 +5010,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InfoCustomBadgesRouteImport
       parentRoute: typeof InfoRoute
     }
+    '/info/guestbook': {
+      id: '/info/guestbook'
+      path: '/guestbook'
+      fullPath: '/info/guestbook'
+      preLoaderRoute: typeof InfoGuestbookRouteImport
+      parentRoute: typeof InfoRoute
+    }
     '/info/profiles': {
       id: '/info/profiles'
       path: '/profiles'
@@ -4979,6 +5029,13 @@ declare module '@tanstack/react-router' {
       path: '/qr-studio'
       fullPath: '/info/qr-studio'
       preLoaderRoute: typeof InfoQrStudioRouteImport
+      parentRoute: typeof InfoRoute
+    }
+    '/info/tips': {
+      id: '/info/tips'
+      path: '/tips'
+      fullPath: '/info/tips'
+      preLoaderRoute: typeof InfoTipsRouteImport
       parentRoute: typeof InfoRoute
     }
     '/info/usernames': {
@@ -6684,10 +6741,13 @@ interface InfoRouteChildren {
   InfoAccountMergeRoute: typeof InfoAccountMergeRoute
   InfoAccountSecurityRoute: typeof InfoAccountSecurityRoute
   InfoBadgesRoute: typeof InfoBadgesRoute
+  InfoBookingsRoute: typeof InfoBookingsRoute
   InfoCredentialsRoute: typeof InfoCredentialsRoute
   InfoCustomBadgesRoute: typeof InfoCustomBadgesRoute
+  InfoGuestbookRoute: typeof InfoGuestbookRoute
   InfoProfilesRoute: typeof InfoProfilesRoute
   InfoQrStudioRoute: typeof InfoQrStudioRoute
+  InfoTipsRoute: typeof InfoTipsRoute
   InfoUsernamesRoute: typeof InfoUsernamesRoute
   InfoWalletRoute: typeof InfoWalletRoute
   InfoIndexRoute: typeof InfoIndexRoute
@@ -6697,10 +6757,13 @@ const InfoRouteChildren: InfoRouteChildren = {
   InfoAccountMergeRoute: InfoAccountMergeRoute,
   InfoAccountSecurityRoute: InfoAccountSecurityRoute,
   InfoBadgesRoute: InfoBadgesRoute,
+  InfoBookingsRoute: InfoBookingsRoute,
   InfoCredentialsRoute: InfoCredentialsRoute,
   InfoCustomBadgesRoute: InfoCustomBadgesRoute,
+  InfoGuestbookRoute: InfoGuestbookRoute,
   InfoProfilesRoute: InfoProfilesRoute,
   InfoQrStudioRoute: InfoQrStudioRoute,
+  InfoTipsRoute: InfoTipsRoute,
   InfoUsernamesRoute: InfoUsernamesRoute,
   InfoWalletRoute: InfoWalletRoute,
   InfoIndexRoute: InfoIndexRoute,
