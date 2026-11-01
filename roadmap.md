@@ -1,10 +1,12 @@
 # Repository import
 
 ## Vercel release readiness
-- [ ] Audit the deployment adapter, domain configuration and environment requirements without changing the account/database architecture.
-- [ ] Add repeatable release checks and correct deployment documentation.
-- [ ] Audit all public and documentation pages for metadata, missing content and consistent ROUT presentation; fix verified issues.
-- [ ] Run regression tests and verify public navigation on desktop and phone.
+- [x] Audit deployment adapter and environment requirements; preserve Neon gateway and Better Auth. Domain/DNS and Vercel settings remain externally unverified.
+- [x] Add Vercel target, release environment validation, daily cleanup schedule and corrected deployment documentation.
+- [x] Check content-route head coverage and all 35 documentation routes; replace 20 placeholders with substantive content while preserving ROUT's shared presentation. Full non-doc content/navigation review still needs live service setup.
+- [x] Run regression tests: 226 files / 1,275 tests pass; manual typecheck passed. All 35 docs return 200; search, ToC, copy and phone navigation pass.
+- [ ] Validate the actual Vercel build output — requires a Vercel deployment with its configured environment; not verified by local preview.
+- [ ] Verify a gateway-compatible Better Auth transaction adapter — existing GatewayPool rejects interactive transactions; real account-flow verification also needs restricted Neon access.
 - [ ] Verify the deployed Vercel domain and authenticated integrations — requires access to the Vercel deployment and working restricted Neon/auth configuration.
 
 ## Knowledge graph and credentials
