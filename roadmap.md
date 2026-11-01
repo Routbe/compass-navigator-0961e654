@@ -1,5 +1,11 @@
 # Repository import
 
+## Growth documentation and Studio cleanup
+- [ ] Curate QR types and add contextual Studio, dashboard, settings and workspace help.
+- [ ] Extend recursive MDX catalog with QR, product, design, solutions, comparisons, guides and support pages; shared layout, canonical metadata and JSON-LD.
+- [ ] Verify public routes, structured data, navigation and regression tests; authenticated UI checks depend on Neon/auth access.
+- [ ] Resolve restricted Neon access and persist workspace pricing intent/limits safely without granting unpaid entitlements.
+
 ## Workspace pricing
 - [x] Implement four-tier price/limit presentation catalog and category recommendations; use final prices and annual totals of ten months.
 - [x] Replace workspace plan step with billing switch, pricing cards and expandable feature matrix.
