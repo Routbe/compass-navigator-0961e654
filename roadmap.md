@@ -1,10 +1,12 @@
 # Repository import
 
 ## Knowledge graph and credentials
-- [ ] Complete the four-pillar MDX catalogue and shared docs navigation, preserving ROUT’s public and console designs.
-- [ ] Finish reusable MDX components and detailed manifesto, badge and OIDC articles.
-- [ ] Audit OIDC sessions, account merge, email sync and credentials; implement safe, verified gaps.
-- [ ] Verify public routing, MDX rendering, accessibility and repository tests.
+- [x] Verify the complete four-pillar MDX catalogue; share the homepage header, footer and theme and order article navigation.
+- [x] Verify reusable MDX components and detailed manifesto, badge and OIDC articles; expand custom-badge and credential documentation.
+- [x] Audit OIDC sessions, account merge, email sync and existing credential visibility; distinguish source implementation from deployed functionality.
+- [x] Verify public routing, MDX rendering, search, active ToC, clipboard and phone layout; typecheck passes and 1,268 tests pass with two workers.
+- [ ] Verify authenticated OIDC, merge and webhook flows — blocked by restricted Neon connection and original authentication configuration.
+- [ ] Complete external credential issuance and recipient controls — blocked by working restricted Neon access and verification of the deployed credential schema; issuance remains disabled.
 
 - [x] Import repository source, styles, content, and assets without secrets or repository metadata.
 - [x] Verify home page rendering on desktop/phone; routing and QR caption tests pass.
