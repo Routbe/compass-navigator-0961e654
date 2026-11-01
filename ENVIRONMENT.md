@@ -2,17 +2,18 @@
 
 ## Deploy to Vercel (GitHub)
 
-1. Import the GitHub repo in Vercel. Framework preset: **Other**. Build command: `vite build` (default `bun run build` works). Output: leave empty — the build writes `.vercel/output` itself (Vercel server preset is selected automatically when `VERCEL` is set).
+1. Import the GitHub repo in Vercel. Framework preset: **Other**. Use the committed `vercel.json`: build command **`bun run build:vercel`**, output directory unset. The build validates core settings before compiling; `VERCEL=1` explicitly selects the Nitro Vercel preset. Lovable keeps its managed preview target. Verify `.vercel/output/config.json` in the Vercel build before promoting a release; a Vercel deployment has not been verified here.
 2. Paste every variable from *Required on Vercel* below, plus the optional groups you use, in Vercel → Settings → Environment Variables (Production and Preview).
-3. Before each release with new `db/NNNN_*.sql` files, run once from your machine: `MIGRATION_URL=<owner url> bun scripts/migrate.ts`, then `bun run db:check` (schema drift against `db/schema.snapshot.json`).
+3. Review pending `db/NNNN_*.sql` migrations separately. Never run owner-level migrations automatically in a Vercel build. Use the Neon gateway migration workflow or the Neon SQL editor after reviewing the exact statements; then run `bun run db:check` using gateway credentials (schema drift against `db/schema.snapshot.json`). Never apply these scripts to Lovable Cloud.
 4. Point each OAuth provider's callback to `<BETTER_AUTH_URL>/api/auth/callback/<provider>`.
-5. Cron jobs call `/api/public/cron/*` with the `LOVABLE_CRON_SECRET` bearer token.
+5. The committed daily cron calls `/api/public/cron/cleanup-assets`. Configure **`CRON_SECRET`** in Vercel: Vercel sends it as a bearer token. `LOVABLE_CRON_SECRET` is the handler's fallback for other schedulers. Other queues, including outbound webhooks and audit checkpoints, need their own reviewed schedules; the daily cleanup does not deliver webhooks.
 
 `NODE_ENV` is set by Vercel; never set it yourself.
 
 ## Required on Vercel
 
-- `DATABASE_URL` — Neon connection as the least-privilege `rout_app` role (pooled endpoint). Never the owner role.
+- `LOVABLE_API_KEY` — Server-only Lovable connector gateway credential. Configure securely in Vercel; never prefix it with `VITE_`.
+- `NEON_API_KEY` — Server-only key of the linked Neon connection. The stored connection must use the least-privilege `rout_app` role. This is a Lovable connection key, not a Neon management API key.
 - `BETTER_AUTH_SECRET` — Signs sessions. 32+ random characters, identical on every deploy (changing it signs everyone out).
 - `BETTER_AUTH_URL` — Public base URL, e.g. https://rout.be (no trailing slash).
 - `NEXT_PUBLIC_APP_URL` — Same public URL; used for auth callbacks and links in emails.
@@ -21,7 +22,21 @@
 
 ## Database (not on Vercel)
 
-- `MIGRATION_URL` — See below. Only for `bun scripts/migrate.ts`.
+- `DATABASE_URL` is **not used by this application's runtime**. Setting it in Vercel does not activate database access. Runtime statements use the linked Neon gateway and reject owner connections.
+- `MIGRATION_URL` — Legacy local migration tooling only; not a runtime credential and not needed on Vercel. Prefer the reviewed gateway/Neon SQL editor workflow.
+
+## Release verification
+
+Run `bun run release:check` in a secure environment with the intended deployment settings. It prints only missing setting names and configuration errors, never values. Run `bun run test -- --maxWorkers=2` and `bunx tsgo --noEmit` before release. Required setting presence is not evidence that credentials work.
+
+All four core URLs must be the same HTTPS origin without a path or trailing slash. Use your actual public domain; register its callbacks with each enabled provider. Keep signing/encryption keys stable when deployments share a database. Use a separate isolated database and matching keys for an independent preview environment.
+
+### Known release blockers
+
+- The current linked Neon connection uses an owner role and is rejected; link a `rout_app` connection before testing authenticated flows.
+- Better Auth currently receives `GatewayPool`. Its interactive transaction interface is explicitly unsupported. A supported gateway-compatible adapter and real signup/sign-in/callback tests are required before declaring authentication release-ready. Do not fake `BEGIN`/`COMMIT` success or replace the gateway with a direct connection.
+- Storage, mail delivery, payments, Wallet signatures and provider callbacks require real credentials and an end-to-end check on the deployed domain.
+- The Vercel account, domain/DNS, production secret values and deployed build output have not been inspected here.
 
 ## Secrets (32+ random characters each)
 
@@ -37,7 +52,7 @@
 - `BOOKING_HMAC_KEY` — Server-only random secret; hashes external calendar event ids (booking engine).
 - `ADMIN_BOOTSTRAP_TOKEN` — Server-only random secret.
 - `LOVABLE_CRON_SECRET` — Server-only random secret.
-- `CRON_SECRET` — Optional alias for `LOVABLE_CRON_SECRET` (asset cleanup accepts `?token=`).
+- `CRON_SECRET` — Required for Vercel's scheduled cleanup; Vercel sends a bearer header. Avoid query-string secrets.
 - `TELEGRAM_BOT_TOKEN` — Server-only BotFather token for the phone-verification bot (`/api/public/telegram/webhook`).
 
 ## Sign-in providers (optional; tile shows a notice when missing)
@@ -128,7 +143,7 @@
 Server-only. AES-256-GCM key material for creator PSP secrets (`psp_credentials`). At least 32 random characters.
 
 ## MIGRATION_URL
-Owner connection to Neon, used only by `bun scripts/migrate.ts` (never at runtime). Must differ from DATABASE_URL (rout_app). Not needed on Vercel.
+Legacy owner connection used only by local migration tooling (never at runtime or in a Vercel build). Prefer reviewed migrations through the gateway or Neon SQL editor. Not needed on Vercel.
 
 ## GITLAB_ISSUER
 Optional GitLab server URL (default https://gitlab.com, no trailing slash). Set for self-managed GitLab.
