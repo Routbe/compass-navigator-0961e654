@@ -1,6 +1,6 @@
 /** Pure rules for the 5-step "new workspace" wizard. Shared by the UI and createWorkspace (server). */
 import { isValidWorkspaceSlug, slugify } from "./workspace-rules";
-import { STORAGE_QUOTA_MB } from "./entitlement-engine";
+import { WORKSPACE_PRICING, workspaceBillingSchema, type WorkspacePlanId, type BillingCycle } from "./workspace-pricing";
 
 export const WIZARD_STEPS = ["identity", "address", "category", "team", "plan"] as const;
 export type WizardStep = (typeof WIZARD_STEPS)[number];
@@ -26,9 +26,11 @@ export type WizardDraft = {
   slugBase: string;
   category: WorkspaceCategory | null;
   invites: { email: string; role: InviteRole }[];
+  plan_id: WorkspacePlanId;
+  billing_cycle: BillingCycle;
 };
 
-export const emptyDraft = (): WizardDraft => ({ name: "", description: "", avatarUrl: null, slugBase: "", category: null, invites: [] });
+export const emptyDraft = (): WizardDraft => ({ name: "", description: "", avatarUrl: null, slugBase: "", category: null, invites: [], plan_id: "tier_starter", billing_cycle: "monthly" });
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
@@ -58,7 +60,7 @@ export function stepError(step: WizardStep, d: WizardDraft): string | null {
       return null;
     }
     case "plan":
-      return null;
+      return workspaceBillingSchema.safeParse(d).success ? null : "Kies een geldig plan en een facturatieperiode.";
   }
 }
 
@@ -73,11 +75,7 @@ export function previewUrl(slugBase: string, suffix: string): string {
 }
 
 /** Plan comparison shown in step 5. Storage comes from the entitlement engine. */
-export const WORKSPACE_PLAN_COMPARISON = [
-  { tier: "free", label: "Free", priceLabel: "€0", storageMb: STORAGE_QUOTA_MB.workspace.free, qrCodes: "10", apiKeys: "1", cleanSlug: false },
-  { tier: "pro", label: "Pro", priceLabel: "Upgrade", storageMb: STORAGE_QUOTA_MB.workspace.pro, qrCodes: "Onbeperkt", apiKeys: "10", cleanSlug: true },
-  { tier: "business", label: "Max", priceLabel: "Upgrade", storageMb: STORAGE_QUOTA_MB.workspace.business, qrCodes: "Onbeperkt", apiKeys: "Onbeperkt", cleanSlug: true },
-] as const;
+export const WORKSPACE_PLAN_COMPARISON = WORKSPACE_PRICING.map(p => ({ ...p, tier: p.id, cleanSlug: p.id === "tier_pro" || p.id === "tier_max" }));
 
 export function formatMb(mb: number): string {
   if (mb <= 0) return "0 MB";
