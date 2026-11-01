@@ -58,6 +58,7 @@ const APP_NAV = [
 ] as const;
 
 export const Route = createFileRoute("/_authenticated/console")({
+  head: () => ({ meta: [{ title: 'ROUT — Developer console' }, { name: "description", content: 'Manage ROUT applications and integrations.' }, { property: "og:title", content: 'ROUT — Developer console' }, { property: "og:description", content: 'Manage ROUT applications and integrations.' }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }] }), 
   component: ConsoleWorkspace,
 });
 

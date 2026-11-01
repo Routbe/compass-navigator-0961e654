@@ -3,6 +3,7 @@ import { useConsoleApp } from "@/components/console/console-data";
 
 /** App context. Navigation lives in the console's left sidebar. */
 export const Route = createFileRoute("/_authenticated/console/apps/$appId")({
+  head: () => ({ meta: [{ title: 'ROUT — Application workspace' }, { name: "description", content: 'Manage your ROUT application.' }, { property: "og:title", content: 'ROUT — Application workspace' }, { property: "og:description", content: 'Manage your ROUT application.' }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }] }), 
   component: AppLayout,
 });
 

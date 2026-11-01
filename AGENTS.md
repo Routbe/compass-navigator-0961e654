@@ -14,3 +14,4 @@
 - Preserve generated Lovable Cloud integrations and project settings; repository imports must not overwrite managed files or credentials.
 - The imported application still uses its existing Neon gateway and Better Auth account system; do not silently replace it or apply its database scripts to the Cloud database.
 - Subdirectories may contain their own AGENTS.md; read them before changing files there.
+- Use the repository compiler and test configuration, including MDX virtual catalog support; its imported source was authored against those settings.
