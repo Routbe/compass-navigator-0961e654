@@ -652,7 +652,7 @@ export function ProfileView({
               b.kind === "media_gallery" ? (
                 <GalleryCard key={b.id} config={parseGalleryConfig(b.value)} style={styleFor(b.kind)} />
               ) : b.kind === "social_feed" ? (
-                <SocialFeedCard key={b.id} value={b.value} style={styleFor(b.kind)} />
+                <SocialFeedCard key={b.id} value={b.value} style={styleFor(b.kind)} profile={profile.username ?? ""} blockId={String(b.id)} />
               ) : b.kind === "media_embed" ? (
                 <MediaEmbedCard key={b.id} value={b.value} style={styleFor(b.kind)} />
               ) : b.kind === "contact_form" ? (

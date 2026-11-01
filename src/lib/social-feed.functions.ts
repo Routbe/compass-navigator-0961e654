@@ -14,10 +14,12 @@ export const getSocialFeed = createServerFn({ method: "GET" })
       platform: r["platform"] === "mastodon" ? ("mastodon" as const) : ("bluesky" as const),
       handle: cleanFeedHandle(r["handle"]),
       count: Math.min(SOCIAL_FEED_MAX_COUNT, Math.max(1, Number(r["count"]) || 6)),
+      profile: typeof r["profile"] === "string" ? r["profile"].slice(0, 64) : "",
+      blockId: typeof r["blockId"] === "string" ? r["blockId"].slice(0, 100) : "",
     };
   })
   .handler(async ({ data }): Promise<{ posts: FeedPost[] }> => {
-    const key = `${data.platform}:${data.handle.toLowerCase()}:${data.count}`;
+    const key = `${data.platform}:${data.platform === "mastodon" ? `${data.profile}:${data.blockId}:` : ""}${data.handle.toLowerCase()}:${data.count}`;
     const hit = cache.get(key);
     if (hit && Date.now() - hit.at < TTL) return { posts: hit.posts };
     let posts: FeedPost[] = [];
@@ -39,7 +41,16 @@ export const getSocialFeed = createServerFn({ method: "GET" })
           };
         });
       } else {
-        const parts = splitMastodonHandle(data.handle);
+        // Mastodon hosts vary per account: only contact an instance named in a
+        // social-feed block the owner published on a public profile.
+        if (!data.profile || !data.blockId) return { posts: [] };
+        const { findPublicBlock } = await import("./public-block.server");
+        const block = await findPublicBlock(data.profile, data.blockId, "social_feed");
+        if (!block) return { posts: [] };
+        const { parseSocialFeedConfig } = await import("./social-feed");
+        const published = parseSocialFeedConfig(block.value);
+        if (published.platform !== "mastodon" || published.handle.toLowerCase() !== data.handle.toLowerCase()) return { posts: [] };
+        const parts = splitMastodonHandle(published.handle);
         if (!parts) return { posts: [] };
         const { isPublicHost } = await import("./open-web-rules");
         if (!isPublicHost(parts.instance)) return { posts: [] };
