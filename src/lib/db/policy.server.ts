@@ -32,13 +32,13 @@ const TABLES: Record<string, Access> = {
   showcase_profiles: { ops: ["select"], owner: null, publicRead: true },
   reserved_handles: { ops: ["select"], owner: null, publicRead: true },
   badges: { ops: ["select"], owner: null, publicRead: true },
-  links: { ops: ["select", "insert", "update", "delete"], owner: "profile_id" },
+  links: { ops: ["select", "delete"], owner: "profile_id" },
   saved_qrs: { ops: ["select", "insert", "update", "delete"], owner: "user_id" },
   tracked_qrs: { ops: ["select", "insert", "update", "delete"], owner: "user_id", workspaceScoped: true },
   user_badges: { ops: ["select", "delete"], owner: "user_id" },
   badge_events: { ops: ["select"], owner: "user_id" },
   notifications: { ops: ["select", "update", "delete"], owner: "user_id" },
-  custom_domains: { ops: ["select", "insert", "update", "delete"], owner: "user_id" },
+  custom_domains: { ops: ["select", "delete"], owner: "user_id" },
   email_aliases: { ops: ["select"], owner: "user_id" },
   api_keys: { ops: ["select", "delete"], owner: "user_id", workspaceScoped: true },
   verification_payments: { ops: ["select"], owner: "user_id" },
@@ -68,11 +68,25 @@ const PROTECTED_COLUMNS: Record<string, string[]> = {
   notifications: ["user_id", "kind", "title", "body", "locale", "severity", "details", "created_at"],
 };
 
+/**
+ * Allowlist of browser-writable columns for every non-profile table. Tables
+ * absent here (and not `profiles`) accept no browser-written columns at all;
+ * ownership/workspace columns are re-applied server-side afterwards.
+ */
+const WRITABLE_COLUMNS: Record<string, string[]> = {
+  saved_qrs: ["name", "qr_type", "qr_value", "config"],
+  tracked_qrs: ["slug", "target_type", "target_url", "label", "custom_domain", "kind", "short_link_enabled"],
+  notifications: ["read_at"],
+};
+
 function stripProtected(descriptor: QueryDescriptor): QueryDescriptor {
-  const blocked = PROTECTED_COLUMNS[descriptor.table];
-  if (!blocked || descriptor.values == null) return descriptor;
+  if (descriptor.values == null) return descriptor;
+  const blocked = PROTECTED_COLUMNS[descriptor.table] ?? [];
+  const allowed = descriptor.table === "profiles" ? null : (WRITABLE_COLUMNS[descriptor.table] ?? []);
   const clean = (row: Record<string, unknown>) =>
-    Object.fromEntries(Object.entries(row ?? {}).filter(([k]) => !blocked.includes(k)));
+    Object.fromEntries(
+      Object.entries(row ?? {}).filter(([k]) => !blocked.includes(k) && (allowed === null || allowed.includes(k))),
+    );
   const values = Array.isArray(descriptor.values)
     ? descriptor.values.map((r) => clean(r as Record<string, unknown>))
     : clean(descriptor.values as Record<string, unknown>);
