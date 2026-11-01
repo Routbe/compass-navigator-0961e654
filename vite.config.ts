@@ -10,9 +10,16 @@ import remarkFrontmatter from "remark-frontmatter";
 import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 import { readdirSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
+import type { Plugin } from "vite";
 
-const docsCatalogPlugin = {
+const docsCatalogPlugin: Plugin = {
   name: "rout-docs-catalog",
+  handleHotUpdate({ file, server }) {
+    if (!file.includes("/src/content/") || !file.endsWith(".mdx")) return;
+    const catalog = server.moduleGraph.getModuleById("\0virtual:rout-docs");
+    if (catalog) server.moduleGraph.invalidateModule(catalog);
+    server.ws.send({ type: "full-reload" });
+  },
   resolveId(id: string) { if (id === "virtual:rout-docs") return "\0virtual:rout-docs"; },
   load(id: string) {
     if (id !== "\0virtual:rout-docs") return;
@@ -26,6 +33,8 @@ const docsCatalogPlugin = {
 };
 
 export default defineConfig({
+  // External Vercel releases are explicit; Lovable retains its managed target.
+  nitro: process.env["VERCEL"] === "1" ? { preset: "vercel" } : undefined,
   vite: { plugins: [docsCatalogPlugin, mdx({ include: /\.mdx$/, providerImportSource: "@mdx-js/react", remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter] })] },
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).

@@ -6,6 +6,9 @@
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
+    "build:vercel": "bun scripts/check-release-env.ts && vite build",
+    "release:check": "bun scripts/check-release-env.ts",
+    "db:check": "bun scripts/schema-snapshot.ts --check",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
     "lint": "eslint .",
