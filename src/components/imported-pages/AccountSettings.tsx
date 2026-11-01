@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { DocHelpLink } from "@/components/seo/DocHelpLink";
 import { Link, useNavigate } from "@/lib/router-compat";
 import { useSearch } from "@tanstack/react-router";
 import {
@@ -324,6 +325,7 @@ export default function AccountSettings() {
 
         {/* Betalingen & facturen */}
         <TabsContent value="payments" className="space-y-4">
+          <DocHelpLink to="/support/account/billing" />
           <section className="space-y-5 rounded-2xl border border-border bg-card p-4 sm:p-5">
             <div>
               <h2 className="text-lg font-medium">Betalingen &amp; facturen</h2>
@@ -347,6 +349,7 @@ export default function AccountSettings() {
 
         {/* Data & domein */}
         <TabsContent value="data" className="space-y-4">
+          <DocHelpLink to="/support/account/data-domains" />
           <section className="space-y-5 rounded-2xl border border-border bg-card p-4 sm:p-5">
             <h2 className="text-lg font-medium">Data &amp; domein</h2>
             <DataExportCard />
@@ -359,6 +362,7 @@ export default function AccountSettings() {
 
         {/* Tab 1 — Profile */}
         <TabsContent value="profile" className="space-y-4">
+          <DocHelpLink to="/info/profiles" />
           <section className="space-y-3 rounded-2xl border border-border bg-card p-4 sm:p-5">
             <h2 className="flex items-center gap-2 text-lg font-medium">
               <UserIcon className="h-4 w-4" /> Profile
@@ -436,6 +440,7 @@ export default function AccountSettings() {
 
         {/* Tab 2 — Account & security */}
         <TabsContent value="security" className="space-y-4">
+          <DocHelpLink to="/support/account/security" />
           <section className="space-y-3 rounded-2xl border border-border bg-card p-4 sm:p-5">
             <h2 className="flex items-center gap-2 text-lg font-medium">
               <Mail className="h-4 w-4" /> E-mail address
@@ -528,12 +533,14 @@ export default function AccountSettings() {
 
         {/* Tab 3 — Linked identities */}
         <TabsContent value="identities" className="space-y-4">
+          <DocHelpLink to="/support/account/linked-identities" />
           <IdentitiesPanel />
           <IdentityLinksPanel />
         </TabsContent>
 
         {/* Tab 4 — Account status & control */}
         <TabsContent value="status" className="space-y-4">
+          <DocHelpLink to="/support/account/delete-account" />
           <EncryptedLedgerPanel />
           <FreezeAccountPanel />
 
@@ -574,6 +581,7 @@ export default function AccountSettings() {
             </div>
 
             <DeleteAccountPanel />
+            <DocHelpLink to="/support/account/delete-account">Lees wat er exact met je data gebeurt.</DocHelpLink>
           </section>
 
           <Button

@@ -11,6 +11,7 @@ import { checkWorkspaceSlugBase, createWorkspace } from "@/lib/workspaces.functi
 import { getActiveScopeStorage } from "@/lib/assets.functions";
 import { scopedPath } from "@/lib/scope-routes";
 import { PricingTable } from "@/components/workspace/PricingTable";
+import { DocHelpLink } from "@/components/seo/DocHelpLink";
 import {
   CATEGORY_LABELS,
   INVITE_ROLES,
@@ -149,6 +150,7 @@ function NewWorkspaceWizard() {
       <section className={`mt-6 space-y-4 ${current === "plan" ? "" : "rounded-lg border border-border bg-card p-4 sm:p-6"}`}>
         {current === "identity" && (
           <>
+            <DocHelpLink to="/support/workspace/getting-started/what-is-a-workspace">Nieuw bij Workspaces? Lees hoe bedrijfsaccounts werken.</DocHelpLink>
             <div className="flex items-center gap-3">
               <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-xl font-semibold text-primary" aria-hidden>
                 {(d.name.trim()[0] ?? "W").toUpperCase()}
@@ -210,6 +212,7 @@ function NewWorkspaceWizard() {
 
         {current === "team" && (
           <>
+            <DocHelpLink to="/support/workspace/getting-started/invite-team">Hoe nodig ik mijn collega’s veilig uit?</DocHelpLink>
             <p className="text-sm text-muted-foreground">Nodig je team uit. Ze krijgen een e-mail en worden lid zodra ze inloggen met dat adres. Je kunt dit ook overslaan.</p>
             <div className="flex flex-col gap-2 sm:flex-row">
               <Input type="email" value={inviteEmail} placeholder="naam@bedrijf.be" onChange={(e) => setInviteEmail(e.target.value)} onKeyDown={(e) => e.key === "Enter" && (e.preventDefault(), addInvite())} />

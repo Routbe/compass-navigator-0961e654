@@ -1,4 +1,5 @@
 import { BrandLoader } from "@/components/BrandLoader";
+import { DocHelpLink } from "@/components/seo/DocHelpLink";
 import { FirstUseTour } from "@/components/onboarding/FirstUseTour";
 import { useEffect, useMemo, useState } from "react";
 import { Link, useNavigate } from "@/lib/router-compat";
@@ -229,6 +230,7 @@ export default function Dashboard() {
     >
       <FirstUseTour area="dashboard" userId={user.id} />
       <IdentityCard />
+      <DocHelpLink to="/features/link-management">Lees over link aliassen</DocHelpLink>
 
       <Tabs defaultValue="overview" className="space-y-4">
         <TabsList className="grid h-auto w-full grid-cols-2 gap-1 sm:grid-cols-4">
@@ -246,6 +248,7 @@ export default function Dashboard() {
       </section>
 
       <section className="mb-4 rounded-2xl border border-border bg-card p-3.5 sm:p-5">
+        <DocHelpLink to="/features/cookieless-analytics">Ontdek hoe onze privacy-first statistieken werken</DocHelpLink>
         <div className="grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-3">
           <h2 className="truncate text-sm font-medium">{t("studio.dashboard.trend")}</h2>
           <span className="shrink-0 text-xs text-muted-foreground">

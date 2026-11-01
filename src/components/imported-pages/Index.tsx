@@ -1,5 +1,7 @@
 import { useState, useMemo, useEffect, useRef } from "react";
 import { Link2 } from "lucide-react";
+import { DocHelpLink } from "@/components/seo/DocHelpLink";
+import { qrGuidePath } from "@/lib/qr-guide-path";
 import { Link } from "@/lib/router-compat";
 import { TrackingPanel, TrackedQR } from "@/components/TrackingPanel";
 import { prettyCaption } from "@/lib/qr-caption";
@@ -560,6 +562,8 @@ const Index = () => {
                 </InfoHint>
               </div>
             </div>
+            <DocHelpLink to="/guide/dynamic-qr">Lees hoe dit werkt</DocHelpLink>
+            {qrGuidePath(qrType) && <div className="mt-2"><DocHelpLink to={qrGuidePath(qrType) ?? "/qr-code-generator"}>Hoe werkt deze QR-code?</DocHelpLink></div>}
           </div>
 
           {qrMode === "static" && (
