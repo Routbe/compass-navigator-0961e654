@@ -45,6 +45,7 @@ import { Route as SecurityRouteImport } from './routes/security'
 import { Route as SelfHostingRouteImport } from './routes/self-hosting'
 import { Route as SignatureRouteImport } from './routes/signature'
 import { Route as SignupRouteImport } from './routes/signup'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SolutionsRouteImport } from './routes/solutions'
 import { Route as SovereigntyRouteImport } from './routes/sovereignty'
 import { Route as StatusRouteImport } from './routes/status'
@@ -507,6 +508,11 @@ const SignatureRoute = SignatureRouteImport.update({
 const SignupRoute = SignupRouteImport.update({
   id: '/signup',
   path: '/signup',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SolutionsRoute = SolutionsRouteImport.update({
@@ -2062,6 +2068,7 @@ export interface FileRoutesByFullPath {
   '/self-hosting': typeof SelfHostingRoute
   '/signature': typeof SignatureRoute
   '/signup': typeof SignupRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/solutions': typeof SolutionsRouteWithChildren
   '/sovereignty': typeof SovereigntyRoute
   '/status': typeof StatusRoute
@@ -2373,6 +2380,7 @@ export interface FileRoutesByTo {
   '/self-hosting': typeof SelfHostingRoute
   '/signature': typeof SignatureRoute
   '/signup': typeof SignupRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sovereignty': typeof SovereigntyRoute
   '/status': typeof StatusRoute
   '/studio': typeof StudioRoute
@@ -2689,6 +2697,7 @@ export interface FileRoutesById {
   '/self-hosting': typeof SelfHostingRoute
   '/signature': typeof SignatureRoute
   '/signup': typeof SignupRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/solutions': typeof SolutionsRouteWithChildren
   '/sovereignty': typeof SovereigntyRoute
   '/status': typeof StatusRoute
@@ -3012,6 +3021,7 @@ export interface FileRouteTypes {
     | '/self-hosting'
     | '/signature'
     | '/signup'
+    | '/sitemap.xml'
     | '/solutions'
     | '/sovereignty'
     | '/status'
@@ -3323,6 +3333,7 @@ export interface FileRouteTypes {
     | '/self-hosting'
     | '/signature'
     | '/signup'
+    | '/sitemap.xml'
     | '/sovereignty'
     | '/status'
     | '/studio'
@@ -3638,6 +3649,7 @@ export interface FileRouteTypes {
     | '/self-hosting'
     | '/signature'
     | '/signup'
+    | '/sitemap.xml'
     | '/solutions'
     | '/sovereignty'
     | '/status'
@@ -3961,6 +3973,7 @@ export interface RootRouteChildren {
   SelfHostingRoute: typeof SelfHostingRoute
   SignatureRoute: typeof SignatureRoute
   SignupRoute: typeof SignupRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SolutionsRoute: typeof SolutionsRouteWithChildren
   SovereigntyRoute: typeof SovereigntyRoute
   StatusRoute: typeof StatusRoute
@@ -4343,6 +4356,13 @@ declare module '@tanstack/react-router' {
       path: '/signup'
       fullPath: '/signup'
       preLoaderRoute: typeof SignupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/solutions': {
@@ -6918,6 +6938,7 @@ const rootRouteChildren: RootRouteChildren = {
   SelfHostingRoute: SelfHostingRoute,
   SignatureRoute: SignatureRoute,
   SignupRoute: SignupRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   SolutionsRoute: SolutionsRouteWithChildren,
   SovereigntyRoute: SovereigntyRoute,
   StatusRoute: StatusRoute,
