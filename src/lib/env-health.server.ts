@@ -8,19 +8,19 @@
 import type { EnvHealth, ServiceHealth } from "./env-health.functions";
 
 async function probeNeon(): Promise<ServiceHealth> {
-  if (!process.env["DATABASE_URL"]) {
-    return { key: "neon", label: "Neon Postgres", ok: false, detail: "DATABASE_URL ontbreekt" };
+  if (!process.env["NEON_API_KEY"] || !process.env["LOVABLE_API_KEY"]) {
+    return { key: "neon", label: "Neon Postgres", ok: false, detail: "Neon gateway-configuratie ontbreekt" };
   }
   try {
     const { sql } = await import("./neon");
     await sql`select 1 as ok`;
     return { key: "neon", label: "Neon Postgres", ok: true, detail: "Verbonden" };
-  } catch (error) {
+  } catch {
     return {
       key: "neon",
       label: "Neon Postgres",
       ok: false,
-      detail: error instanceof Error ? error.message.slice(0, 160) : "Onbekende fout",
+      detail: "Verbinding of beperkte databaserol kon niet worden bevestigd",
     };
   }
 }
