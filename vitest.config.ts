@@ -13,9 +13,14 @@ export default defineConfig({
     load(id) {
       if (id !== "\0virtual:rout-docs") return;
       const sources: Record<string, string> = {};
-      for (const category of ["about", "info", "dev", "safety"]) for (const file of readdirSync(`src/content/${category}`)) {
-        if (file.endsWith(".mdx")) sources[`/src/content/${category}/${file}`] = readFileSync(`src/content/${category}/${file}`, "utf8");
-      }
+      const visit = (dir: string) => {
+        for (const entry of readdirSync(dir, { withFileTypes: true })) {
+          const file = `${dir}/${entry.name}`;
+          if (entry.isDirectory()) visit(file);
+          else if (file.endsWith(".mdx")) sources[`/${file}`] = readFileSync(file, "utf8");
+        }
+      };
+      visit("src/content");
       return `export default ${JSON.stringify(sources)}`;
     },
   }, mdx({ include: /\.mdx$/, providerImportSource: "@mdx-js/react", remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter] }), react()],

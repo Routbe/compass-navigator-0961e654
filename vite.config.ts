@@ -24,10 +24,14 @@ const docsCatalogPlugin: Plugin = {
   load(id: string) {
     if (id !== "\0virtual:rout-docs") return;
     const sources: Record<string, string> = {};
-    for (const category of ["about", "info", "dev", "safety"]) {
-      const dir = resolve("src/content", category);
-      for (const file of readdirSync(dir)) if (file.endsWith(".mdx")) sources[`/src/content/${category}/${file}`] = readFileSync(resolve(dir, file), "utf8");
-    }
+    const visit = (dir: string, relative = "") => {
+      for (const entry of readdirSync(dir, { withFileTypes: true })) {
+        const name = `${relative}${entry.name}`;
+        if (entry.isDirectory()) visit(resolve(dir, entry.name), `${name}/`);
+        else if (name.endsWith(".mdx")) sources[`/src/content/${name}`] = readFileSync(resolve(dir, entry.name), "utf8");
+      }
+    };
+    visit(resolve("src/content"));
     return `export default ${JSON.stringify(sources)}`;
   },
 };
