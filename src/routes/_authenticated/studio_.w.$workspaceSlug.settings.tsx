@@ -6,6 +6,7 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { TeamTab } from "@/components/settings/TeamTab";
+import { DocHelpLink } from "@/components/seo/DocHelpLink";
 import {
   activateScopeFromUrl, checkRootWorkspaceSlug, claimCleanWorkspaceSlug, claimRootWorkspaceSlug, deleteWorkspace,
   getWorkspaceContext, getWorkspaceSettings, renameWorkspace, setWorkspaceDomain, verifyWorkspaceDomain,
@@ -89,6 +90,8 @@ function WorkspaceSettingsPage() {
         ) : <p className="text-sm text-muted-foreground">Opslag laden…</p>}
       </section>
 
+      <DocHelpLink to="/support/workspace/team-roles">Bekijk het overzicht van alle teamrollen en rechten</DocHelpLink>
+      <DocHelpLink to="/support/workspace/developer-console">Lees hoe je veilig API-sleutels rouleert</DocHelpLink>
       {manage ? <TeamTab workspaceId={ws.id} workspaceName={ws.name} /> : (
         <p className="text-sm text-muted-foreground">Alleen eigenaars en admins beheren het team.</p>
       )}

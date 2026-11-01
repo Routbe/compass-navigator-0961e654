@@ -10,6 +10,8 @@
 <!-- LOVABLE:END -->
 
 ## Source import architecture
+- Public growth pages use the recursive MDX catalog for content, explicit TanStack routes, canonical metadata and structured data; legacy QR spokes redirect while /qr remains the working generator. Why: one editorial source without duplicate indexed content or broken tool deep links.
+- Documentation mirrors verified source behavior and labels examples or unverified operational status explicitly. Why: privacy, billing, retention and competitor claims must not exceed implemented guarantees.
 - Workspace pricing uses a separate shared catalog for purchase intent; workspace creation validates plan_id and billing_cycle but never grants paid access from client input. Why: a pricing selection is not a verified subscription, and legacy entitlements require a separately reviewed migration and checkout.
 - Keep the imported TanStack Start file routes, server entry, MDX catalog, and source design system together; public pages rely on these shared conventions.
 - Preserve generated Lovable Cloud integrations and project settings; repository imports must not overwrite managed files or credentials.

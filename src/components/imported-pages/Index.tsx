@@ -1,11 +1,13 @@
 import { useState, useMemo, useEffect, useRef } from "react";
 import { Link2 } from "lucide-react";
+import { DocHelpLink } from "@/components/seo/DocHelpLink";
+import { qrGuidePath } from "@/lib/qr-guide-path";
 import { Link } from "@/lib/router-compat";
 import { TrackingPanel, TrackedQR } from "@/components/TrackingPanel";
 import { prettyCaption } from "@/lib/qr-caption";
 import { AppLayout } from "@/components/layout/AppLayout";
 import { QRPreview } from "@/components/QRPreview";
-import { QRTypeSelector, QRType } from "@/components/QRTypeSelector";
+import { QRTypeSelector, QRType, allQrTypes } from "@/components/QRTypeSelector";
 import { QRTypeSheet } from "@/components/QRTypeSheet";
 import { useI18n } from "@/lib/i18n";
 import { ProfileQrDesignContext, toProfileQrStyle } from "@/lib/qr-design-bridge";
@@ -176,7 +178,8 @@ const Index = () => {
     if (typeof window === "undefined") return;
     const requested = new URLSearchParams(window.location.search).get("type");
     if (requested === "profile_hub" || requested === "social") setQrType("social");
-    if (requested === "feedback") setQrType("feedback");
+    const option = allQrTypes.find(type => type.id === requested);
+    if (option) setQrType(option.id);
   }, []);
 
   const [frameId, setFrameId] = useState<string | null>(null);
@@ -560,6 +563,8 @@ const Index = () => {
                 </InfoHint>
               </div>
             </div>
+            <DocHelpLink to="/guide/dynamic-qr">Lees hoe dit werkt</DocHelpLink>
+            {qrGuidePath(qrType) && <div className="mt-2"><DocHelpLink to={qrGuidePath(qrType) ?? "/qr-code-generator"}>Hoe werkt deze QR-code?</DocHelpLink></div>}
           </div>
 
           {qrMode === "static" && (

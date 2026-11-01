@@ -20,11 +20,11 @@ const itemClass =
   "flex items-start gap-3 rounded-xl px-3 py-2.5 text-sm text-foreground hover:bg-muted/60 transition-colors";
 
 const TOOLS = [
-  { to: "/", label: "QR Generator", hint: "menu.generator.hint", icon: QrCode },
-  { to: "/studio", label: "Profile Hub Studio", hint: "menu.studio.hint", icon: Palette },
-  { to: "/batch", label: "Batch Engine", hint: "menu.batch.hint", icon: Layers },
+  { to: "/qr-code-generator", label: "QR Generator", hint: "menu.generator.hint", icon: QrCode },
+  { to: "/product/profile-hub", label: "Profile Hub Studio", hint: "menu.studio.hint", icon: Palette },
+  { to: "/product/batch-engine", label: "Batch Engine", hint: "menu.batch.hint", icon: Layers },
   {
-    to: "/dashboard?tab=links",
+    to: "/product/dynamic-links",
     label: "Dynamic Links & Analytics",
     hint: "menu.links.hint",
     icon: Link2,
@@ -32,7 +32,7 @@ const TOOLS = [
 ] as const;
 
 const INFRASTRUCTURE = [
-  { to: "/domains", label: "Custom Domains", hint: "menu.domains.hint", icon: Globe },
+  { to: "/product/custom-domains", label: "Custom Domains", hint: "menu.domains.hint", icon: Globe },
   { to: "/console", label: "Developer Console", hint: "menu.api.hint", icon: PanelsTopLeft },
   { to: "/self-hosting", label: "Open Source & Docs", hint: "menu.docs.hint", icon: BookOpen },
 ] as const;
