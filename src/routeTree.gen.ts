@@ -18,14 +18,17 @@ import { Route as AuthRouteImport } from './routes/auth'
 import { Route as BatchRouteImport } from './routes/batch'
 import { Route as CardRouteImport } from './routes/card'
 import { Route as ClaimRouteImport } from './routes/claim'
+import { Route as CompareRouteImport } from './routes/compare'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DataDeletionRouteImport } from './routes/data-deletion'
 import { Route as DevRouteImport } from './routes/dev'
 import { Route as DevelopersRouteImport } from './routes/developers'
 import { Route as EmailTemplatesRouteImport } from './routes/email-templates'
 import { Route as ExploreRouteImport } from './routes/explore'
+import { Route as FeaturesRouteImport } from './routes/features'
 import { Route as GiftRouteImport } from './routes/gift'
 import { Route as GoRouteImport } from './routes/go'
+import { Route as GuideRouteImport } from './routes/guide'
 import { Route as HubRouteImport } from './routes/hub'
 import { Route as IbanQrRouteImport } from './routes/iban-qr'
 import { Route as InfoRouteImport } from './routes/info'
@@ -34,15 +37,19 @@ import { Route as ManifestoRouteImport } from './routes/manifesto'
 import { Route as OnboardingRouteImport } from './routes/onboarding'
 import { Route as PressRouteImport } from './routes/press'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as ProductRouteImport } from './routes/product'
 import { Route as QrRouteImport } from './routes/qr'
+import { Route as QrCodeGeneratorRouteImport } from './routes/qr-code-generator'
 import { Route as SafetyRouteImport } from './routes/safety'
 import { Route as SecurityRouteImport } from './routes/security'
 import { Route as SelfHostingRouteImport } from './routes/self-hosting'
 import { Route as SignatureRouteImport } from './routes/signature'
 import { Route as SignupRouteImport } from './routes/signup'
+import { Route as SolutionsRouteImport } from './routes/solutions'
 import { Route as SovereigntyRouteImport } from './routes/sovereignty'
 import { Route as StatusRouteImport } from './routes/status'
 import { Route as StudioRouteImport } from './routes/studio'
+import { Route as SupportRouteImport } from './routes/support'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as TourRouteImport } from './routes/tour'
 import { Route as VcardQrRouteImport } from './routes/vcard-qr'
@@ -84,6 +91,10 @@ import { Route as BookEventTypeIdRouteImport } from './routes/book.$eventTypeId'
 import { Route as BookingBookingIdRouteImport } from './routes/booking.$bookingId'
 import { Route as BrandSplatRouteImport } from './routes/brand.$'
 import { Route as ClaimTokenRouteImport } from './routes/claim_.$token'
+import { Route as CompareIndexRouteImport } from './routes/compare.index'
+import { Route as CompareAuth0AlternativeRouteImport } from './routes/compare.auth0-alternative'
+import { Route as CompareBitlyAlternativeRouteImport } from './routes/compare.bitly-alternative'
+import { Route as CompareLinktreeAlternativeRouteImport } from './routes/compare.linktree-alternative'
 import { Route as DevIndexRouteImport } from './routes/dev.index'
 import { Route as DevAiMcpRouteImport } from './routes/dev.ai-mcp'
 import { Route as DevCredentialsRouteImport } from './routes/dev.credentials'
@@ -101,8 +112,18 @@ import { Route as DeveloperWebhooksRouteImport } from './routes/developer.webhoo
 import { Route as ESlugRouteImport } from './routes/e.$slug'
 import { Route as EventSlugRouteImport } from './routes/event.$slug'
 import { Route as FIdRouteImport } from './routes/f.$id'
+import { Route as FeaturesIndexRouteImport } from './routes/features.index'
+import { Route as FeaturesAssetManagerRouteImport } from './routes/features.asset-manager'
+import { Route as FeaturesCookielessAnalyticsRouteImport } from './routes/features.cookieless-analytics'
+import { Route as FeaturesDesignStudioRouteImport } from './routes/features.design-studio'
+import { Route as FeaturesLinkManagementRouteImport } from './routes/features.link-management'
 import { Route as FeedbackSlugRouteImport } from './routes/feedback.$slug'
 import { Route as GiftCodeRouteImport } from './routes/gift_.$code'
+import { Route as GuideIndexRouteImport } from './routes/guide.index'
+import { Route as GuideDynamicQrRouteImport } from './routes/guide.dynamic-qr'
+import { Route as GuidePrintQrCodeRouteImport } from './routes/guide.print-qr-code'
+import { Route as GuideQrCodeDesignRouteImport } from './routes/guide.qr-code-design'
+import { Route as GuideQrCodeFramesRouteImport } from './routes/guide.qr-code-frames'
 import { Route as IdentityRevokeRouteImport } from './routes/identity.revoke'
 import { Route as InfoIndexRouteImport } from './routes/info.index'
 import { Route as InfoAccountMergeRouteImport } from './routes/info.account-merge'
@@ -116,6 +137,14 @@ import { Route as InfoUsernamesRouteImport } from './routes/info.usernames'
 import { Route as InfoWalletRouteImport } from './routes/info.wallet'
 import { Route as OauthAuthorizeRouteImport } from './routes/oauth.authorize'
 import { Route as OauthEndSessionRouteImport } from './routes/oauth.end-session'
+import { Route as ProductIndexRouteImport } from './routes/product.index'
+import { Route as ProductBatchEngineRouteImport } from './routes/product.batch-engine'
+import { Route as ProductCustomDomainsRouteImport } from './routes/product.custom-domains'
+import { Route as ProductDynamicLinksRouteImport } from './routes/product.dynamic-links'
+import { Route as ProductProfileHubRouteImport } from './routes/product.profile-hub'
+import { Route as QrCodeGeneratorIndexRouteImport } from './routes/qr-code-generator.index'
+import { Route as QrCodeGeneratorPaymentRouteImport } from './routes/qr-code-generator.payment'
+import { Route as QrPaymentRouteImport } from './routes/qr_.payment_'
 import { Route as RUsernameRouteImport } from './routes/r.$username'
 import { Route as ReviewTokenRouteImport } from './routes/review.$token'
 import { Route as SSlugRouteImport } from './routes/s.$slug'
@@ -129,7 +158,12 @@ import { Route as SafetySecurityAdvisoriesRouteImport } from './routes/safety.se
 import { Route as SafetyTermsRouteImport } from './routes/safety.terms'
 import { Route as SafetyTransparencyRouteImport } from './routes/safety.transparency'
 import { Route as SafetyZeroKnowledgeRouteImport } from './routes/safety.zero-knowledge'
+import { Route as SolutionsIndexRouteImport } from './routes/solutions.index'
+import { Route as SolutionsAgenciesRouteImport } from './routes/solutions.agencies'
+import { Route as SolutionsCreatorsRouteImport } from './routes/solutions.creators'
+import { Route as SolutionsDevelopersRouteImport } from './routes/solutions.developers'
 import { Route as StatsTokenRouteImport } from './routes/stats.$token'
+import { Route as SupportIndexRouteImport } from './routes/support.index'
 import { Route as UUsernameRouteImport } from './routes/u.$username'
 import { Route as WSlugRouteImport } from './routes/w.$slug'
 import { Route as WorkspaceTransferTokenRouteImport } from './routes/workspace-transfer.$token'
@@ -181,7 +215,44 @@ import { Route as ApiUploadPresignRouteImport } from './routes/api_.upload.presi
 import { Route as ApiV1PresenceRouteImport } from './routes/api_.v1.presence'
 import { Route as ApiYoutubeStartRouteImport } from './routes/api_.youtube.start'
 import { Route as AuthMastodonCallbackRouteImport } from './routes/auth_.mastodon.callback'
+import { Route as QrCodeGeneratorContactEmailRouteImport } from './routes/qr-code-generator.contact.email'
+import { Route as QrCodeGeneratorContactSmsRouteImport } from './routes/qr-code-generator.contact.sms'
+import { Route as QrCodeGeneratorContactVcardRouteImport } from './routes/qr-code-generator.contact.vcard'
+import { Route as QrCodeGeneratorContactWhatsappRouteImport } from './routes/qr-code-generator.contact.whatsapp'
+import { Route as QrCodeGeneratorMediaImageRouteImport } from './routes/qr-code-generator.media.image'
+import { Route as QrCodeGeneratorMediaPdfRouteImport } from './routes/qr-code-generator.media.pdf'
+import { Route as QrCodeGeneratorPaymentIndexRouteImport } from './routes/qr-code-generator.payment.index'
+import { Route as QrCodeGeneratorPaymentCryptoRouteImport } from './routes/qr-code-generator.payment.crypto'
+import { Route as QrCodeGeneratorPaymentPaypalRouteImport } from './routes/qr-code-generator.payment.paypal'
+import { Route as QrCodeGeneratorPaymentSepaRouteImport } from './routes/qr-code-generator.payment.sepa'
+import { Route as QrCodeGeneratorPaymentWeroRouteImport } from './routes/qr-code-generator.payment.wero'
+import { Route as QrCodeGeneratorToolsCalendarRouteImport } from './routes/qr-code-generator.tools.calendar'
+import { Route as QrCodeGeneratorToolsMapsRouteImport } from './routes/qr-code-generator.tools.maps'
+import { Route as QrCodeGeneratorToolsWifiRouteImport } from './routes/qr-code-generator.tools.wifi'
+import { Route as QrContactEmailRouteImport } from './routes/qr_.contact_.email'
+import { Route as QrContactSmsRouteImport } from './routes/qr_.contact_.sms'
+import { Route as QrContactVcardRouteImport } from './routes/qr_.contact_.vcard'
+import { Route as QrContactWhatsappRouteImport } from './routes/qr_.contact_.whatsapp'
+import { Route as QrMediaImageRouteImport } from './routes/qr_.media_.image'
+import { Route as QrMediaPdfRouteImport } from './routes/qr_.media_.pdf'
+import { Route as QrPaymentCryptoRouteImport } from './routes/qr_.payment_.crypto'
+import { Route as QrPaymentPaypalRouteImport } from './routes/qr_.payment_.paypal'
+import { Route as QrPaymentSepaRouteImport } from './routes/qr_.payment_.sepa'
+import { Route as QrPaymentWeroRouteImport } from './routes/qr_.payment_.wero'
+import { Route as QrToolsCalendarRouteImport } from './routes/qr_.tools_.calendar'
+import { Route as QrToolsMapsRouteImport } from './routes/qr_.tools_.maps'
+import { Route as QrToolsWifiRouteImport } from './routes/qr_.tools_.wifi'
 import { Route as RUAliasRouteImport } from './routes/r.u.$alias'
+import { Route as SupportAccountBillingRouteImport } from './routes/support.account.billing'
+import { Route as SupportAccountDataDomainsRouteImport } from './routes/support.account.data-domains'
+import { Route as SupportAccountDeleteAccountRouteImport } from './routes/support.account.delete-account'
+import { Route as SupportAccountLinkedIdentitiesRouteImport } from './routes/support.account.linked-identities'
+import { Route as SupportAccountSecurityRouteImport } from './routes/support.account.security'
+import { Route as SupportWorkspaceBillingAndLimitsRouteImport } from './routes/support.workspace.billing-and-limits'
+import { Route as SupportWorkspaceCustomDomainsRouteImport } from './routes/support.workspace.custom-domains'
+import { Route as SupportWorkspaceDeveloperConsoleRouteImport } from './routes/support.workspace.developer-console'
+import { Route as SupportWorkspaceMultipleWorkspacesRouteImport } from './routes/support.workspace.multiple-workspaces'
+import { Route as SupportWorkspaceTeamRolesRouteImport } from './routes/support.workspace.team-roles'
 import { Route as UUsernameSlugRouteImport } from './routes/u.$username_.$slug'
 import { Route as UUsernameDonateRouteImport } from './routes/u.$username_.donate'
 import { Route as UUsernameFeedbackRouteImport } from './routes/u.$username_.feedback'
@@ -238,6 +309,9 @@ import { Route as ApiPublicYoutubeCardRouteImport } from './routes/api_.public.y
 import { Route as ApiPublicYoutubePushRouteImport } from './routes/api_.public.youtube.push'
 import { Route as ApiUserVaultExportRouteImport } from './routes/api_.user.vault.export'
 import { Route as ApiWalletKindIdRouteImport } from './routes/api_.wallet.$kind.$id'
+import { Route as SupportWorkspaceGettingStartedInviteTeamRouteImport } from './routes/support.workspace.getting-started.invite-team'
+import { Route as SupportWorkspaceGettingStartedSetupBusinessAccountRouteImport } from './routes/support.workspace.getting-started.setup-business-account'
+import { Route as SupportWorkspaceGettingStartedWhatIsAWorkspaceRouteImport } from './routes/support.workspace.getting-started.what-is-a-workspace'
 import { Route as AuthenticatedConsoleAppsAppIdIndexRouteImport } from './routes/_authenticated/console.apps.$appId.index'
 import { Route as AuthenticatedConsoleAppsAppIdAdvancedRouteImport } from './routes/_authenticated/console.apps.$appId.advanced'
 import { Route as AuthenticatedConsoleAppsAppIdAiPromptsRouteImport } from './routes/_authenticated/console.apps.$appId.ai-prompts'
@@ -300,6 +374,11 @@ const ClaimRoute = ClaimRouteImport.update({
   path: '/claim',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CompareRoute = CompareRouteImport.update({
+  id: '/compare',
+  path: '/compare',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
@@ -330,6 +409,11 @@ const ExploreRoute = ExploreRouteImport.update({
   path: '/explore',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FeaturesRoute = FeaturesRouteImport.update({
+  id: '/features',
+  path: '/features',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const GiftRoute = GiftRouteImport.update({
   id: '/gift',
   path: '/gift',
@@ -338,6 +422,11 @@ const GiftRoute = GiftRouteImport.update({
 const GoRoute = GoRouteImport.update({
   id: '/go',
   path: '/go',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GuideRoute = GuideRouteImport.update({
+  id: '/guide',
+  path: '/guide',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HubRoute = HubRouteImport.update({
@@ -380,9 +469,19 @@ const PrivacyRoute = PrivacyRouteImport.update({
   path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProductRoute = ProductRouteImport.update({
+  id: '/product',
+  path: '/product',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const QrRoute = QrRouteImport.update({
   id: '/qr',
   path: '/qr',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QrCodeGeneratorRoute = QrCodeGeneratorRouteImport.update({
+  id: '/qr-code-generator',
+  path: '/qr-code-generator',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SafetyRoute = SafetyRouteImport.update({
@@ -410,6 +509,11 @@ const SignupRoute = SignupRouteImport.update({
   path: '/signup',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SolutionsRoute = SolutionsRouteImport.update({
+  id: '/solutions',
+  path: '/solutions',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SovereigntyRoute = SovereigntyRouteImport.update({
   id: '/sovereignty',
   path: '/sovereignty',
@@ -423,6 +527,11 @@ const StatusRoute = StatusRouteImport.update({
 const StudioRoute = StudioRouteImport.update({
   id: '/studio',
   path: '/studio',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SupportRoute = SupportRouteImport.update({
+  id: '/support',
+  path: '/support',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TermsRoute = TermsRouteImport.update({
@@ -631,6 +740,27 @@ const ClaimTokenRoute = ClaimTokenRouteImport.update({
   path: '/claim/$token',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CompareIndexRoute = CompareIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => CompareRoute,
+} as any)
+const CompareAuth0AlternativeRoute = CompareAuth0AlternativeRouteImport.update({
+  id: '/auth0-alternative',
+  path: '/auth0-alternative',
+  getParentRoute: () => CompareRoute,
+} as any)
+const CompareBitlyAlternativeRoute = CompareBitlyAlternativeRouteImport.update({
+  id: '/bitly-alternative',
+  path: '/bitly-alternative',
+  getParentRoute: () => CompareRoute,
+} as any)
+const CompareLinktreeAlternativeRoute =
+  CompareLinktreeAlternativeRouteImport.update({
+    id: '/linktree-alternative',
+    path: '/linktree-alternative',
+    getParentRoute: () => CompareRoute,
+  } as any)
 const DevIndexRoute = DevIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -716,6 +846,32 @@ const FIdRoute = FIdRouteImport.update({
   path: '/f/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FeaturesIndexRoute = FeaturesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => FeaturesRoute,
+} as any)
+const FeaturesAssetManagerRoute = FeaturesAssetManagerRouteImport.update({
+  id: '/asset-manager',
+  path: '/asset-manager',
+  getParentRoute: () => FeaturesRoute,
+} as any)
+const FeaturesCookielessAnalyticsRoute =
+  FeaturesCookielessAnalyticsRouteImport.update({
+    id: '/cookieless-analytics',
+    path: '/cookieless-analytics',
+    getParentRoute: () => FeaturesRoute,
+  } as any)
+const FeaturesDesignStudioRoute = FeaturesDesignStudioRouteImport.update({
+  id: '/design-studio',
+  path: '/design-studio',
+  getParentRoute: () => FeaturesRoute,
+} as any)
+const FeaturesLinkManagementRoute = FeaturesLinkManagementRouteImport.update({
+  id: '/link-management',
+  path: '/link-management',
+  getParentRoute: () => FeaturesRoute,
+} as any)
 const FeedbackSlugRoute = FeedbackSlugRouteImport.update({
   id: '/feedback/$slug',
   path: '/feedback/$slug',
@@ -725,6 +881,31 @@ const GiftCodeRoute = GiftCodeRouteImport.update({
   id: '/gift_/$code',
   path: '/gift/$code',
   getParentRoute: () => rootRouteImport,
+} as any)
+const GuideIndexRoute = GuideIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => GuideRoute,
+} as any)
+const GuideDynamicQrRoute = GuideDynamicQrRouteImport.update({
+  id: '/dynamic-qr',
+  path: '/dynamic-qr',
+  getParentRoute: () => GuideRoute,
+} as any)
+const GuidePrintQrCodeRoute = GuidePrintQrCodeRouteImport.update({
+  id: '/print-qr-code',
+  path: '/print-qr-code',
+  getParentRoute: () => GuideRoute,
+} as any)
+const GuideQrCodeDesignRoute = GuideQrCodeDesignRouteImport.update({
+  id: '/qr-code-design',
+  path: '/qr-code-design',
+  getParentRoute: () => GuideRoute,
+} as any)
+const GuideQrCodeFramesRoute = GuideQrCodeFramesRouteImport.update({
+  id: '/qr-code-frames',
+  path: '/qr-code-frames',
+  getParentRoute: () => GuideRoute,
 } as any)
 const IdentityRevokeRoute = IdentityRevokeRouteImport.update({
   id: '/identity/revoke',
@@ -789,6 +970,46 @@ const OauthAuthorizeRoute = OauthAuthorizeRouteImport.update({
 const OauthEndSessionRoute = OauthEndSessionRouteImport.update({
   id: '/oauth/end-session',
   path: '/oauth/end-session',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductIndexRoute = ProductIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ProductRoute,
+} as any)
+const ProductBatchEngineRoute = ProductBatchEngineRouteImport.update({
+  id: '/batch-engine',
+  path: '/batch-engine',
+  getParentRoute: () => ProductRoute,
+} as any)
+const ProductCustomDomainsRoute = ProductCustomDomainsRouteImport.update({
+  id: '/custom-domains',
+  path: '/custom-domains',
+  getParentRoute: () => ProductRoute,
+} as any)
+const ProductDynamicLinksRoute = ProductDynamicLinksRouteImport.update({
+  id: '/dynamic-links',
+  path: '/dynamic-links',
+  getParentRoute: () => ProductRoute,
+} as any)
+const ProductProfileHubRoute = ProductProfileHubRouteImport.update({
+  id: '/profile-hub',
+  path: '/profile-hub',
+  getParentRoute: () => ProductRoute,
+} as any)
+const QrCodeGeneratorIndexRoute = QrCodeGeneratorIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => QrCodeGeneratorRoute,
+} as any)
+const QrCodeGeneratorPaymentRoute = QrCodeGeneratorPaymentRouteImport.update({
+  id: '/payment',
+  path: '/payment',
+  getParentRoute: () => QrCodeGeneratorRoute,
+} as any)
+const QrPaymentRoute = QrPaymentRouteImport.update({
+  id: '/qr_/payment_',
+  path: '/qr/payment',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RUsernameRoute = RUsernameRouteImport.update({
@@ -857,10 +1078,35 @@ const SafetyZeroKnowledgeRoute = SafetyZeroKnowledgeRouteImport.update({
   path: '/zero-knowledge',
   getParentRoute: () => SafetyRoute,
 } as any)
+const SolutionsIndexRoute = SolutionsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => SolutionsRoute,
+} as any)
+const SolutionsAgenciesRoute = SolutionsAgenciesRouteImport.update({
+  id: '/agencies',
+  path: '/agencies',
+  getParentRoute: () => SolutionsRoute,
+} as any)
+const SolutionsCreatorsRoute = SolutionsCreatorsRouteImport.update({
+  id: '/creators',
+  path: '/creators',
+  getParentRoute: () => SolutionsRoute,
+} as any)
+const SolutionsDevelopersRoute = SolutionsDevelopersRouteImport.update({
+  id: '/developers',
+  path: '/developers',
+  getParentRoute: () => SolutionsRoute,
+} as any)
 const StatsTokenRoute = StatsTokenRouteImport.update({
   id: '/stats/$token',
   path: '/stats/$token',
   getParentRoute: () => rootRouteImport,
+} as any)
+const SupportIndexRoute = SupportIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => SupportRoute,
 } as any)
 const UUsernameRoute = UUsernameRouteImport.update({
   id: '/u/$username',
@@ -1138,11 +1384,217 @@ const AuthMastodonCallbackRoute = AuthMastodonCallbackRouteImport.update({
   path: '/auth/mastodon/callback',
   getParentRoute: () => rootRouteImport,
 } as any)
+const QrCodeGeneratorContactEmailRoute =
+  QrCodeGeneratorContactEmailRouteImport.update({
+    id: '/contact/email',
+    path: '/contact/email',
+    getParentRoute: () => QrCodeGeneratorRoute,
+  } as any)
+const QrCodeGeneratorContactSmsRoute =
+  QrCodeGeneratorContactSmsRouteImport.update({
+    id: '/contact/sms',
+    path: '/contact/sms',
+    getParentRoute: () => QrCodeGeneratorRoute,
+  } as any)
+const QrCodeGeneratorContactVcardRoute =
+  QrCodeGeneratorContactVcardRouteImport.update({
+    id: '/contact/vcard',
+    path: '/contact/vcard',
+    getParentRoute: () => QrCodeGeneratorRoute,
+  } as any)
+const QrCodeGeneratorContactWhatsappRoute =
+  QrCodeGeneratorContactWhatsappRouteImport.update({
+    id: '/contact/whatsapp',
+    path: '/contact/whatsapp',
+    getParentRoute: () => QrCodeGeneratorRoute,
+  } as any)
+const QrCodeGeneratorMediaImageRoute =
+  QrCodeGeneratorMediaImageRouteImport.update({
+    id: '/media/image',
+    path: '/media/image',
+    getParentRoute: () => QrCodeGeneratorRoute,
+  } as any)
+const QrCodeGeneratorMediaPdfRoute = QrCodeGeneratorMediaPdfRouteImport.update({
+  id: '/media/pdf',
+  path: '/media/pdf',
+  getParentRoute: () => QrCodeGeneratorRoute,
+} as any)
+const QrCodeGeneratorPaymentIndexRoute =
+  QrCodeGeneratorPaymentIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => QrCodeGeneratorPaymentRoute,
+  } as any)
+const QrCodeGeneratorPaymentCryptoRoute =
+  QrCodeGeneratorPaymentCryptoRouteImport.update({
+    id: '/crypto',
+    path: '/crypto',
+    getParentRoute: () => QrCodeGeneratorPaymentRoute,
+  } as any)
+const QrCodeGeneratorPaymentPaypalRoute =
+  QrCodeGeneratorPaymentPaypalRouteImport.update({
+    id: '/paypal',
+    path: '/paypal',
+    getParentRoute: () => QrCodeGeneratorPaymentRoute,
+  } as any)
+const QrCodeGeneratorPaymentSepaRoute =
+  QrCodeGeneratorPaymentSepaRouteImport.update({
+    id: '/sepa',
+    path: '/sepa',
+    getParentRoute: () => QrCodeGeneratorPaymentRoute,
+  } as any)
+const QrCodeGeneratorPaymentWeroRoute =
+  QrCodeGeneratorPaymentWeroRouteImport.update({
+    id: '/wero',
+    path: '/wero',
+    getParentRoute: () => QrCodeGeneratorPaymentRoute,
+  } as any)
+const QrCodeGeneratorToolsCalendarRoute =
+  QrCodeGeneratorToolsCalendarRouteImport.update({
+    id: '/tools/calendar',
+    path: '/tools/calendar',
+    getParentRoute: () => QrCodeGeneratorRoute,
+  } as any)
+const QrCodeGeneratorToolsMapsRoute =
+  QrCodeGeneratorToolsMapsRouteImport.update({
+    id: '/tools/maps',
+    path: '/tools/maps',
+    getParentRoute: () => QrCodeGeneratorRoute,
+  } as any)
+const QrCodeGeneratorToolsWifiRoute =
+  QrCodeGeneratorToolsWifiRouteImport.update({
+    id: '/tools/wifi',
+    path: '/tools/wifi',
+    getParentRoute: () => QrCodeGeneratorRoute,
+  } as any)
+const QrContactEmailRoute = QrContactEmailRouteImport.update({
+  id: '/qr_/contact_/email',
+  path: '/qr/contact/email',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QrContactSmsRoute = QrContactSmsRouteImport.update({
+  id: '/qr_/contact_/sms',
+  path: '/qr/contact/sms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QrContactVcardRoute = QrContactVcardRouteImport.update({
+  id: '/qr_/contact_/vcard',
+  path: '/qr/contact/vcard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QrContactWhatsappRoute = QrContactWhatsappRouteImport.update({
+  id: '/qr_/contact_/whatsapp',
+  path: '/qr/contact/whatsapp',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QrMediaImageRoute = QrMediaImageRouteImport.update({
+  id: '/qr_/media_/image',
+  path: '/qr/media/image',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QrMediaPdfRoute = QrMediaPdfRouteImport.update({
+  id: '/qr_/media_/pdf',
+  path: '/qr/media/pdf',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QrPaymentCryptoRoute = QrPaymentCryptoRouteImport.update({
+  id: '/crypto',
+  path: '/crypto',
+  getParentRoute: () => QrPaymentRoute,
+} as any)
+const QrPaymentPaypalRoute = QrPaymentPaypalRouteImport.update({
+  id: '/paypal',
+  path: '/paypal',
+  getParentRoute: () => QrPaymentRoute,
+} as any)
+const QrPaymentSepaRoute = QrPaymentSepaRouteImport.update({
+  id: '/sepa',
+  path: '/sepa',
+  getParentRoute: () => QrPaymentRoute,
+} as any)
+const QrPaymentWeroRoute = QrPaymentWeroRouteImport.update({
+  id: '/wero',
+  path: '/wero',
+  getParentRoute: () => QrPaymentRoute,
+} as any)
+const QrToolsCalendarRoute = QrToolsCalendarRouteImport.update({
+  id: '/qr_/tools_/calendar',
+  path: '/qr/tools/calendar',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QrToolsMapsRoute = QrToolsMapsRouteImport.update({
+  id: '/qr_/tools_/maps',
+  path: '/qr/tools/maps',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QrToolsWifiRoute = QrToolsWifiRouteImport.update({
+  id: '/qr_/tools_/wifi',
+  path: '/qr/tools/wifi',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RUAliasRoute = RUAliasRouteImport.update({
   id: '/r/u/$alias',
   path: '/r/u/$alias',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SupportAccountBillingRoute = SupportAccountBillingRouteImport.update({
+  id: '/account/billing',
+  path: '/account/billing',
+  getParentRoute: () => SupportRoute,
+} as any)
+const SupportAccountDataDomainsRoute =
+  SupportAccountDataDomainsRouteImport.update({
+    id: '/account/data-domains',
+    path: '/account/data-domains',
+    getParentRoute: () => SupportRoute,
+  } as any)
+const SupportAccountDeleteAccountRoute =
+  SupportAccountDeleteAccountRouteImport.update({
+    id: '/account/delete-account',
+    path: '/account/delete-account',
+    getParentRoute: () => SupportRoute,
+  } as any)
+const SupportAccountLinkedIdentitiesRoute =
+  SupportAccountLinkedIdentitiesRouteImport.update({
+    id: '/account/linked-identities',
+    path: '/account/linked-identities',
+    getParentRoute: () => SupportRoute,
+  } as any)
+const SupportAccountSecurityRoute = SupportAccountSecurityRouteImport.update({
+  id: '/account/security',
+  path: '/account/security',
+  getParentRoute: () => SupportRoute,
+} as any)
+const SupportWorkspaceBillingAndLimitsRoute =
+  SupportWorkspaceBillingAndLimitsRouteImport.update({
+    id: '/workspace/billing-and-limits',
+    path: '/workspace/billing-and-limits',
+    getParentRoute: () => SupportRoute,
+  } as any)
+const SupportWorkspaceCustomDomainsRoute =
+  SupportWorkspaceCustomDomainsRouteImport.update({
+    id: '/workspace/custom-domains',
+    path: '/workspace/custom-domains',
+    getParentRoute: () => SupportRoute,
+  } as any)
+const SupportWorkspaceDeveloperConsoleRoute =
+  SupportWorkspaceDeveloperConsoleRouteImport.update({
+    id: '/workspace/developer-console',
+    path: '/workspace/developer-console',
+    getParentRoute: () => SupportRoute,
+  } as any)
+const SupportWorkspaceMultipleWorkspacesRoute =
+  SupportWorkspaceMultipleWorkspacesRouteImport.update({
+    id: '/workspace/multiple-workspaces',
+    path: '/workspace/multiple-workspaces',
+    getParentRoute: () => SupportRoute,
+  } as any)
+const SupportWorkspaceTeamRolesRoute =
+  SupportWorkspaceTeamRolesRouteImport.update({
+    id: '/workspace/team-roles',
+    path: '/workspace/team-roles',
+    getParentRoute: () => SupportRoute,
+  } as any)
 const UUsernameSlugRoute = UUsernameSlugRouteImport.update({
   id: '/u/$username_/$slug',
   path: '/u/$username/$slug',
@@ -1453,6 +1905,24 @@ const ApiWalletKindIdRoute = ApiWalletKindIdRouteImport.update({
   path: '/api/wallet/$kind/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SupportWorkspaceGettingStartedInviteTeamRoute =
+  SupportWorkspaceGettingStartedInviteTeamRouteImport.update({
+    id: '/workspace/getting-started/invite-team',
+    path: '/workspace/getting-started/invite-team',
+    getParentRoute: () => SupportRoute,
+  } as any)
+const SupportWorkspaceGettingStartedSetupBusinessAccountRoute =
+  SupportWorkspaceGettingStartedSetupBusinessAccountRouteImport.update({
+    id: '/workspace/getting-started/setup-business-account',
+    path: '/workspace/getting-started/setup-business-account',
+    getParentRoute: () => SupportRoute,
+  } as any)
+const SupportWorkspaceGettingStartedWhatIsAWorkspaceRoute =
+  SupportWorkspaceGettingStartedWhatIsAWorkspaceRouteImport.update({
+    id: '/workspace/getting-started/what-is-a-workspace',
+    path: '/workspace/getting-started/what-is-a-workspace',
+    getParentRoute: () => SupportRoute,
+  } as any)
 const AuthenticatedConsoleAppsAppIdIndexRoute =
   AuthenticatedConsoleAppsAppIdIndexRouteImport.update({
     id: '/',
@@ -1565,14 +2035,17 @@ export interface FileRoutesByFullPath {
   '/batch': typeof BatchRoute
   '/card': typeof CardRoute
   '/claim': typeof ClaimRoute
+  '/compare': typeof CompareRouteWithChildren
   '/contact': typeof ContactRoute
   '/data-deletion': typeof DataDeletionRoute
   '/dev': typeof DevRouteWithChildren
   '/developers': typeof DevelopersRoute
   '/email-templates': typeof EmailTemplatesRoute
   '/explore': typeof ExploreRoute
+  '/features': typeof FeaturesRouteWithChildren
   '/gift': typeof GiftRoute
   '/go': typeof GoRoute
+  '/guide': typeof GuideRouteWithChildren
   '/hub': typeof HubRoute
   '/iban-qr': typeof IbanQrRoute
   '/info': typeof InfoRouteWithChildren
@@ -1581,15 +2054,19 @@ export interface FileRoutesByFullPath {
   '/onboarding': typeof OnboardingRoute
   '/press': typeof PressRoute
   '/privacy': typeof PrivacyRoute
+  '/product': typeof ProductRouteWithChildren
   '/qr': typeof QrRoute
+  '/qr-code-generator': typeof QrCodeGeneratorRouteWithChildren
   '/safety': typeof SafetyRouteWithChildren
   '/security': typeof SecurityRoute
   '/self-hosting': typeof SelfHostingRoute
   '/signature': typeof SignatureRoute
   '/signup': typeof SignupRoute
+  '/solutions': typeof SolutionsRouteWithChildren
   '/sovereignty': typeof SovereigntyRoute
   '/status': typeof StatusRoute
   '/studio': typeof StudioRoute
+  '/support': typeof SupportRouteWithChildren
   '/terms': typeof TermsRoute
   '/tour': typeof TourRoute
   '/vcard-qr': typeof VcardQrRoute
@@ -1629,6 +2106,9 @@ export interface FileRoutesByFullPath {
   '/booking/$bookingId': typeof BookingBookingIdRoute
   '/brand/$': typeof BrandSplatRoute
   '/claim/$token': typeof ClaimTokenRoute
+  '/compare/auth0-alternative': typeof CompareAuth0AlternativeRoute
+  '/compare/bitly-alternative': typeof CompareBitlyAlternativeRoute
+  '/compare/linktree-alternative': typeof CompareLinktreeAlternativeRoute
   '/dev/ai-mcp': typeof DevAiMcpRoute
   '/dev/credentials': typeof DevCredentialsRoute
   '/dev/credentials-api': typeof DevCredentialsApiRoute
@@ -1645,8 +2125,16 @@ export interface FileRoutesByFullPath {
   '/e/$slug': typeof ESlugRoute
   '/event/$slug': typeof EventSlugRoute
   '/f/$id': typeof FIdRoute
+  '/features/asset-manager': typeof FeaturesAssetManagerRoute
+  '/features/cookieless-analytics': typeof FeaturesCookielessAnalyticsRoute
+  '/features/design-studio': typeof FeaturesDesignStudioRoute
+  '/features/link-management': typeof FeaturesLinkManagementRoute
   '/feedback/$slug': typeof FeedbackSlugRoute
   '/gift/$code': typeof GiftCodeRoute
+  '/guide/dynamic-qr': typeof GuideDynamicQrRoute
+  '/guide/print-qr-code': typeof GuidePrintQrCodeRoute
+  '/guide/qr-code-design': typeof GuideQrCodeDesignRoute
+  '/guide/qr-code-frames': typeof GuideQrCodeFramesRoute
   '/identity/revoke': typeof IdentityRevokeRoute
   '/info/account-merge': typeof InfoAccountMergeRoute
   '/info/account-security': typeof InfoAccountSecurityRoute
@@ -1659,6 +2147,12 @@ export interface FileRoutesByFullPath {
   '/info/wallet': typeof InfoWalletRoute
   '/oauth/authorize': typeof OauthAuthorizeRoute
   '/oauth/end-session': typeof OauthEndSessionRoute
+  '/product/batch-engine': typeof ProductBatchEngineRoute
+  '/product/custom-domains': typeof ProductCustomDomainsRoute
+  '/product/dynamic-links': typeof ProductDynamicLinksRoute
+  '/product/profile-hub': typeof ProductProfileHubRoute
+  '/qr-code-generator/payment': typeof QrCodeGeneratorPaymentRouteWithChildren
+  '/qr/payment': typeof QrPaymentRouteWithChildren
   '/r/$username': typeof RUsernameRoute
   '/review/$token': typeof ReviewTokenRoute
   '/s/$slug': typeof SSlugRoute
@@ -1671,15 +2165,25 @@ export interface FileRoutesByFullPath {
   '/safety/terms': typeof SafetyTermsRoute
   '/safety/transparency': typeof SafetyTransparencyRoute
   '/safety/zero-knowledge': typeof SafetyZeroKnowledgeRoute
+  '/solutions/agencies': typeof SolutionsAgenciesRoute
+  '/solutions/creators': typeof SolutionsCreatorsRoute
+  '/solutions/developers': typeof SolutionsDevelopersRoute
   '/stats/$token': typeof StatsTokenRoute
   '/u/$username': typeof UUsernameRoute
   '/w/$slug': typeof WSlugRoute
   '/workspace-transfer/$token': typeof WorkspaceTransferTokenRoute
   '/about/': typeof AboutIndexRoute
   '/auth/': typeof AuthIndexRoute
+  '/compare/': typeof CompareIndexRoute
   '/dev/': typeof DevIndexRoute
+  '/features/': typeof FeaturesIndexRoute
+  '/guide/': typeof GuideIndexRoute
   '/info/': typeof InfoIndexRoute
+  '/product/': typeof ProductIndexRoute
+  '/qr-code-generator/': typeof QrCodeGeneratorIndexRoute
   '/safety/': typeof SafetyIndexRoute
+  '/solutions/': typeof SolutionsIndexRoute
+  '/support/': typeof SupportIndexRoute
   '/admin/brands': typeof AuthenticatedAdminBrandsRoute
   '/admin/contact': typeof AuthenticatedAdminContactRoute
   '/admin/custom-badges': typeof AuthenticatedAdminCustomBadgesRoute
@@ -1726,7 +2230,43 @@ export interface FileRoutesByFullPath {
   '/api/v1/presence': typeof ApiV1PresenceRoute
   '/api/youtube/start': typeof ApiYoutubeStartRoute
   '/auth/mastodon/callback': typeof AuthMastodonCallbackRoute
+  '/qr-code-generator/contact/email': typeof QrCodeGeneratorContactEmailRoute
+  '/qr-code-generator/contact/sms': typeof QrCodeGeneratorContactSmsRoute
+  '/qr-code-generator/contact/vcard': typeof QrCodeGeneratorContactVcardRoute
+  '/qr-code-generator/contact/whatsapp': typeof QrCodeGeneratorContactWhatsappRoute
+  '/qr-code-generator/media/image': typeof QrCodeGeneratorMediaImageRoute
+  '/qr-code-generator/media/pdf': typeof QrCodeGeneratorMediaPdfRoute
+  '/qr-code-generator/payment/crypto': typeof QrCodeGeneratorPaymentCryptoRoute
+  '/qr-code-generator/payment/paypal': typeof QrCodeGeneratorPaymentPaypalRoute
+  '/qr-code-generator/payment/sepa': typeof QrCodeGeneratorPaymentSepaRoute
+  '/qr-code-generator/payment/wero': typeof QrCodeGeneratorPaymentWeroRoute
+  '/qr-code-generator/tools/calendar': typeof QrCodeGeneratorToolsCalendarRoute
+  '/qr-code-generator/tools/maps': typeof QrCodeGeneratorToolsMapsRoute
+  '/qr-code-generator/tools/wifi': typeof QrCodeGeneratorToolsWifiRoute
+  '/qr/contact/email': typeof QrContactEmailRoute
+  '/qr/contact/sms': typeof QrContactSmsRoute
+  '/qr/contact/vcard': typeof QrContactVcardRoute
+  '/qr/contact/whatsapp': typeof QrContactWhatsappRoute
+  '/qr/media/image': typeof QrMediaImageRoute
+  '/qr/media/pdf': typeof QrMediaPdfRoute
+  '/qr/payment/crypto': typeof QrPaymentCryptoRoute
+  '/qr/payment/paypal': typeof QrPaymentPaypalRoute
+  '/qr/payment/sepa': typeof QrPaymentSepaRoute
+  '/qr/payment/wero': typeof QrPaymentWeroRoute
+  '/qr/tools/calendar': typeof QrToolsCalendarRoute
+  '/qr/tools/maps': typeof QrToolsMapsRoute
+  '/qr/tools/wifi': typeof QrToolsWifiRoute
   '/r/u/$alias': typeof RUAliasRoute
+  '/support/account/billing': typeof SupportAccountBillingRoute
+  '/support/account/data-domains': typeof SupportAccountDataDomainsRoute
+  '/support/account/delete-account': typeof SupportAccountDeleteAccountRoute
+  '/support/account/linked-identities': typeof SupportAccountLinkedIdentitiesRoute
+  '/support/account/security': typeof SupportAccountSecurityRoute
+  '/support/workspace/billing-and-limits': typeof SupportWorkspaceBillingAndLimitsRoute
+  '/support/workspace/custom-domains': typeof SupportWorkspaceCustomDomainsRoute
+  '/support/workspace/developer-console': typeof SupportWorkspaceDeveloperConsoleRoute
+  '/support/workspace/multiple-workspaces': typeof SupportWorkspaceMultipleWorkspacesRoute
+  '/support/workspace/team-roles': typeof SupportWorkspaceTeamRolesRoute
   '/u/$username/$slug': typeof UUsernameSlugRoute
   '/u/$username/donate': typeof UUsernameDonateRoute
   '/u/$username/feedback': typeof UUsernameFeedbackRoute
@@ -1735,6 +2275,7 @@ export interface FileRoutesByFullPath {
   '/w/$slug/feedback': typeof WSlugFeedbackRoute
   '/admin/': typeof AuthenticatedAdminIndexRoute
   '/console/': typeof AuthenticatedConsoleIndexRoute
+  '/qr-code-generator/payment/': typeof QrCodeGeneratorPaymentIndexRoute
   '/console/apps/$appId': typeof AuthenticatedConsoleAppsAppIdRouteWithChildren
   '/console/apps/new': typeof AuthenticatedConsoleAppsNewRoute
   '/studio/personal/$feature': typeof AuthenticatedStudioPersonalFeatureRoute
@@ -1784,6 +2325,9 @@ export interface FileRoutesByFullPath {
   '/api/public/youtube/push': typeof ApiPublicYoutubePushRoute
   '/api/user/vault/export': typeof ApiUserVaultExportRoute
   '/api/wallet/$kind/$id': typeof ApiWalletKindIdRoute
+  '/support/workspace/getting-started/invite-team': typeof SupportWorkspaceGettingStartedInviteTeamRoute
+  '/support/workspace/getting-started/setup-business-account': typeof SupportWorkspaceGettingStartedSetupBusinessAccountRoute
+  '/support/workspace/getting-started/what-is-a-workspace': typeof SupportWorkspaceGettingStartedWhatIsAWorkspaceRoute
   '/console/apps/': typeof AuthenticatedConsoleAppsIndexRoute
   '/console/apps/$appId/advanced': typeof AuthenticatedConsoleAppsAppIdAdvancedRoute
   '/console/apps/$appId/ai-prompts': typeof AuthenticatedConsoleAppsAppIdAiPromptsRoute
@@ -1869,6 +2413,9 @@ export interface FileRoutesByTo {
   '/booking/$bookingId': typeof BookingBookingIdRoute
   '/brand/$': typeof BrandSplatRoute
   '/claim/$token': typeof ClaimTokenRoute
+  '/compare/auth0-alternative': typeof CompareAuth0AlternativeRoute
+  '/compare/bitly-alternative': typeof CompareBitlyAlternativeRoute
+  '/compare/linktree-alternative': typeof CompareLinktreeAlternativeRoute
   '/dev/ai-mcp': typeof DevAiMcpRoute
   '/dev/credentials': typeof DevCredentialsRoute
   '/dev/credentials-api': typeof DevCredentialsApiRoute
@@ -1885,8 +2432,16 @@ export interface FileRoutesByTo {
   '/e/$slug': typeof ESlugRoute
   '/event/$slug': typeof EventSlugRoute
   '/f/$id': typeof FIdRoute
+  '/features/asset-manager': typeof FeaturesAssetManagerRoute
+  '/features/cookieless-analytics': typeof FeaturesCookielessAnalyticsRoute
+  '/features/design-studio': typeof FeaturesDesignStudioRoute
+  '/features/link-management': typeof FeaturesLinkManagementRoute
   '/feedback/$slug': typeof FeedbackSlugRoute
   '/gift/$code': typeof GiftCodeRoute
+  '/guide/dynamic-qr': typeof GuideDynamicQrRoute
+  '/guide/print-qr-code': typeof GuidePrintQrCodeRoute
+  '/guide/qr-code-design': typeof GuideQrCodeDesignRoute
+  '/guide/qr-code-frames': typeof GuideQrCodeFramesRoute
   '/identity/revoke': typeof IdentityRevokeRoute
   '/info/account-merge': typeof InfoAccountMergeRoute
   '/info/account-security': typeof InfoAccountSecurityRoute
@@ -1899,6 +2454,11 @@ export interface FileRoutesByTo {
   '/info/wallet': typeof InfoWalletRoute
   '/oauth/authorize': typeof OauthAuthorizeRoute
   '/oauth/end-session': typeof OauthEndSessionRoute
+  '/product/batch-engine': typeof ProductBatchEngineRoute
+  '/product/custom-domains': typeof ProductCustomDomainsRoute
+  '/product/dynamic-links': typeof ProductDynamicLinksRoute
+  '/product/profile-hub': typeof ProductProfileHubRoute
+  '/qr/payment': typeof QrPaymentRouteWithChildren
   '/r/$username': typeof RUsernameRoute
   '/review/$token': typeof ReviewTokenRoute
   '/s/$slug': typeof SSlugRoute
@@ -1911,15 +2471,25 @@ export interface FileRoutesByTo {
   '/safety/terms': typeof SafetyTermsRoute
   '/safety/transparency': typeof SafetyTransparencyRoute
   '/safety/zero-knowledge': typeof SafetyZeroKnowledgeRoute
+  '/solutions/agencies': typeof SolutionsAgenciesRoute
+  '/solutions/creators': typeof SolutionsCreatorsRoute
+  '/solutions/developers': typeof SolutionsDevelopersRoute
   '/stats/$token': typeof StatsTokenRoute
   '/u/$username': typeof UUsernameRoute
   '/w/$slug': typeof WSlugRoute
   '/workspace-transfer/$token': typeof WorkspaceTransferTokenRoute
   '/about': typeof AboutIndexRoute
   '/auth': typeof AuthIndexRoute
+  '/compare': typeof CompareIndexRoute
   '/dev': typeof DevIndexRoute
+  '/features': typeof FeaturesIndexRoute
+  '/guide': typeof GuideIndexRoute
   '/info': typeof InfoIndexRoute
+  '/product': typeof ProductIndexRoute
+  '/qr-code-generator': typeof QrCodeGeneratorIndexRoute
   '/safety': typeof SafetyIndexRoute
+  '/solutions': typeof SolutionsIndexRoute
+  '/support': typeof SupportIndexRoute
   '/admin/brands': typeof AuthenticatedAdminBrandsRoute
   '/admin/contact': typeof AuthenticatedAdminContactRoute
   '/admin/custom-badges': typeof AuthenticatedAdminCustomBadgesRoute
@@ -1965,7 +2535,43 @@ export interface FileRoutesByTo {
   '/api/v1/presence': typeof ApiV1PresenceRoute
   '/api/youtube/start': typeof ApiYoutubeStartRoute
   '/auth/mastodon/callback': typeof AuthMastodonCallbackRoute
+  '/qr-code-generator/contact/email': typeof QrCodeGeneratorContactEmailRoute
+  '/qr-code-generator/contact/sms': typeof QrCodeGeneratorContactSmsRoute
+  '/qr-code-generator/contact/vcard': typeof QrCodeGeneratorContactVcardRoute
+  '/qr-code-generator/contact/whatsapp': typeof QrCodeGeneratorContactWhatsappRoute
+  '/qr-code-generator/media/image': typeof QrCodeGeneratorMediaImageRoute
+  '/qr-code-generator/media/pdf': typeof QrCodeGeneratorMediaPdfRoute
+  '/qr-code-generator/payment/crypto': typeof QrCodeGeneratorPaymentCryptoRoute
+  '/qr-code-generator/payment/paypal': typeof QrCodeGeneratorPaymentPaypalRoute
+  '/qr-code-generator/payment/sepa': typeof QrCodeGeneratorPaymentSepaRoute
+  '/qr-code-generator/payment/wero': typeof QrCodeGeneratorPaymentWeroRoute
+  '/qr-code-generator/tools/calendar': typeof QrCodeGeneratorToolsCalendarRoute
+  '/qr-code-generator/tools/maps': typeof QrCodeGeneratorToolsMapsRoute
+  '/qr-code-generator/tools/wifi': typeof QrCodeGeneratorToolsWifiRoute
+  '/qr/contact/email': typeof QrContactEmailRoute
+  '/qr/contact/sms': typeof QrContactSmsRoute
+  '/qr/contact/vcard': typeof QrContactVcardRoute
+  '/qr/contact/whatsapp': typeof QrContactWhatsappRoute
+  '/qr/media/image': typeof QrMediaImageRoute
+  '/qr/media/pdf': typeof QrMediaPdfRoute
+  '/qr/payment/crypto': typeof QrPaymentCryptoRoute
+  '/qr/payment/paypal': typeof QrPaymentPaypalRoute
+  '/qr/payment/sepa': typeof QrPaymentSepaRoute
+  '/qr/payment/wero': typeof QrPaymentWeroRoute
+  '/qr/tools/calendar': typeof QrToolsCalendarRoute
+  '/qr/tools/maps': typeof QrToolsMapsRoute
+  '/qr/tools/wifi': typeof QrToolsWifiRoute
   '/r/u/$alias': typeof RUAliasRoute
+  '/support/account/billing': typeof SupportAccountBillingRoute
+  '/support/account/data-domains': typeof SupportAccountDataDomainsRoute
+  '/support/account/delete-account': typeof SupportAccountDeleteAccountRoute
+  '/support/account/linked-identities': typeof SupportAccountLinkedIdentitiesRoute
+  '/support/account/security': typeof SupportAccountSecurityRoute
+  '/support/workspace/billing-and-limits': typeof SupportWorkspaceBillingAndLimitsRoute
+  '/support/workspace/custom-domains': typeof SupportWorkspaceCustomDomainsRoute
+  '/support/workspace/developer-console': typeof SupportWorkspaceDeveloperConsoleRoute
+  '/support/workspace/multiple-workspaces': typeof SupportWorkspaceMultipleWorkspacesRoute
+  '/support/workspace/team-roles': typeof SupportWorkspaceTeamRolesRoute
   '/u/$username/$slug': typeof UUsernameSlugRoute
   '/u/$username/donate': typeof UUsernameDonateRoute
   '/u/$username/feedback': typeof UUsernameFeedbackRoute
@@ -1974,6 +2580,7 @@ export interface FileRoutesByTo {
   '/w/$slug/feedback': typeof WSlugFeedbackRoute
   '/admin': typeof AuthenticatedAdminIndexRoute
   '/console': typeof AuthenticatedConsoleIndexRoute
+  '/qr-code-generator/payment': typeof QrCodeGeneratorPaymentIndexRoute
   '/console/apps/new': typeof AuthenticatedConsoleAppsNewRoute
   '/studio/personal/$feature': typeof AuthenticatedStudioPersonalFeatureRoute
   '/studio/workspaces/new': typeof AuthenticatedStudioWorkspacesNewRoute
@@ -2022,6 +2629,9 @@ export interface FileRoutesByTo {
   '/api/public/youtube/push': typeof ApiPublicYoutubePushRoute
   '/api/user/vault/export': typeof ApiUserVaultExportRoute
   '/api/wallet/$kind/$id': typeof ApiWalletKindIdRoute
+  '/support/workspace/getting-started/invite-team': typeof SupportWorkspaceGettingStartedInviteTeamRoute
+  '/support/workspace/getting-started/setup-business-account': typeof SupportWorkspaceGettingStartedSetupBusinessAccountRoute
+  '/support/workspace/getting-started/what-is-a-workspace': typeof SupportWorkspaceGettingStartedWhatIsAWorkspaceRoute
   '/console/apps': typeof AuthenticatedConsoleAppsIndexRoute
   '/console/apps/$appId/advanced': typeof AuthenticatedConsoleAppsAppIdAdvancedRoute
   '/console/apps/$appId/ai-prompts': typeof AuthenticatedConsoleAppsAppIdAiPromptsRoute
@@ -2052,14 +2662,17 @@ export interface FileRoutesById {
   '/batch': typeof BatchRoute
   '/card': typeof CardRoute
   '/claim': typeof ClaimRoute
+  '/compare': typeof CompareRouteWithChildren
   '/contact': typeof ContactRoute
   '/data-deletion': typeof DataDeletionRoute
   '/dev': typeof DevRouteWithChildren
   '/developers': typeof DevelopersRoute
   '/email-templates': typeof EmailTemplatesRoute
   '/explore': typeof ExploreRoute
+  '/features': typeof FeaturesRouteWithChildren
   '/gift': typeof GiftRoute
   '/go': typeof GoRoute
+  '/guide': typeof GuideRouteWithChildren
   '/hub': typeof HubRoute
   '/iban-qr': typeof IbanQrRoute
   '/info': typeof InfoRouteWithChildren
@@ -2068,15 +2681,19 @@ export interface FileRoutesById {
   '/onboarding': typeof OnboardingRoute
   '/press': typeof PressRoute
   '/privacy': typeof PrivacyRoute
+  '/product': typeof ProductRouteWithChildren
   '/qr': typeof QrRoute
+  '/qr-code-generator': typeof QrCodeGeneratorRouteWithChildren
   '/safety': typeof SafetyRouteWithChildren
   '/security': typeof SecurityRoute
   '/self-hosting': typeof SelfHostingRoute
   '/signature': typeof SignatureRoute
   '/signup': typeof SignupRoute
+  '/solutions': typeof SolutionsRouteWithChildren
   '/sovereignty': typeof SovereigntyRoute
   '/status': typeof StatusRoute
   '/studio': typeof StudioRoute
+  '/support': typeof SupportRouteWithChildren
   '/terms': typeof TermsRoute
   '/tour': typeof TourRoute
   '/vcard-qr': typeof VcardQrRoute
@@ -2116,6 +2733,9 @@ export interface FileRoutesById {
   '/booking/$bookingId': typeof BookingBookingIdRoute
   '/brand/$': typeof BrandSplatRoute
   '/claim_/$token': typeof ClaimTokenRoute
+  '/compare/auth0-alternative': typeof CompareAuth0AlternativeRoute
+  '/compare/bitly-alternative': typeof CompareBitlyAlternativeRoute
+  '/compare/linktree-alternative': typeof CompareLinktreeAlternativeRoute
   '/dev/ai-mcp': typeof DevAiMcpRoute
   '/dev/credentials': typeof DevCredentialsRoute
   '/dev/credentials-api': typeof DevCredentialsApiRoute
@@ -2132,8 +2752,16 @@ export interface FileRoutesById {
   '/e/$slug': typeof ESlugRoute
   '/event/$slug': typeof EventSlugRoute
   '/f/$id': typeof FIdRoute
+  '/features/asset-manager': typeof FeaturesAssetManagerRoute
+  '/features/cookieless-analytics': typeof FeaturesCookielessAnalyticsRoute
+  '/features/design-studio': typeof FeaturesDesignStudioRoute
+  '/features/link-management': typeof FeaturesLinkManagementRoute
   '/feedback/$slug': typeof FeedbackSlugRoute
   '/gift_/$code': typeof GiftCodeRoute
+  '/guide/dynamic-qr': typeof GuideDynamicQrRoute
+  '/guide/print-qr-code': typeof GuidePrintQrCodeRoute
+  '/guide/qr-code-design': typeof GuideQrCodeDesignRoute
+  '/guide/qr-code-frames': typeof GuideQrCodeFramesRoute
   '/identity/revoke': typeof IdentityRevokeRoute
   '/info/account-merge': typeof InfoAccountMergeRoute
   '/info/account-security': typeof InfoAccountSecurityRoute
@@ -2146,6 +2774,12 @@ export interface FileRoutesById {
   '/info/wallet': typeof InfoWalletRoute
   '/oauth/authorize': typeof OauthAuthorizeRoute
   '/oauth/end-session': typeof OauthEndSessionRoute
+  '/product/batch-engine': typeof ProductBatchEngineRoute
+  '/product/custom-domains': typeof ProductCustomDomainsRoute
+  '/product/dynamic-links': typeof ProductDynamicLinksRoute
+  '/product/profile-hub': typeof ProductProfileHubRoute
+  '/qr-code-generator/payment': typeof QrCodeGeneratorPaymentRouteWithChildren
+  '/qr_/payment_': typeof QrPaymentRouteWithChildren
   '/r/$username': typeof RUsernameRoute
   '/review/$token': typeof ReviewTokenRoute
   '/s/$slug': typeof SSlugRoute
@@ -2158,15 +2792,25 @@ export interface FileRoutesById {
   '/safety/terms': typeof SafetyTermsRoute
   '/safety/transparency': typeof SafetyTransparencyRoute
   '/safety/zero-knowledge': typeof SafetyZeroKnowledgeRoute
+  '/solutions/agencies': typeof SolutionsAgenciesRoute
+  '/solutions/creators': typeof SolutionsCreatorsRoute
+  '/solutions/developers': typeof SolutionsDevelopersRoute
   '/stats/$token': typeof StatsTokenRoute
   '/u/$username': typeof UUsernameRoute
   '/w/$slug': typeof WSlugRoute
   '/workspace-transfer/$token': typeof WorkspaceTransferTokenRoute
   '/about/': typeof AboutIndexRoute
   '/auth/': typeof AuthIndexRoute
+  '/compare/': typeof CompareIndexRoute
   '/dev/': typeof DevIndexRoute
+  '/features/': typeof FeaturesIndexRoute
+  '/guide/': typeof GuideIndexRoute
   '/info/': typeof InfoIndexRoute
+  '/product/': typeof ProductIndexRoute
+  '/qr-code-generator/': typeof QrCodeGeneratorIndexRoute
   '/safety/': typeof SafetyIndexRoute
+  '/solutions/': typeof SolutionsIndexRoute
+  '/support/': typeof SupportIndexRoute
   '/_authenticated/admin/brands': typeof AuthenticatedAdminBrandsRoute
   '/_authenticated/admin/contact': typeof AuthenticatedAdminContactRoute
   '/_authenticated/admin/custom-badges': typeof AuthenticatedAdminCustomBadgesRoute
@@ -2213,7 +2857,43 @@ export interface FileRoutesById {
   '/api_/v1/presence': typeof ApiV1PresenceRoute
   '/api_/youtube/start': typeof ApiYoutubeStartRoute
   '/auth_/mastodon/callback': typeof AuthMastodonCallbackRoute
+  '/qr-code-generator/contact/email': typeof QrCodeGeneratorContactEmailRoute
+  '/qr-code-generator/contact/sms': typeof QrCodeGeneratorContactSmsRoute
+  '/qr-code-generator/contact/vcard': typeof QrCodeGeneratorContactVcardRoute
+  '/qr-code-generator/contact/whatsapp': typeof QrCodeGeneratorContactWhatsappRoute
+  '/qr-code-generator/media/image': typeof QrCodeGeneratorMediaImageRoute
+  '/qr-code-generator/media/pdf': typeof QrCodeGeneratorMediaPdfRoute
+  '/qr-code-generator/payment/crypto': typeof QrCodeGeneratorPaymentCryptoRoute
+  '/qr-code-generator/payment/paypal': typeof QrCodeGeneratorPaymentPaypalRoute
+  '/qr-code-generator/payment/sepa': typeof QrCodeGeneratorPaymentSepaRoute
+  '/qr-code-generator/payment/wero': typeof QrCodeGeneratorPaymentWeroRoute
+  '/qr-code-generator/tools/calendar': typeof QrCodeGeneratorToolsCalendarRoute
+  '/qr-code-generator/tools/maps': typeof QrCodeGeneratorToolsMapsRoute
+  '/qr-code-generator/tools/wifi': typeof QrCodeGeneratorToolsWifiRoute
+  '/qr_/contact_/email': typeof QrContactEmailRoute
+  '/qr_/contact_/sms': typeof QrContactSmsRoute
+  '/qr_/contact_/vcard': typeof QrContactVcardRoute
+  '/qr_/contact_/whatsapp': typeof QrContactWhatsappRoute
+  '/qr_/media_/image': typeof QrMediaImageRoute
+  '/qr_/media_/pdf': typeof QrMediaPdfRoute
+  '/qr_/payment_/crypto': typeof QrPaymentCryptoRoute
+  '/qr_/payment_/paypal': typeof QrPaymentPaypalRoute
+  '/qr_/payment_/sepa': typeof QrPaymentSepaRoute
+  '/qr_/payment_/wero': typeof QrPaymentWeroRoute
+  '/qr_/tools_/calendar': typeof QrToolsCalendarRoute
+  '/qr_/tools_/maps': typeof QrToolsMapsRoute
+  '/qr_/tools_/wifi': typeof QrToolsWifiRoute
   '/r/u/$alias': typeof RUAliasRoute
+  '/support/account/billing': typeof SupportAccountBillingRoute
+  '/support/account/data-domains': typeof SupportAccountDataDomainsRoute
+  '/support/account/delete-account': typeof SupportAccountDeleteAccountRoute
+  '/support/account/linked-identities': typeof SupportAccountLinkedIdentitiesRoute
+  '/support/account/security': typeof SupportAccountSecurityRoute
+  '/support/workspace/billing-and-limits': typeof SupportWorkspaceBillingAndLimitsRoute
+  '/support/workspace/custom-domains': typeof SupportWorkspaceCustomDomainsRoute
+  '/support/workspace/developer-console': typeof SupportWorkspaceDeveloperConsoleRoute
+  '/support/workspace/multiple-workspaces': typeof SupportWorkspaceMultipleWorkspacesRoute
+  '/support/workspace/team-roles': typeof SupportWorkspaceTeamRolesRoute
   '/u/$username_/$slug': typeof UUsernameSlugRoute
   '/u/$username_/donate': typeof UUsernameDonateRoute
   '/u/$username_/feedback': typeof UUsernameFeedbackRoute
@@ -2222,6 +2902,7 @@ export interface FileRoutesById {
   '/w/$slug_/feedback': typeof WSlugFeedbackRoute
   '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
   '/_authenticated/console/': typeof AuthenticatedConsoleIndexRoute
+  '/qr-code-generator/payment/': typeof QrCodeGeneratorPaymentIndexRoute
   '/_authenticated/console/apps/$appId': typeof AuthenticatedConsoleAppsAppIdRouteWithChildren
   '/_authenticated/console/apps/new': typeof AuthenticatedConsoleAppsNewRoute
   '/_authenticated/studio_/personal/$feature': typeof AuthenticatedStudioPersonalFeatureRoute
@@ -2271,6 +2952,9 @@ export interface FileRoutesById {
   '/api_/public/youtube/push': typeof ApiPublicYoutubePushRoute
   '/api_/user/vault/export': typeof ApiUserVaultExportRoute
   '/api_/wallet/$kind/$id': typeof ApiWalletKindIdRoute
+  '/support/workspace/getting-started/invite-team': typeof SupportWorkspaceGettingStartedInviteTeamRoute
+  '/support/workspace/getting-started/setup-business-account': typeof SupportWorkspaceGettingStartedSetupBusinessAccountRoute
+  '/support/workspace/getting-started/what-is-a-workspace': typeof SupportWorkspaceGettingStartedWhatIsAWorkspaceRoute
   '/_authenticated/console/apps/': typeof AuthenticatedConsoleAppsIndexRoute
   '/_authenticated/console/apps/$appId/advanced': typeof AuthenticatedConsoleAppsAppIdAdvancedRoute
   '/_authenticated/console/apps/$appId/ai-prompts': typeof AuthenticatedConsoleAppsAppIdAiPromptsRoute
@@ -2301,14 +2985,17 @@ export interface FileRouteTypes {
     | '/batch'
     | '/card'
     | '/claim'
+    | '/compare'
     | '/contact'
     | '/data-deletion'
     | '/dev'
     | '/developers'
     | '/email-templates'
     | '/explore'
+    | '/features'
     | '/gift'
     | '/go'
+    | '/guide'
     | '/hub'
     | '/iban-qr'
     | '/info'
@@ -2317,15 +3004,19 @@ export interface FileRouteTypes {
     | '/onboarding'
     | '/press'
     | '/privacy'
+    | '/product'
     | '/qr'
+    | '/qr-code-generator'
     | '/safety'
     | '/security'
     | '/self-hosting'
     | '/signature'
     | '/signup'
+    | '/solutions'
     | '/sovereignty'
     | '/status'
     | '/studio'
+    | '/support'
     | '/terms'
     | '/tour'
     | '/vcard-qr'
@@ -2365,6 +3056,9 @@ export interface FileRouteTypes {
     | '/booking/$bookingId'
     | '/brand/$'
     | '/claim/$token'
+    | '/compare/auth0-alternative'
+    | '/compare/bitly-alternative'
+    | '/compare/linktree-alternative'
     | '/dev/ai-mcp'
     | '/dev/credentials'
     | '/dev/credentials-api'
@@ -2381,8 +3075,16 @@ export interface FileRouteTypes {
     | '/e/$slug'
     | '/event/$slug'
     | '/f/$id'
+    | '/features/asset-manager'
+    | '/features/cookieless-analytics'
+    | '/features/design-studio'
+    | '/features/link-management'
     | '/feedback/$slug'
     | '/gift/$code'
+    | '/guide/dynamic-qr'
+    | '/guide/print-qr-code'
+    | '/guide/qr-code-design'
+    | '/guide/qr-code-frames'
     | '/identity/revoke'
     | '/info/account-merge'
     | '/info/account-security'
@@ -2395,6 +3097,12 @@ export interface FileRouteTypes {
     | '/info/wallet'
     | '/oauth/authorize'
     | '/oauth/end-session'
+    | '/product/batch-engine'
+    | '/product/custom-domains'
+    | '/product/dynamic-links'
+    | '/product/profile-hub'
+    | '/qr-code-generator/payment'
+    | '/qr/payment'
     | '/r/$username'
     | '/review/$token'
     | '/s/$slug'
@@ -2407,15 +3115,25 @@ export interface FileRouteTypes {
     | '/safety/terms'
     | '/safety/transparency'
     | '/safety/zero-knowledge'
+    | '/solutions/agencies'
+    | '/solutions/creators'
+    | '/solutions/developers'
     | '/stats/$token'
     | '/u/$username'
     | '/w/$slug'
     | '/workspace-transfer/$token'
     | '/about/'
     | '/auth/'
+    | '/compare/'
     | '/dev/'
+    | '/features/'
+    | '/guide/'
     | '/info/'
+    | '/product/'
+    | '/qr-code-generator/'
     | '/safety/'
+    | '/solutions/'
+    | '/support/'
     | '/admin/brands'
     | '/admin/contact'
     | '/admin/custom-badges'
@@ -2462,7 +3180,43 @@ export interface FileRouteTypes {
     | '/api/v1/presence'
     | '/api/youtube/start'
     | '/auth/mastodon/callback'
+    | '/qr-code-generator/contact/email'
+    | '/qr-code-generator/contact/sms'
+    | '/qr-code-generator/contact/vcard'
+    | '/qr-code-generator/contact/whatsapp'
+    | '/qr-code-generator/media/image'
+    | '/qr-code-generator/media/pdf'
+    | '/qr-code-generator/payment/crypto'
+    | '/qr-code-generator/payment/paypal'
+    | '/qr-code-generator/payment/sepa'
+    | '/qr-code-generator/payment/wero'
+    | '/qr-code-generator/tools/calendar'
+    | '/qr-code-generator/tools/maps'
+    | '/qr-code-generator/tools/wifi'
+    | '/qr/contact/email'
+    | '/qr/contact/sms'
+    | '/qr/contact/vcard'
+    | '/qr/contact/whatsapp'
+    | '/qr/media/image'
+    | '/qr/media/pdf'
+    | '/qr/payment/crypto'
+    | '/qr/payment/paypal'
+    | '/qr/payment/sepa'
+    | '/qr/payment/wero'
+    | '/qr/tools/calendar'
+    | '/qr/tools/maps'
+    | '/qr/tools/wifi'
     | '/r/u/$alias'
+    | '/support/account/billing'
+    | '/support/account/data-domains'
+    | '/support/account/delete-account'
+    | '/support/account/linked-identities'
+    | '/support/account/security'
+    | '/support/workspace/billing-and-limits'
+    | '/support/workspace/custom-domains'
+    | '/support/workspace/developer-console'
+    | '/support/workspace/multiple-workspaces'
+    | '/support/workspace/team-roles'
     | '/u/$username/$slug'
     | '/u/$username/donate'
     | '/u/$username/feedback'
@@ -2471,6 +3225,7 @@ export interface FileRouteTypes {
     | '/w/$slug/feedback'
     | '/admin/'
     | '/console/'
+    | '/qr-code-generator/payment/'
     | '/console/apps/$appId'
     | '/console/apps/new'
     | '/studio/personal/$feature'
@@ -2520,6 +3275,9 @@ export interface FileRouteTypes {
     | '/api/public/youtube/push'
     | '/api/user/vault/export'
     | '/api/wallet/$kind/$id'
+    | '/support/workspace/getting-started/invite-team'
+    | '/support/workspace/getting-started/setup-business-account'
+    | '/support/workspace/getting-started/what-is-a-workspace'
     | '/console/apps/'
     | '/console/apps/$appId/advanced'
     | '/console/apps/$appId/ai-prompts'
@@ -2605,6 +3363,9 @@ export interface FileRouteTypes {
     | '/booking/$bookingId'
     | '/brand/$'
     | '/claim/$token'
+    | '/compare/auth0-alternative'
+    | '/compare/bitly-alternative'
+    | '/compare/linktree-alternative'
     | '/dev/ai-mcp'
     | '/dev/credentials'
     | '/dev/credentials-api'
@@ -2621,8 +3382,16 @@ export interface FileRouteTypes {
     | '/e/$slug'
     | '/event/$slug'
     | '/f/$id'
+    | '/features/asset-manager'
+    | '/features/cookieless-analytics'
+    | '/features/design-studio'
+    | '/features/link-management'
     | '/feedback/$slug'
     | '/gift/$code'
+    | '/guide/dynamic-qr'
+    | '/guide/print-qr-code'
+    | '/guide/qr-code-design'
+    | '/guide/qr-code-frames'
     | '/identity/revoke'
     | '/info/account-merge'
     | '/info/account-security'
@@ -2635,6 +3404,11 @@ export interface FileRouteTypes {
     | '/info/wallet'
     | '/oauth/authorize'
     | '/oauth/end-session'
+    | '/product/batch-engine'
+    | '/product/custom-domains'
+    | '/product/dynamic-links'
+    | '/product/profile-hub'
+    | '/qr/payment'
     | '/r/$username'
     | '/review/$token'
     | '/s/$slug'
@@ -2647,15 +3421,25 @@ export interface FileRouteTypes {
     | '/safety/terms'
     | '/safety/transparency'
     | '/safety/zero-knowledge'
+    | '/solutions/agencies'
+    | '/solutions/creators'
+    | '/solutions/developers'
     | '/stats/$token'
     | '/u/$username'
     | '/w/$slug'
     | '/workspace-transfer/$token'
     | '/about'
     | '/auth'
+    | '/compare'
     | '/dev'
+    | '/features'
+    | '/guide'
     | '/info'
+    | '/product'
+    | '/qr-code-generator'
     | '/safety'
+    | '/solutions'
+    | '/support'
     | '/admin/brands'
     | '/admin/contact'
     | '/admin/custom-badges'
@@ -2701,7 +3485,43 @@ export interface FileRouteTypes {
     | '/api/v1/presence'
     | '/api/youtube/start'
     | '/auth/mastodon/callback'
+    | '/qr-code-generator/contact/email'
+    | '/qr-code-generator/contact/sms'
+    | '/qr-code-generator/contact/vcard'
+    | '/qr-code-generator/contact/whatsapp'
+    | '/qr-code-generator/media/image'
+    | '/qr-code-generator/media/pdf'
+    | '/qr-code-generator/payment/crypto'
+    | '/qr-code-generator/payment/paypal'
+    | '/qr-code-generator/payment/sepa'
+    | '/qr-code-generator/payment/wero'
+    | '/qr-code-generator/tools/calendar'
+    | '/qr-code-generator/tools/maps'
+    | '/qr-code-generator/tools/wifi'
+    | '/qr/contact/email'
+    | '/qr/contact/sms'
+    | '/qr/contact/vcard'
+    | '/qr/contact/whatsapp'
+    | '/qr/media/image'
+    | '/qr/media/pdf'
+    | '/qr/payment/crypto'
+    | '/qr/payment/paypal'
+    | '/qr/payment/sepa'
+    | '/qr/payment/wero'
+    | '/qr/tools/calendar'
+    | '/qr/tools/maps'
+    | '/qr/tools/wifi'
     | '/r/u/$alias'
+    | '/support/account/billing'
+    | '/support/account/data-domains'
+    | '/support/account/delete-account'
+    | '/support/account/linked-identities'
+    | '/support/account/security'
+    | '/support/workspace/billing-and-limits'
+    | '/support/workspace/custom-domains'
+    | '/support/workspace/developer-console'
+    | '/support/workspace/multiple-workspaces'
+    | '/support/workspace/team-roles'
     | '/u/$username/$slug'
     | '/u/$username/donate'
     | '/u/$username/feedback'
@@ -2710,6 +3530,7 @@ export interface FileRouteTypes {
     | '/w/$slug/feedback'
     | '/admin'
     | '/console'
+    | '/qr-code-generator/payment'
     | '/console/apps/new'
     | '/studio/personal/$feature'
     | '/studio/workspaces/new'
@@ -2758,6 +3579,9 @@ export interface FileRouteTypes {
     | '/api/public/youtube/push'
     | '/api/user/vault/export'
     | '/api/wallet/$kind/$id'
+    | '/support/workspace/getting-started/invite-team'
+    | '/support/workspace/getting-started/setup-business-account'
+    | '/support/workspace/getting-started/what-is-a-workspace'
     | '/console/apps'
     | '/console/apps/$appId/advanced'
     | '/console/apps/$appId/ai-prompts'
@@ -2787,14 +3611,17 @@ export interface FileRouteTypes {
     | '/batch'
     | '/card'
     | '/claim'
+    | '/compare'
     | '/contact'
     | '/data-deletion'
     | '/dev'
     | '/developers'
     | '/email-templates'
     | '/explore'
+    | '/features'
     | '/gift'
     | '/go'
+    | '/guide'
     | '/hub'
     | '/iban-qr'
     | '/info'
@@ -2803,15 +3630,19 @@ export interface FileRouteTypes {
     | '/onboarding'
     | '/press'
     | '/privacy'
+    | '/product'
     | '/qr'
+    | '/qr-code-generator'
     | '/safety'
     | '/security'
     | '/self-hosting'
     | '/signature'
     | '/signup'
+    | '/solutions'
     | '/sovereignty'
     | '/status'
     | '/studio'
+    | '/support'
     | '/terms'
     | '/tour'
     | '/vcard-qr'
@@ -2851,6 +3682,9 @@ export interface FileRouteTypes {
     | '/booking/$bookingId'
     | '/brand/$'
     | '/claim_/$token'
+    | '/compare/auth0-alternative'
+    | '/compare/bitly-alternative'
+    | '/compare/linktree-alternative'
     | '/dev/ai-mcp'
     | '/dev/credentials'
     | '/dev/credentials-api'
@@ -2867,8 +3701,16 @@ export interface FileRouteTypes {
     | '/e/$slug'
     | '/event/$slug'
     | '/f/$id'
+    | '/features/asset-manager'
+    | '/features/cookieless-analytics'
+    | '/features/design-studio'
+    | '/features/link-management'
     | '/feedback/$slug'
     | '/gift_/$code'
+    | '/guide/dynamic-qr'
+    | '/guide/print-qr-code'
+    | '/guide/qr-code-design'
+    | '/guide/qr-code-frames'
     | '/identity/revoke'
     | '/info/account-merge'
     | '/info/account-security'
@@ -2881,6 +3723,12 @@ export interface FileRouteTypes {
     | '/info/wallet'
     | '/oauth/authorize'
     | '/oauth/end-session'
+    | '/product/batch-engine'
+    | '/product/custom-domains'
+    | '/product/dynamic-links'
+    | '/product/profile-hub'
+    | '/qr-code-generator/payment'
+    | '/qr_/payment_'
     | '/r/$username'
     | '/review/$token'
     | '/s/$slug'
@@ -2893,15 +3741,25 @@ export interface FileRouteTypes {
     | '/safety/terms'
     | '/safety/transparency'
     | '/safety/zero-knowledge'
+    | '/solutions/agencies'
+    | '/solutions/creators'
+    | '/solutions/developers'
     | '/stats/$token'
     | '/u/$username'
     | '/w/$slug'
     | '/workspace-transfer/$token'
     | '/about/'
     | '/auth/'
+    | '/compare/'
     | '/dev/'
+    | '/features/'
+    | '/guide/'
     | '/info/'
+    | '/product/'
+    | '/qr-code-generator/'
     | '/safety/'
+    | '/solutions/'
+    | '/support/'
     | '/_authenticated/admin/brands'
     | '/_authenticated/admin/contact'
     | '/_authenticated/admin/custom-badges'
@@ -2948,7 +3806,43 @@ export interface FileRouteTypes {
     | '/api_/v1/presence'
     | '/api_/youtube/start'
     | '/auth_/mastodon/callback'
+    | '/qr-code-generator/contact/email'
+    | '/qr-code-generator/contact/sms'
+    | '/qr-code-generator/contact/vcard'
+    | '/qr-code-generator/contact/whatsapp'
+    | '/qr-code-generator/media/image'
+    | '/qr-code-generator/media/pdf'
+    | '/qr-code-generator/payment/crypto'
+    | '/qr-code-generator/payment/paypal'
+    | '/qr-code-generator/payment/sepa'
+    | '/qr-code-generator/payment/wero'
+    | '/qr-code-generator/tools/calendar'
+    | '/qr-code-generator/tools/maps'
+    | '/qr-code-generator/tools/wifi'
+    | '/qr_/contact_/email'
+    | '/qr_/contact_/sms'
+    | '/qr_/contact_/vcard'
+    | '/qr_/contact_/whatsapp'
+    | '/qr_/media_/image'
+    | '/qr_/media_/pdf'
+    | '/qr_/payment_/crypto'
+    | '/qr_/payment_/paypal'
+    | '/qr_/payment_/sepa'
+    | '/qr_/payment_/wero'
+    | '/qr_/tools_/calendar'
+    | '/qr_/tools_/maps'
+    | '/qr_/tools_/wifi'
     | '/r/u/$alias'
+    | '/support/account/billing'
+    | '/support/account/data-domains'
+    | '/support/account/delete-account'
+    | '/support/account/linked-identities'
+    | '/support/account/security'
+    | '/support/workspace/billing-and-limits'
+    | '/support/workspace/custom-domains'
+    | '/support/workspace/developer-console'
+    | '/support/workspace/multiple-workspaces'
+    | '/support/workspace/team-roles'
     | '/u/$username_/$slug'
     | '/u/$username_/donate'
     | '/u/$username_/feedback'
@@ -2957,6 +3851,7 @@ export interface FileRouteTypes {
     | '/w/$slug_/feedback'
     | '/_authenticated/admin/'
     | '/_authenticated/console/'
+    | '/qr-code-generator/payment/'
     | '/_authenticated/console/apps/$appId'
     | '/_authenticated/console/apps/new'
     | '/_authenticated/studio_/personal/$feature'
@@ -3006,6 +3901,9 @@ export interface FileRouteTypes {
     | '/api_/public/youtube/push'
     | '/api_/user/vault/export'
     | '/api_/wallet/$kind/$id'
+    | '/support/workspace/getting-started/invite-team'
+    | '/support/workspace/getting-started/setup-business-account'
+    | '/support/workspace/getting-started/what-is-a-workspace'
     | '/_authenticated/console/apps/'
     | '/_authenticated/console/apps/$appId/advanced'
     | '/_authenticated/console/apps/$appId/ai-prompts'
@@ -3036,14 +3934,17 @@ export interface RootRouteChildren {
   BatchRoute: typeof BatchRoute
   CardRoute: typeof CardRoute
   ClaimRoute: typeof ClaimRoute
+  CompareRoute: typeof CompareRouteWithChildren
   ContactRoute: typeof ContactRoute
   DataDeletionRoute: typeof DataDeletionRoute
   DevRoute: typeof DevRouteWithChildren
   DevelopersRoute: typeof DevelopersRoute
   EmailTemplatesRoute: typeof EmailTemplatesRoute
   ExploreRoute: typeof ExploreRoute
+  FeaturesRoute: typeof FeaturesRouteWithChildren
   GiftRoute: typeof GiftRoute
   GoRoute: typeof GoRoute
+  GuideRoute: typeof GuideRouteWithChildren
   HubRoute: typeof HubRoute
   IbanQrRoute: typeof IbanQrRoute
   InfoRoute: typeof InfoRouteWithChildren
@@ -3052,15 +3953,19 @@ export interface RootRouteChildren {
   OnboardingRoute: typeof OnboardingRoute
   PressRoute: typeof PressRoute
   PrivacyRoute: typeof PrivacyRoute
+  ProductRoute: typeof ProductRouteWithChildren
   QrRoute: typeof QrRoute
+  QrCodeGeneratorRoute: typeof QrCodeGeneratorRouteWithChildren
   SafetyRoute: typeof SafetyRouteWithChildren
   SecurityRoute: typeof SecurityRoute
   SelfHostingRoute: typeof SelfHostingRoute
   SignatureRoute: typeof SignatureRoute
   SignupRoute: typeof SignupRoute
+  SolutionsRoute: typeof SolutionsRouteWithChildren
   SovereigntyRoute: typeof SovereigntyRoute
   StatusRoute: typeof StatusRoute
   StudioRoute: typeof StudioRoute
+  SupportRoute: typeof SupportRouteWithChildren
   TermsRoute: typeof TermsRoute
   TourRoute: typeof TourRoute
   VcardQrRoute: typeof VcardQrRoute
@@ -3095,6 +4000,7 @@ export interface RootRouteChildren {
   IdentityRevokeRoute: typeof IdentityRevokeRoute
   OauthAuthorizeRoute: typeof OauthAuthorizeRoute
   OauthEndSessionRoute: typeof OauthEndSessionRoute
+  QrPaymentRoute: typeof QrPaymentRouteWithChildren
   RUsernameRoute: typeof RUsernameRoute
   ReviewTokenRoute: typeof ReviewTokenRoute
   SSlugRoute: typeof SSlugRoute
@@ -3122,6 +4028,15 @@ export interface RootRouteChildren {
   ApiV1PresenceRoute: typeof ApiV1PresenceRoute
   ApiYoutubeStartRoute: typeof ApiYoutubeStartRoute
   AuthMastodonCallbackRoute: typeof AuthMastodonCallbackRoute
+  QrContactEmailRoute: typeof QrContactEmailRoute
+  QrContactSmsRoute: typeof QrContactSmsRoute
+  QrContactVcardRoute: typeof QrContactVcardRoute
+  QrContactWhatsappRoute: typeof QrContactWhatsappRoute
+  QrMediaImageRoute: typeof QrMediaImageRoute
+  QrMediaPdfRoute: typeof QrMediaPdfRoute
+  QrToolsCalendarRoute: typeof QrToolsCalendarRoute
+  QrToolsMapsRoute: typeof QrToolsMapsRoute
+  QrToolsWifiRoute: typeof QrToolsWifiRoute
   RUAliasRoute: typeof RUAliasRoute
   UUsernameSlugRoute: typeof UUsernameSlugRoute
   UUsernameDonateRoute: typeof UUsernameDonateRoute
@@ -3241,6 +4156,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ClaimRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/compare': {
+      id: '/compare'
+      path: '/compare'
+      fullPath: '/compare'
+      preLoaderRoute: typeof CompareRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
@@ -3283,6 +4205,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ExploreRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/features': {
+      id: '/features'
+      path: '/features'
+      fullPath: '/features'
+      preLoaderRoute: typeof FeaturesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/gift': {
       id: '/gift'
       path: '/gift'
@@ -3295,6 +4224,13 @@ declare module '@tanstack/react-router' {
       path: '/go'
       fullPath: '/go'
       preLoaderRoute: typeof GoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guide': {
+      id: '/guide'
+      path: '/guide'
+      fullPath: '/guide'
+      preLoaderRoute: typeof GuideRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/hub': {
@@ -3353,11 +4289,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/product': {
+      id: '/product'
+      path: '/product'
+      fullPath: '/product'
+      preLoaderRoute: typeof ProductRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/qr': {
       id: '/qr'
       path: '/qr'
       fullPath: '/qr'
       preLoaderRoute: typeof QrRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/qr-code-generator': {
+      id: '/qr-code-generator'
+      path: '/qr-code-generator'
+      fullPath: '/qr-code-generator'
+      preLoaderRoute: typeof QrCodeGeneratorRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/safety': {
@@ -3395,6 +4345,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SignupRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/solutions': {
+      id: '/solutions'
+      path: '/solutions'
+      fullPath: '/solutions'
+      preLoaderRoute: typeof SolutionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sovereignty': {
       id: '/sovereignty'
       path: '/sovereignty'
@@ -3414,6 +4371,13 @@ declare module '@tanstack/react-router' {
       path: '/studio'
       fullPath: '/studio'
       preLoaderRoute: typeof StudioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/support': {
+      id: '/support'
+      path: '/support'
+      fullPath: '/support'
+      preLoaderRoute: typeof SupportRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/terms': {
@@ -3703,6 +4667,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ClaimTokenRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/compare/': {
+      id: '/compare/'
+      path: '/'
+      fullPath: '/compare/'
+      preLoaderRoute: typeof CompareIndexRouteImport
+      parentRoute: typeof CompareRoute
+    }
+    '/compare/auth0-alternative': {
+      id: '/compare/auth0-alternative'
+      path: '/auth0-alternative'
+      fullPath: '/compare/auth0-alternative'
+      preLoaderRoute: typeof CompareAuth0AlternativeRouteImport
+      parentRoute: typeof CompareRoute
+    }
+    '/compare/bitly-alternative': {
+      id: '/compare/bitly-alternative'
+      path: '/bitly-alternative'
+      fullPath: '/compare/bitly-alternative'
+      preLoaderRoute: typeof CompareBitlyAlternativeRouteImport
+      parentRoute: typeof CompareRoute
+    }
+    '/compare/linktree-alternative': {
+      id: '/compare/linktree-alternative'
+      path: '/linktree-alternative'
+      fullPath: '/compare/linktree-alternative'
+      preLoaderRoute: typeof CompareLinktreeAlternativeRouteImport
+      parentRoute: typeof CompareRoute
+    }
     '/dev/': {
       id: '/dev/'
       path: '/'
@@ -3822,6 +4814,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/features/': {
+      id: '/features/'
+      path: '/'
+      fullPath: '/features/'
+      preLoaderRoute: typeof FeaturesIndexRouteImport
+      parentRoute: typeof FeaturesRoute
+    }
+    '/features/asset-manager': {
+      id: '/features/asset-manager'
+      path: '/asset-manager'
+      fullPath: '/features/asset-manager'
+      preLoaderRoute: typeof FeaturesAssetManagerRouteImport
+      parentRoute: typeof FeaturesRoute
+    }
+    '/features/cookieless-analytics': {
+      id: '/features/cookieless-analytics'
+      path: '/cookieless-analytics'
+      fullPath: '/features/cookieless-analytics'
+      preLoaderRoute: typeof FeaturesCookielessAnalyticsRouteImport
+      parentRoute: typeof FeaturesRoute
+    }
+    '/features/design-studio': {
+      id: '/features/design-studio'
+      path: '/design-studio'
+      fullPath: '/features/design-studio'
+      preLoaderRoute: typeof FeaturesDesignStudioRouteImport
+      parentRoute: typeof FeaturesRoute
+    }
+    '/features/link-management': {
+      id: '/features/link-management'
+      path: '/link-management'
+      fullPath: '/features/link-management'
+      preLoaderRoute: typeof FeaturesLinkManagementRouteImport
+      parentRoute: typeof FeaturesRoute
+    }
     '/feedback/$slug': {
       id: '/feedback/$slug'
       path: '/feedback/$slug'
@@ -3835,6 +4862,41 @@ declare module '@tanstack/react-router' {
       fullPath: '/gift/$code'
       preLoaderRoute: typeof GiftCodeRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/guide/': {
+      id: '/guide/'
+      path: '/'
+      fullPath: '/guide/'
+      preLoaderRoute: typeof GuideIndexRouteImport
+      parentRoute: typeof GuideRoute
+    }
+    '/guide/dynamic-qr': {
+      id: '/guide/dynamic-qr'
+      path: '/dynamic-qr'
+      fullPath: '/guide/dynamic-qr'
+      preLoaderRoute: typeof GuideDynamicQrRouteImport
+      parentRoute: typeof GuideRoute
+    }
+    '/guide/print-qr-code': {
+      id: '/guide/print-qr-code'
+      path: '/print-qr-code'
+      fullPath: '/guide/print-qr-code'
+      preLoaderRoute: typeof GuidePrintQrCodeRouteImport
+      parentRoute: typeof GuideRoute
+    }
+    '/guide/qr-code-design': {
+      id: '/guide/qr-code-design'
+      path: '/qr-code-design'
+      fullPath: '/guide/qr-code-design'
+      preLoaderRoute: typeof GuideQrCodeDesignRouteImport
+      parentRoute: typeof GuideRoute
+    }
+    '/guide/qr-code-frames': {
+      id: '/guide/qr-code-frames'
+      path: '/qr-code-frames'
+      fullPath: '/guide/qr-code-frames'
+      preLoaderRoute: typeof GuideQrCodeFramesRouteImport
+      parentRoute: typeof GuideRoute
     }
     '/identity/revoke': {
       id: '/identity/revoke'
@@ -3925,6 +4987,62 @@ declare module '@tanstack/react-router' {
       path: '/oauth/end-session'
       fullPath: '/oauth/end-session'
       preLoaderRoute: typeof OauthEndSessionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/product/': {
+      id: '/product/'
+      path: '/'
+      fullPath: '/product/'
+      preLoaderRoute: typeof ProductIndexRouteImport
+      parentRoute: typeof ProductRoute
+    }
+    '/product/batch-engine': {
+      id: '/product/batch-engine'
+      path: '/batch-engine'
+      fullPath: '/product/batch-engine'
+      preLoaderRoute: typeof ProductBatchEngineRouteImport
+      parentRoute: typeof ProductRoute
+    }
+    '/product/custom-domains': {
+      id: '/product/custom-domains'
+      path: '/custom-domains'
+      fullPath: '/product/custom-domains'
+      preLoaderRoute: typeof ProductCustomDomainsRouteImport
+      parentRoute: typeof ProductRoute
+    }
+    '/product/dynamic-links': {
+      id: '/product/dynamic-links'
+      path: '/dynamic-links'
+      fullPath: '/product/dynamic-links'
+      preLoaderRoute: typeof ProductDynamicLinksRouteImport
+      parentRoute: typeof ProductRoute
+    }
+    '/product/profile-hub': {
+      id: '/product/profile-hub'
+      path: '/profile-hub'
+      fullPath: '/product/profile-hub'
+      preLoaderRoute: typeof ProductProfileHubRouteImport
+      parentRoute: typeof ProductRoute
+    }
+    '/qr-code-generator/': {
+      id: '/qr-code-generator/'
+      path: '/'
+      fullPath: '/qr-code-generator/'
+      preLoaderRoute: typeof QrCodeGeneratorIndexRouteImport
+      parentRoute: typeof QrCodeGeneratorRoute
+    }
+    '/qr-code-generator/payment': {
+      id: '/qr-code-generator/payment'
+      path: '/payment'
+      fullPath: '/qr-code-generator/payment'
+      preLoaderRoute: typeof QrCodeGeneratorPaymentRouteImport
+      parentRoute: typeof QrCodeGeneratorRoute
+    }
+    '/qr_/payment_': {
+      id: '/qr_/payment_'
+      path: '/qr/payment'
+      fullPath: '/qr/payment'
+      preLoaderRoute: typeof QrPaymentRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/r/$username': {
@@ -4018,12 +5136,47 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SafetyZeroKnowledgeRouteImport
       parentRoute: typeof SafetyRoute
     }
+    '/solutions/': {
+      id: '/solutions/'
+      path: '/'
+      fullPath: '/solutions/'
+      preLoaderRoute: typeof SolutionsIndexRouteImport
+      parentRoute: typeof SolutionsRoute
+    }
+    '/solutions/agencies': {
+      id: '/solutions/agencies'
+      path: '/agencies'
+      fullPath: '/solutions/agencies'
+      preLoaderRoute: typeof SolutionsAgenciesRouteImport
+      parentRoute: typeof SolutionsRoute
+    }
+    '/solutions/creators': {
+      id: '/solutions/creators'
+      path: '/creators'
+      fullPath: '/solutions/creators'
+      preLoaderRoute: typeof SolutionsCreatorsRouteImport
+      parentRoute: typeof SolutionsRoute
+    }
+    '/solutions/developers': {
+      id: '/solutions/developers'
+      path: '/developers'
+      fullPath: '/solutions/developers'
+      preLoaderRoute: typeof SolutionsDevelopersRouteImport
+      parentRoute: typeof SolutionsRoute
+    }
     '/stats/$token': {
       id: '/stats/$token'
       path: '/stats/$token'
       fullPath: '/stats/$token'
       preLoaderRoute: typeof StatsTokenRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/support/': {
+      id: '/support/'
+      path: '/'
+      fullPath: '/support/'
+      preLoaderRoute: typeof SupportIndexRouteImport
+      parentRoute: typeof SupportRoute
     }
     '/u/$username': {
       id: '/u/$username'
@@ -4382,12 +5535,271 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthMastodonCallbackRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/qr-code-generator/contact/email': {
+      id: '/qr-code-generator/contact/email'
+      path: '/contact/email'
+      fullPath: '/qr-code-generator/contact/email'
+      preLoaderRoute: typeof QrCodeGeneratorContactEmailRouteImport
+      parentRoute: typeof QrCodeGeneratorRoute
+    }
+    '/qr-code-generator/contact/sms': {
+      id: '/qr-code-generator/contact/sms'
+      path: '/contact/sms'
+      fullPath: '/qr-code-generator/contact/sms'
+      preLoaderRoute: typeof QrCodeGeneratorContactSmsRouteImport
+      parentRoute: typeof QrCodeGeneratorRoute
+    }
+    '/qr-code-generator/contact/vcard': {
+      id: '/qr-code-generator/contact/vcard'
+      path: '/contact/vcard'
+      fullPath: '/qr-code-generator/contact/vcard'
+      preLoaderRoute: typeof QrCodeGeneratorContactVcardRouteImport
+      parentRoute: typeof QrCodeGeneratorRoute
+    }
+    '/qr-code-generator/contact/whatsapp': {
+      id: '/qr-code-generator/contact/whatsapp'
+      path: '/contact/whatsapp'
+      fullPath: '/qr-code-generator/contact/whatsapp'
+      preLoaderRoute: typeof QrCodeGeneratorContactWhatsappRouteImport
+      parentRoute: typeof QrCodeGeneratorRoute
+    }
+    '/qr-code-generator/media/image': {
+      id: '/qr-code-generator/media/image'
+      path: '/media/image'
+      fullPath: '/qr-code-generator/media/image'
+      preLoaderRoute: typeof QrCodeGeneratorMediaImageRouteImport
+      parentRoute: typeof QrCodeGeneratorRoute
+    }
+    '/qr-code-generator/media/pdf': {
+      id: '/qr-code-generator/media/pdf'
+      path: '/media/pdf'
+      fullPath: '/qr-code-generator/media/pdf'
+      preLoaderRoute: typeof QrCodeGeneratorMediaPdfRouteImport
+      parentRoute: typeof QrCodeGeneratorRoute
+    }
+    '/qr-code-generator/payment/': {
+      id: '/qr-code-generator/payment/'
+      path: '/'
+      fullPath: '/qr-code-generator/payment/'
+      preLoaderRoute: typeof QrCodeGeneratorPaymentIndexRouteImport
+      parentRoute: typeof QrCodeGeneratorPaymentRoute
+    }
+    '/qr-code-generator/payment/crypto': {
+      id: '/qr-code-generator/payment/crypto'
+      path: '/crypto'
+      fullPath: '/qr-code-generator/payment/crypto'
+      preLoaderRoute: typeof QrCodeGeneratorPaymentCryptoRouteImport
+      parentRoute: typeof QrCodeGeneratorPaymentRoute
+    }
+    '/qr-code-generator/payment/paypal': {
+      id: '/qr-code-generator/payment/paypal'
+      path: '/paypal'
+      fullPath: '/qr-code-generator/payment/paypal'
+      preLoaderRoute: typeof QrCodeGeneratorPaymentPaypalRouteImport
+      parentRoute: typeof QrCodeGeneratorPaymentRoute
+    }
+    '/qr-code-generator/payment/sepa': {
+      id: '/qr-code-generator/payment/sepa'
+      path: '/sepa'
+      fullPath: '/qr-code-generator/payment/sepa'
+      preLoaderRoute: typeof QrCodeGeneratorPaymentSepaRouteImport
+      parentRoute: typeof QrCodeGeneratorPaymentRoute
+    }
+    '/qr-code-generator/payment/wero': {
+      id: '/qr-code-generator/payment/wero'
+      path: '/wero'
+      fullPath: '/qr-code-generator/payment/wero'
+      preLoaderRoute: typeof QrCodeGeneratorPaymentWeroRouteImport
+      parentRoute: typeof QrCodeGeneratorPaymentRoute
+    }
+    '/qr-code-generator/tools/calendar': {
+      id: '/qr-code-generator/tools/calendar'
+      path: '/tools/calendar'
+      fullPath: '/qr-code-generator/tools/calendar'
+      preLoaderRoute: typeof QrCodeGeneratorToolsCalendarRouteImport
+      parentRoute: typeof QrCodeGeneratorRoute
+    }
+    '/qr-code-generator/tools/maps': {
+      id: '/qr-code-generator/tools/maps'
+      path: '/tools/maps'
+      fullPath: '/qr-code-generator/tools/maps'
+      preLoaderRoute: typeof QrCodeGeneratorToolsMapsRouteImport
+      parentRoute: typeof QrCodeGeneratorRoute
+    }
+    '/qr-code-generator/tools/wifi': {
+      id: '/qr-code-generator/tools/wifi'
+      path: '/tools/wifi'
+      fullPath: '/qr-code-generator/tools/wifi'
+      preLoaderRoute: typeof QrCodeGeneratorToolsWifiRouteImport
+      parentRoute: typeof QrCodeGeneratorRoute
+    }
+    '/qr_/contact_/email': {
+      id: '/qr_/contact_/email'
+      path: '/qr/contact/email'
+      fullPath: '/qr/contact/email'
+      preLoaderRoute: typeof QrContactEmailRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/qr_/contact_/sms': {
+      id: '/qr_/contact_/sms'
+      path: '/qr/contact/sms'
+      fullPath: '/qr/contact/sms'
+      preLoaderRoute: typeof QrContactSmsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/qr_/contact_/vcard': {
+      id: '/qr_/contact_/vcard'
+      path: '/qr/contact/vcard'
+      fullPath: '/qr/contact/vcard'
+      preLoaderRoute: typeof QrContactVcardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/qr_/contact_/whatsapp': {
+      id: '/qr_/contact_/whatsapp'
+      path: '/qr/contact/whatsapp'
+      fullPath: '/qr/contact/whatsapp'
+      preLoaderRoute: typeof QrContactWhatsappRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/qr_/media_/image': {
+      id: '/qr_/media_/image'
+      path: '/qr/media/image'
+      fullPath: '/qr/media/image'
+      preLoaderRoute: typeof QrMediaImageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/qr_/media_/pdf': {
+      id: '/qr_/media_/pdf'
+      path: '/qr/media/pdf'
+      fullPath: '/qr/media/pdf'
+      preLoaderRoute: typeof QrMediaPdfRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/qr_/payment_/crypto': {
+      id: '/qr_/payment_/crypto'
+      path: '/crypto'
+      fullPath: '/qr/payment/crypto'
+      preLoaderRoute: typeof QrPaymentCryptoRouteImport
+      parentRoute: typeof QrPaymentRoute
+    }
+    '/qr_/payment_/paypal': {
+      id: '/qr_/payment_/paypal'
+      path: '/paypal'
+      fullPath: '/qr/payment/paypal'
+      preLoaderRoute: typeof QrPaymentPaypalRouteImport
+      parentRoute: typeof QrPaymentRoute
+    }
+    '/qr_/payment_/sepa': {
+      id: '/qr_/payment_/sepa'
+      path: '/sepa'
+      fullPath: '/qr/payment/sepa'
+      preLoaderRoute: typeof QrPaymentSepaRouteImport
+      parentRoute: typeof QrPaymentRoute
+    }
+    '/qr_/payment_/wero': {
+      id: '/qr_/payment_/wero'
+      path: '/wero'
+      fullPath: '/qr/payment/wero'
+      preLoaderRoute: typeof QrPaymentWeroRouteImport
+      parentRoute: typeof QrPaymentRoute
+    }
+    '/qr_/tools_/calendar': {
+      id: '/qr_/tools_/calendar'
+      path: '/qr/tools/calendar'
+      fullPath: '/qr/tools/calendar'
+      preLoaderRoute: typeof QrToolsCalendarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/qr_/tools_/maps': {
+      id: '/qr_/tools_/maps'
+      path: '/qr/tools/maps'
+      fullPath: '/qr/tools/maps'
+      preLoaderRoute: typeof QrToolsMapsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/qr_/tools_/wifi': {
+      id: '/qr_/tools_/wifi'
+      path: '/qr/tools/wifi'
+      fullPath: '/qr/tools/wifi'
+      preLoaderRoute: typeof QrToolsWifiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/r/u/$alias': {
       id: '/r/u/$alias'
       path: '/r/u/$alias'
       fullPath: '/r/u/$alias'
       preLoaderRoute: typeof RUAliasRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/support/account/billing': {
+      id: '/support/account/billing'
+      path: '/account/billing'
+      fullPath: '/support/account/billing'
+      preLoaderRoute: typeof SupportAccountBillingRouteImport
+      parentRoute: typeof SupportRoute
+    }
+    '/support/account/data-domains': {
+      id: '/support/account/data-domains'
+      path: '/account/data-domains'
+      fullPath: '/support/account/data-domains'
+      preLoaderRoute: typeof SupportAccountDataDomainsRouteImport
+      parentRoute: typeof SupportRoute
+    }
+    '/support/account/delete-account': {
+      id: '/support/account/delete-account'
+      path: '/account/delete-account'
+      fullPath: '/support/account/delete-account'
+      preLoaderRoute: typeof SupportAccountDeleteAccountRouteImport
+      parentRoute: typeof SupportRoute
+    }
+    '/support/account/linked-identities': {
+      id: '/support/account/linked-identities'
+      path: '/account/linked-identities'
+      fullPath: '/support/account/linked-identities'
+      preLoaderRoute: typeof SupportAccountLinkedIdentitiesRouteImport
+      parentRoute: typeof SupportRoute
+    }
+    '/support/account/security': {
+      id: '/support/account/security'
+      path: '/account/security'
+      fullPath: '/support/account/security'
+      preLoaderRoute: typeof SupportAccountSecurityRouteImport
+      parentRoute: typeof SupportRoute
+    }
+    '/support/workspace/billing-and-limits': {
+      id: '/support/workspace/billing-and-limits'
+      path: '/workspace/billing-and-limits'
+      fullPath: '/support/workspace/billing-and-limits'
+      preLoaderRoute: typeof SupportWorkspaceBillingAndLimitsRouteImport
+      parentRoute: typeof SupportRoute
+    }
+    '/support/workspace/custom-domains': {
+      id: '/support/workspace/custom-domains'
+      path: '/workspace/custom-domains'
+      fullPath: '/support/workspace/custom-domains'
+      preLoaderRoute: typeof SupportWorkspaceCustomDomainsRouteImport
+      parentRoute: typeof SupportRoute
+    }
+    '/support/workspace/developer-console': {
+      id: '/support/workspace/developer-console'
+      path: '/workspace/developer-console'
+      fullPath: '/support/workspace/developer-console'
+      preLoaderRoute: typeof SupportWorkspaceDeveloperConsoleRouteImport
+      parentRoute: typeof SupportRoute
+    }
+    '/support/workspace/multiple-workspaces': {
+      id: '/support/workspace/multiple-workspaces'
+      path: '/workspace/multiple-workspaces'
+      fullPath: '/support/workspace/multiple-workspaces'
+      preLoaderRoute: typeof SupportWorkspaceMultipleWorkspacesRouteImport
+      parentRoute: typeof SupportRoute
+    }
+    '/support/workspace/team-roles': {
+      id: '/support/workspace/team-roles'
+      path: '/workspace/team-roles'
+      fullPath: '/support/workspace/team-roles'
+      preLoaderRoute: typeof SupportWorkspaceTeamRolesRouteImport
+      parentRoute: typeof SupportRoute
     }
     '/u/$username_/$slug': {
       id: '/u/$username_/$slug'
@@ -4781,6 +6193,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiWalletKindIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/support/workspace/getting-started/invite-team': {
+      id: '/support/workspace/getting-started/invite-team'
+      path: '/workspace/getting-started/invite-team'
+      fullPath: '/support/workspace/getting-started/invite-team'
+      preLoaderRoute: typeof SupportWorkspaceGettingStartedInviteTeamRouteImport
+      parentRoute: typeof SupportRoute
+    }
+    '/support/workspace/getting-started/setup-business-account': {
+      id: '/support/workspace/getting-started/setup-business-account'
+      path: '/workspace/getting-started/setup-business-account'
+      fullPath: '/support/workspace/getting-started/setup-business-account'
+      preLoaderRoute: typeof SupportWorkspaceGettingStartedSetupBusinessAccountRouteImport
+      parentRoute: typeof SupportRoute
+    }
+    '/support/workspace/getting-started/what-is-a-workspace': {
+      id: '/support/workspace/getting-started/what-is-a-workspace'
+      path: '/workspace/getting-started/what-is-a-workspace'
+      fullPath: '/support/workspace/getting-started/what-is-a-workspace'
+      preLoaderRoute: typeof SupportWorkspaceGettingStartedWhatIsAWorkspaceRouteImport
+      parentRoute: typeof SupportRoute
+    }
     '/_authenticated/console/apps/$appId/': {
       id: '/_authenticated/console/apps/$appId/'
       path: '/'
@@ -5144,6 +6577,23 @@ const AuthRouteChildren: AuthRouteChildren = {
 
 const AuthRouteWithChildren = AuthRoute._addFileChildren(AuthRouteChildren)
 
+interface CompareRouteChildren {
+  CompareAuth0AlternativeRoute: typeof CompareAuth0AlternativeRoute
+  CompareBitlyAlternativeRoute: typeof CompareBitlyAlternativeRoute
+  CompareLinktreeAlternativeRoute: typeof CompareLinktreeAlternativeRoute
+  CompareIndexRoute: typeof CompareIndexRoute
+}
+
+const CompareRouteChildren: CompareRouteChildren = {
+  CompareAuth0AlternativeRoute: CompareAuth0AlternativeRoute,
+  CompareBitlyAlternativeRoute: CompareBitlyAlternativeRoute,
+  CompareLinktreeAlternativeRoute: CompareLinktreeAlternativeRoute,
+  CompareIndexRoute: CompareIndexRoute,
+}
+
+const CompareRouteWithChildren =
+  CompareRoute._addFileChildren(CompareRouteChildren)
+
 interface DevRouteChildren {
   DevAiMcpRoute: typeof DevAiMcpRoute
   DevCredentialsRoute: typeof DevCredentialsRoute
@@ -5172,6 +6622,44 @@ const DevRouteChildren: DevRouteChildren = {
 
 const DevRouteWithChildren = DevRoute._addFileChildren(DevRouteChildren)
 
+interface FeaturesRouteChildren {
+  FeaturesAssetManagerRoute: typeof FeaturesAssetManagerRoute
+  FeaturesCookielessAnalyticsRoute: typeof FeaturesCookielessAnalyticsRoute
+  FeaturesDesignStudioRoute: typeof FeaturesDesignStudioRoute
+  FeaturesLinkManagementRoute: typeof FeaturesLinkManagementRoute
+  FeaturesIndexRoute: typeof FeaturesIndexRoute
+}
+
+const FeaturesRouteChildren: FeaturesRouteChildren = {
+  FeaturesAssetManagerRoute: FeaturesAssetManagerRoute,
+  FeaturesCookielessAnalyticsRoute: FeaturesCookielessAnalyticsRoute,
+  FeaturesDesignStudioRoute: FeaturesDesignStudioRoute,
+  FeaturesLinkManagementRoute: FeaturesLinkManagementRoute,
+  FeaturesIndexRoute: FeaturesIndexRoute,
+}
+
+const FeaturesRouteWithChildren = FeaturesRoute._addFileChildren(
+  FeaturesRouteChildren,
+)
+
+interface GuideRouteChildren {
+  GuideDynamicQrRoute: typeof GuideDynamicQrRoute
+  GuidePrintQrCodeRoute: typeof GuidePrintQrCodeRoute
+  GuideQrCodeDesignRoute: typeof GuideQrCodeDesignRoute
+  GuideQrCodeFramesRoute: typeof GuideQrCodeFramesRoute
+  GuideIndexRoute: typeof GuideIndexRoute
+}
+
+const GuideRouteChildren: GuideRouteChildren = {
+  GuideDynamicQrRoute: GuideDynamicQrRoute,
+  GuidePrintQrCodeRoute: GuidePrintQrCodeRoute,
+  GuideQrCodeDesignRoute: GuideQrCodeDesignRoute,
+  GuideQrCodeFramesRoute: GuideQrCodeFramesRoute,
+  GuideIndexRoute: GuideIndexRoute,
+}
+
+const GuideRouteWithChildren = GuideRoute._addFileChildren(GuideRouteChildren)
+
 interface InfoRouteChildren {
   InfoAccountMergeRoute: typeof InfoAccountMergeRoute
   InfoAccountSecurityRoute: typeof InfoAccountSecurityRoute
@@ -5199,6 +6687,79 @@ const InfoRouteChildren: InfoRouteChildren = {
 }
 
 const InfoRouteWithChildren = InfoRoute._addFileChildren(InfoRouteChildren)
+
+interface ProductRouteChildren {
+  ProductBatchEngineRoute: typeof ProductBatchEngineRoute
+  ProductCustomDomainsRoute: typeof ProductCustomDomainsRoute
+  ProductDynamicLinksRoute: typeof ProductDynamicLinksRoute
+  ProductProfileHubRoute: typeof ProductProfileHubRoute
+  ProductIndexRoute: typeof ProductIndexRoute
+}
+
+const ProductRouteChildren: ProductRouteChildren = {
+  ProductBatchEngineRoute: ProductBatchEngineRoute,
+  ProductCustomDomainsRoute: ProductCustomDomainsRoute,
+  ProductDynamicLinksRoute: ProductDynamicLinksRoute,
+  ProductProfileHubRoute: ProductProfileHubRoute,
+  ProductIndexRoute: ProductIndexRoute,
+}
+
+const ProductRouteWithChildren =
+  ProductRoute._addFileChildren(ProductRouteChildren)
+
+interface QrCodeGeneratorPaymentRouteChildren {
+  QrCodeGeneratorPaymentCryptoRoute: typeof QrCodeGeneratorPaymentCryptoRoute
+  QrCodeGeneratorPaymentPaypalRoute: typeof QrCodeGeneratorPaymentPaypalRoute
+  QrCodeGeneratorPaymentSepaRoute: typeof QrCodeGeneratorPaymentSepaRoute
+  QrCodeGeneratorPaymentWeroRoute: typeof QrCodeGeneratorPaymentWeroRoute
+  QrCodeGeneratorPaymentIndexRoute: typeof QrCodeGeneratorPaymentIndexRoute
+}
+
+const QrCodeGeneratorPaymentRouteChildren: QrCodeGeneratorPaymentRouteChildren =
+  {
+    QrCodeGeneratorPaymentCryptoRoute: QrCodeGeneratorPaymentCryptoRoute,
+    QrCodeGeneratorPaymentPaypalRoute: QrCodeGeneratorPaymentPaypalRoute,
+    QrCodeGeneratorPaymentSepaRoute: QrCodeGeneratorPaymentSepaRoute,
+    QrCodeGeneratorPaymentWeroRoute: QrCodeGeneratorPaymentWeroRoute,
+    QrCodeGeneratorPaymentIndexRoute: QrCodeGeneratorPaymentIndexRoute,
+  }
+
+const QrCodeGeneratorPaymentRouteWithChildren =
+  QrCodeGeneratorPaymentRoute._addFileChildren(
+    QrCodeGeneratorPaymentRouteChildren,
+  )
+
+interface QrCodeGeneratorRouteChildren {
+  QrCodeGeneratorPaymentRoute: typeof QrCodeGeneratorPaymentRouteWithChildren
+  QrCodeGeneratorIndexRoute: typeof QrCodeGeneratorIndexRoute
+  QrCodeGeneratorContactEmailRoute: typeof QrCodeGeneratorContactEmailRoute
+  QrCodeGeneratorContactSmsRoute: typeof QrCodeGeneratorContactSmsRoute
+  QrCodeGeneratorContactVcardRoute: typeof QrCodeGeneratorContactVcardRoute
+  QrCodeGeneratorContactWhatsappRoute: typeof QrCodeGeneratorContactWhatsappRoute
+  QrCodeGeneratorMediaImageRoute: typeof QrCodeGeneratorMediaImageRoute
+  QrCodeGeneratorMediaPdfRoute: typeof QrCodeGeneratorMediaPdfRoute
+  QrCodeGeneratorToolsCalendarRoute: typeof QrCodeGeneratorToolsCalendarRoute
+  QrCodeGeneratorToolsMapsRoute: typeof QrCodeGeneratorToolsMapsRoute
+  QrCodeGeneratorToolsWifiRoute: typeof QrCodeGeneratorToolsWifiRoute
+}
+
+const QrCodeGeneratorRouteChildren: QrCodeGeneratorRouteChildren = {
+  QrCodeGeneratorPaymentRoute: QrCodeGeneratorPaymentRouteWithChildren,
+  QrCodeGeneratorIndexRoute: QrCodeGeneratorIndexRoute,
+  QrCodeGeneratorContactEmailRoute: QrCodeGeneratorContactEmailRoute,
+  QrCodeGeneratorContactSmsRoute: QrCodeGeneratorContactSmsRoute,
+  QrCodeGeneratorContactVcardRoute: QrCodeGeneratorContactVcardRoute,
+  QrCodeGeneratorContactWhatsappRoute: QrCodeGeneratorContactWhatsappRoute,
+  QrCodeGeneratorMediaImageRoute: QrCodeGeneratorMediaImageRoute,
+  QrCodeGeneratorMediaPdfRoute: QrCodeGeneratorMediaPdfRoute,
+  QrCodeGeneratorToolsCalendarRoute: QrCodeGeneratorToolsCalendarRoute,
+  QrCodeGeneratorToolsMapsRoute: QrCodeGeneratorToolsMapsRoute,
+  QrCodeGeneratorToolsWifiRoute: QrCodeGeneratorToolsWifiRoute,
+}
+
+const QrCodeGeneratorRouteWithChildren = QrCodeGeneratorRoute._addFileChildren(
+  QrCodeGeneratorRouteChildren,
+)
 
 interface SafetyRouteChildren {
   SafetyArchitectureRoute: typeof SafetyArchitectureRoute
@@ -5229,6 +6790,83 @@ const SafetyRouteChildren: SafetyRouteChildren = {
 const SafetyRouteWithChildren =
   SafetyRoute._addFileChildren(SafetyRouteChildren)
 
+interface SolutionsRouteChildren {
+  SolutionsAgenciesRoute: typeof SolutionsAgenciesRoute
+  SolutionsCreatorsRoute: typeof SolutionsCreatorsRoute
+  SolutionsDevelopersRoute: typeof SolutionsDevelopersRoute
+  SolutionsIndexRoute: typeof SolutionsIndexRoute
+}
+
+const SolutionsRouteChildren: SolutionsRouteChildren = {
+  SolutionsAgenciesRoute: SolutionsAgenciesRoute,
+  SolutionsCreatorsRoute: SolutionsCreatorsRoute,
+  SolutionsDevelopersRoute: SolutionsDevelopersRoute,
+  SolutionsIndexRoute: SolutionsIndexRoute,
+}
+
+const SolutionsRouteWithChildren = SolutionsRoute._addFileChildren(
+  SolutionsRouteChildren,
+)
+
+interface SupportRouteChildren {
+  SupportIndexRoute: typeof SupportIndexRoute
+  SupportAccountBillingRoute: typeof SupportAccountBillingRoute
+  SupportAccountDataDomainsRoute: typeof SupportAccountDataDomainsRoute
+  SupportAccountDeleteAccountRoute: typeof SupportAccountDeleteAccountRoute
+  SupportAccountLinkedIdentitiesRoute: typeof SupportAccountLinkedIdentitiesRoute
+  SupportAccountSecurityRoute: typeof SupportAccountSecurityRoute
+  SupportWorkspaceBillingAndLimitsRoute: typeof SupportWorkspaceBillingAndLimitsRoute
+  SupportWorkspaceCustomDomainsRoute: typeof SupportWorkspaceCustomDomainsRoute
+  SupportWorkspaceDeveloperConsoleRoute: typeof SupportWorkspaceDeveloperConsoleRoute
+  SupportWorkspaceMultipleWorkspacesRoute: typeof SupportWorkspaceMultipleWorkspacesRoute
+  SupportWorkspaceTeamRolesRoute: typeof SupportWorkspaceTeamRolesRoute
+  SupportWorkspaceGettingStartedInviteTeamRoute: typeof SupportWorkspaceGettingStartedInviteTeamRoute
+  SupportWorkspaceGettingStartedSetupBusinessAccountRoute: typeof SupportWorkspaceGettingStartedSetupBusinessAccountRoute
+  SupportWorkspaceGettingStartedWhatIsAWorkspaceRoute: typeof SupportWorkspaceGettingStartedWhatIsAWorkspaceRoute
+}
+
+const SupportRouteChildren: SupportRouteChildren = {
+  SupportIndexRoute: SupportIndexRoute,
+  SupportAccountBillingRoute: SupportAccountBillingRoute,
+  SupportAccountDataDomainsRoute: SupportAccountDataDomainsRoute,
+  SupportAccountDeleteAccountRoute: SupportAccountDeleteAccountRoute,
+  SupportAccountLinkedIdentitiesRoute: SupportAccountLinkedIdentitiesRoute,
+  SupportAccountSecurityRoute: SupportAccountSecurityRoute,
+  SupportWorkspaceBillingAndLimitsRoute: SupportWorkspaceBillingAndLimitsRoute,
+  SupportWorkspaceCustomDomainsRoute: SupportWorkspaceCustomDomainsRoute,
+  SupportWorkspaceDeveloperConsoleRoute: SupportWorkspaceDeveloperConsoleRoute,
+  SupportWorkspaceMultipleWorkspacesRoute:
+    SupportWorkspaceMultipleWorkspacesRoute,
+  SupportWorkspaceTeamRolesRoute: SupportWorkspaceTeamRolesRoute,
+  SupportWorkspaceGettingStartedInviteTeamRoute:
+    SupportWorkspaceGettingStartedInviteTeamRoute,
+  SupportWorkspaceGettingStartedSetupBusinessAccountRoute:
+    SupportWorkspaceGettingStartedSetupBusinessAccountRoute,
+  SupportWorkspaceGettingStartedWhatIsAWorkspaceRoute:
+    SupportWorkspaceGettingStartedWhatIsAWorkspaceRoute,
+}
+
+const SupportRouteWithChildren =
+  SupportRoute._addFileChildren(SupportRouteChildren)
+
+interface QrPaymentRouteChildren {
+  QrPaymentCryptoRoute: typeof QrPaymentCryptoRoute
+  QrPaymentPaypalRoute: typeof QrPaymentPaypalRoute
+  QrPaymentSepaRoute: typeof QrPaymentSepaRoute
+  QrPaymentWeroRoute: typeof QrPaymentWeroRoute
+}
+
+const QrPaymentRouteChildren: QrPaymentRouteChildren = {
+  QrPaymentCryptoRoute: QrPaymentCryptoRoute,
+  QrPaymentPaypalRoute: QrPaymentPaypalRoute,
+  QrPaymentSepaRoute: QrPaymentSepaRoute,
+  QrPaymentWeroRoute: QrPaymentWeroRoute,
+}
+
+const QrPaymentRouteWithChildren = QrPaymentRoute._addFileChildren(
+  QrPaymentRouteChildren,
+)
+
 interface ApiPublicIntegrationsRouteChildren {
   ApiPublicIntegrationsMastodonAvatarRoute: typeof ApiPublicIntegrationsMastodonAvatarRoute
 }
@@ -5253,14 +6891,17 @@ const rootRouteChildren: RootRouteChildren = {
   BatchRoute: BatchRoute,
   CardRoute: CardRoute,
   ClaimRoute: ClaimRoute,
+  CompareRoute: CompareRouteWithChildren,
   ContactRoute: ContactRoute,
   DataDeletionRoute: DataDeletionRoute,
   DevRoute: DevRouteWithChildren,
   DevelopersRoute: DevelopersRoute,
   EmailTemplatesRoute: EmailTemplatesRoute,
   ExploreRoute: ExploreRoute,
+  FeaturesRoute: FeaturesRouteWithChildren,
   GiftRoute: GiftRoute,
   GoRoute: GoRoute,
+  GuideRoute: GuideRouteWithChildren,
   HubRoute: HubRoute,
   IbanQrRoute: IbanQrRoute,
   InfoRoute: InfoRouteWithChildren,
@@ -5269,15 +6910,19 @@ const rootRouteChildren: RootRouteChildren = {
   OnboardingRoute: OnboardingRoute,
   PressRoute: PressRoute,
   PrivacyRoute: PrivacyRoute,
+  ProductRoute: ProductRouteWithChildren,
   QrRoute: QrRoute,
+  QrCodeGeneratorRoute: QrCodeGeneratorRouteWithChildren,
   SafetyRoute: SafetyRouteWithChildren,
   SecurityRoute: SecurityRoute,
   SelfHostingRoute: SelfHostingRoute,
   SignatureRoute: SignatureRoute,
   SignupRoute: SignupRoute,
+  SolutionsRoute: SolutionsRouteWithChildren,
   SovereigntyRoute: SovereigntyRoute,
   StatusRoute: StatusRoute,
   StudioRoute: StudioRoute,
+  SupportRoute: SupportRouteWithChildren,
   TermsRoute: TermsRoute,
   TourRoute: TourRoute,
   VcardQrRoute: VcardQrRoute,
@@ -5312,6 +6957,7 @@ const rootRouteChildren: RootRouteChildren = {
   IdentityRevokeRoute: IdentityRevokeRoute,
   OauthAuthorizeRoute: OauthAuthorizeRoute,
   OauthEndSessionRoute: OauthEndSessionRoute,
+  QrPaymentRoute: QrPaymentRouteWithChildren,
   RUsernameRoute: RUsernameRoute,
   ReviewTokenRoute: ReviewTokenRoute,
   SSlugRoute: SSlugRoute,
@@ -5339,6 +6985,15 @@ const rootRouteChildren: RootRouteChildren = {
   ApiV1PresenceRoute: ApiV1PresenceRoute,
   ApiYoutubeStartRoute: ApiYoutubeStartRoute,
   AuthMastodonCallbackRoute: AuthMastodonCallbackRoute,
+  QrContactEmailRoute: QrContactEmailRoute,
+  QrContactSmsRoute: QrContactSmsRoute,
+  QrContactVcardRoute: QrContactVcardRoute,
+  QrContactWhatsappRoute: QrContactWhatsappRoute,
+  QrMediaImageRoute: QrMediaImageRoute,
+  QrMediaPdfRoute: QrMediaPdfRoute,
+  QrToolsCalendarRoute: QrToolsCalendarRoute,
+  QrToolsMapsRoute: QrToolsMapsRoute,
+  QrToolsWifiRoute: QrToolsWifiRoute,
   RUAliasRoute: RUAliasRoute,
   UUsernameSlugRoute: UUsernameSlugRoute,
   UUsernameDonateRoute: UUsernameDonateRoute,
