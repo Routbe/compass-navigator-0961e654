@@ -1,5 +1,12 @@
 # Repository import
 
+## Vercel release readiness
+- [ ] Audit the deployment adapter, domain configuration and environment requirements without changing the account/database architecture.
+- [ ] Add repeatable release checks and correct deployment documentation.
+- [ ] Audit all public and documentation pages for metadata, missing content and consistent ROUT presentation; fix verified issues.
+- [ ] Run regression tests and verify public navigation on desktop and phone.
+- [ ] Verify the deployed Vercel domain and authenticated integrations — requires access to the Vercel deployment and working restricted Neon/auth configuration.
+
 ## Knowledge graph and credentials
 - [x] Verify the complete four-pillar MDX catalogue; share the homepage header, footer and theme and order article navigation.
 - [x] Verify reusable MDX components and detailed manifesto, badge and OIDC articles; expand custom-badge and credential documentation.
