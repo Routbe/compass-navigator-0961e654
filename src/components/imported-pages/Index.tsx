@@ -7,7 +7,7 @@ import { TrackingPanel, TrackedQR } from "@/components/TrackingPanel";
 import { prettyCaption } from "@/lib/qr-caption";
 import { AppLayout } from "@/components/layout/AppLayout";
 import { QRPreview } from "@/components/QRPreview";
-import { QRTypeSelector, QRType } from "@/components/QRTypeSelector";
+import { QRTypeSelector, QRType, allQrTypes } from "@/components/QRTypeSelector";
 import { QRTypeSheet } from "@/components/QRTypeSheet";
 import { useI18n } from "@/lib/i18n";
 import { ProfileQrDesignContext, toProfileQrStyle } from "@/lib/qr-design-bridge";
@@ -178,7 +178,8 @@ const Index = () => {
     if (typeof window === "undefined") return;
     const requested = new URLSearchParams(window.location.search).get("type");
     if (requested === "profile_hub" || requested === "social") setQrType("social");
-    if (requested === "feedback") setQrType("feedback");
+    const option = allQrTypes.find(type => type.id === requested);
+    if (option) setQrType(option.id);
   }, []);
 
   const [frameId, setFrameId] = useState<string | null>(null);
