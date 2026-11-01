@@ -5,12 +5,12 @@ import { parseSocialFeedConfig } from "@/lib/social-feed";
 import { proxied } from "@/lib/image-proxy-rules";
 
 /** Automatically loaded Bluesky/Mastodon posts, as a grid or horizontal carousel. */
-export function SocialFeedCard({ value, style }: { value: string; style?: React.CSSProperties }) {
+export function SocialFeedCard({ value, style, profile, blockId }: { value: string; style?: React.CSSProperties; profile?: string; blockId?: string }) {
   const c = parseSocialFeedConfig(value);
   const { t } = useTranslation();
   const q = useQuery({
-    queryKey: ["social-feed", c.platform, c.handle, c.count],
-    queryFn: () => getSocialFeed({ data: { platform: c.platform, handle: c.handle, count: c.count } }),
+    queryKey: ["social-feed", c.platform, c.handle, c.count, profile, blockId],
+    queryFn: () => getSocialFeed({ data: { platform: c.platform, handle: c.handle, count: c.count, profile: profile ?? "", blockId: blockId ?? "" } }),
     enabled: Boolean(c.handle),
     staleTime: 5 * 60_000,
   });
