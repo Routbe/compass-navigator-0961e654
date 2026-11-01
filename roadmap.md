@@ -1,5 +1,11 @@
 # Repository import
 
+## Knowledge graph and credentials
+- [ ] Complete the four-pillar MDX catalogue and shared docs navigation, preserving ROUT’s public and console designs.
+- [ ] Finish reusable MDX components and detailed manifesto, badge and OIDC articles.
+- [ ] Audit OIDC sessions, account merge, email sync and credentials; implement safe, verified gaps.
+- [ ] Verify public routing, MDX rendering, accessibility and repository tests.
+
 - [x] Import repository source, styles, content, and assets without secrets or repository metadata.
 - [x] Verify home page rendering on desktop/phone; routing and QR caption tests pass.
 - [ ] Complete every-route and navigation comparison — blocked by no running reference site and service setup.
