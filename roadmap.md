@@ -1,5 +1,11 @@
 # Repository import
 
+## Workspace pricing
+- [ ] Implement four-tier price/limit catalog and category recommendations.
+- [ ] Replace workspace plan step with billing switch, pricing cards and expandable feature matrix.
+- [ ] Validate and pass tier ID and billing cycle without granting unpaid premium access.
+- [ ] Verify pricing rules, wizard regression tests and available end-to-end flow.
+
 ## Vercel release readiness
 - [x] Audit deployment adapter and environment requirements; preserve Neon gateway and Better Auth. Domain/DNS and Vercel settings remain externally unverified.
 - [x] Add Vercel target, release environment validation, daily cleanup schedule and corrected deployment documentation.
