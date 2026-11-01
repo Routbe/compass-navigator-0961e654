@@ -7,7 +7,8 @@ export function CodeBlock({ code, language = "text", title }: { code: string; la
   const [failed, setFailed] = useState(false);
   useEffect(() => {
     let alive = true;
-    void import("shiki/bundle/web").then(m => m.codeToHtml(code, { lang: language, theme: "github-dark", colorReplacements: { "#0d1117": "var(--color-docs-code)" } })).then(value => { if (alive) setHtml(value); }).catch(() => { if (alive) setHtml(null); });
+    setHtml(null);
+    void import("shiki/bundle/web").then(m => m.codeToHtml(code, { lang: language, themes: { light: "github-light", dark: "github-dark" }, defaultColor: false })).then(value => { if (alive) setHtml(value); }).catch(() => { if (alive) setHtml(null); });
     return () => { alive = false; };
   }, [code, language]);
   async function copy() { try { await navigator.clipboard.writeText(code); setCopied(true); setFailed(false); setTimeout(() => setCopied(false), 1800); } catch { setFailed(true); } }
