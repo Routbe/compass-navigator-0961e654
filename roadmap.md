@@ -1,5 +1,13 @@
 # Repository import
 
+## Workspace pricing
+- [x] Implement four-tier price/limit presentation catalog and category recommendations; use final prices and annual totals of ten months.
+- [x] Replace workspace plan step with billing switch, pricing cards and expandable feature matrix.
+- [x] Validate and pass tier ID and billing cycle through creation payload and response without granting unpaid premium access.
+- [x] Verify rules and selection interactions: manual typecheck passed, 228 files / 1,305 tests passed; isolated cards checked on desktop and phone.
+- [ ] Persist subscription intent in Neon and enforce new paid storage/QR/OIDC quotas — blocked by working restricted Neon access and a reviewed subscription checkout/activation flow. Existing paid entitlements are unchanged.
+- [ ] Verify authenticated workspace creation end-to-end — blocked by original account configuration and restricted Neon access; isolated component verification is not full-flow verification.
+
 ## Vercel release readiness
 - [x] Audit deployment adapter and environment requirements; preserve Neon gateway and Better Auth. Domain/DNS and Vercel settings remain externally unverified.
 - [x] Add Vercel target, release environment validation, daily cleanup schedule and corrected deployment documentation.

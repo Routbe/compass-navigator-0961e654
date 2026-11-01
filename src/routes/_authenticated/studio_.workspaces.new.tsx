@@ -10,12 +10,12 @@ import { Textarea } from "@/components/ui/textarea";
 import { checkWorkspaceSlugBase, createWorkspace } from "@/lib/workspaces.functions";
 import { getActiveScopeStorage } from "@/lib/assets.functions";
 import { scopedPath } from "@/lib/scope-routes";
+import { PricingTable } from "@/components/workspace/PricingTable";
 import {
   CATEGORY_LABELS,
   INVITE_ROLES,
   WIZARD_STEPS,
   WORKSPACE_CATEGORIES,
-  WORKSPACE_PLAN_COMPARISON,
   emptyDraft,
   formatMb,
   previewUrl,
@@ -79,7 +79,7 @@ function NewWorkspaceWizard() {
     staleTime: Infinity,
   });
 
-  const current = WIZARD_STEPS[step]!;
+  const current = WIZARD_STEPS[step] ?? "identity";
   const err = stepError(current, d);
   const slugBlocked = current === "address" && (slugQ.isLoading || (slugQ.data && !slugQ.data.ok));
 
@@ -103,6 +103,7 @@ function NewWorkspaceWizard() {
       const res = await create({ data: {
         name: d.name.trim(), description: d.description.trim() || undefined, slugBase: d.slugBase,
         category: d.category ?? undefined, invites: d.invites, suffix: slugQ.data?.ok ? slugQ.data.suffix : undefined,
+        plan_id: d.plan_id, billing_cycle: d.billing_cycle,
       } });
       sessionStorage.removeItem(DRAFT_KEY);
       await qc.cancelQueries();
@@ -119,7 +120,7 @@ function NewWorkspaceWizard() {
   const s = storage.data as { usedBytes?: number; quotaBytes?: number; plan?: string } | undefined;
 
   return (
-    <main className="mx-auto w-full max-w-2xl px-4 py-8 sm:py-12">
+    <main className={`mx-auto w-full px-4 py-8 sm:py-12 ${current === "plan" ? "max-w-6xl" : "max-w-2xl"}`}>
       <Link to="/studio" className="mb-6 inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground">
         <ArrowLeft className="h-4 w-4" /> Terug naar Studio
       </Link>
@@ -145,7 +146,7 @@ function NewWorkspaceWizard() {
         ))}
       </ol>
 
-      <section className="mt-6 space-y-4 rounded-2xl border border-border bg-card p-4 sm:p-6">
+      <section className={`mt-6 space-y-4 ${current === "plan" ? "" : "rounded-lg border border-border bg-card p-4 sm:p-6"}`}>
         {current === "identity" && (
           <>
             <div className="flex items-center gap-3">
@@ -239,22 +240,7 @@ function NewWorkspaceWizard() {
                 Opslag in je huidige omgeving: {formatMb(Math.round((s.usedBytes ?? 0) / 1048576))} van {formatMb(Math.round(s.quotaBytes / 1048576))} gebruikt. De nieuwe workspace krijgt een eigen, aparte opslag.
               </p>
             )}
-            <div className="grid gap-2 sm:grid-cols-3">
-              {WORKSPACE_PLAN_COMPARISON.map((p) => (
-                <div key={p.tier} className={`rounded-xl border p-3 text-sm ${p.tier === "free" ? "border-primary" : "border-border"}`}>
-                  <p className="font-semibold">{p.label}</p>
-                  <p className="text-xs text-muted-foreground">{p.priceLabel}</p>
-                  <ul className="mt-2 space-y-1 text-xs">
-                    <li>Opslag: {formatMb(p.storageMb)}</li>
-                    <li>QR-codes: {p.qrCodes}</li>
-                    <li>API-sleutels: {p.apiKeys}</li>
-                    <li>{p.cleanSlug ? "Schoon adres" : "Adres met 4 tekens"}</li>
-                  </ul>
-                  {p.tier === "free" && <p className="mt-2 text-[11px] font-medium text-primary">Je start hier</p>}
-                </div>
-              ))}
-            </div>
-            <p className="text-xs text-muted-foreground">Upgraden kan altijd later via de workspace-instellingen. Gratis workspaces kunnen nog geen bestanden uploaden.</p>
+            <PricingTable category={d.category} planId={d.plan_id} billingCycle={d.billing_cycle} onPlanChange={plan_id => setD(p => ({ ...p, plan_id }))} onCycleChange={billing_cycle => setD(p => ({ ...p, billing_cycle }))} />
           </>
         )}
 

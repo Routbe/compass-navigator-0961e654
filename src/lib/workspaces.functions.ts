@@ -3,6 +3,7 @@ import { z } from "zod";
 import { requireAuth } from "@/lib/auth/middleware";
 import { WORKSPACE_ROLES, checkMemberChange, canManageTeam, canAssignRole, type WorkspaceRole } from "./workspace-rules";
 import { unavailableWorkspaceContext } from "./workspace-availability";
+import { workspaceBillingSchema } from "./workspace-pricing";
 
 const roleSchema = z.enum(WORKSPACE_ROLES);
 const uuid = z.string().uuid();
@@ -69,7 +70,7 @@ const wizardSchema = z.object({
   /** The suffix shown in the wizard preview; used when still free. */
   suffix: z.string().regex(/^[a-z0-9]{4}$/).optional(),
   invites: z.array(z.object({ email: z.string().trim().toLowerCase().email().max(254), role: z.enum(["admin", "developer", "viewer"]) })).max(20).optional(),
-});
+}).extend(workspaceBillingSchema.shape);
 
 /** Is rout.be/w/<base>-xxxx still free for this base? (suffix keeps it unique; the base must be valid and not reserved). */
 export const checkWorkspaceSlugBase = createServerFn({ method: "POST" })
@@ -93,7 +94,7 @@ export const createWorkspace = createServerFn({ method: "POST" })
     const { matrixWorkspaceSlug, isValidWorkspaceSlug } = await import("./workspace-rules");
     const { stepError } = await import("./workspace-wizard");
     const invites = data.invites ?? [];
-    const teamErr = stepError("team", { name: data.name, description: "", avatarUrl: null, slugBase: "", category: null, invites });
+    const teamErr = stepError("team", { name: data.name, description: "", avatarUrl: null, slugBase: "", category: null, invites, plan_id: data.plan_id, billing_cycle: data.billing_cycle });
     if (teamErr) throw new Error(teamErr);
     const base = data.slugBase && data.slugBase.length >= 3 ? data.slugBase : data.name;
     let slug = "";
@@ -122,7 +123,8 @@ export const createWorkspace = createServerFn({ method: "POST" })
     const id = last?.[0]?.id;
     if (!id) throw new Error("Workspace kon niet worden aangemaakt.");
     await setActiveWorkspaceCookie(id);
-    return { id, slug, invited: others.length };
+    // Billing intent is validated, never trusted as proof of payment.
+    return { id, slug, invited: others.length, plan_id: data.plan_id, billing_cycle: data.billing_cycle, active_plan: "tier_starter" as const };
   });
 
 export const listWorkspaceTeam = createServerFn({ method: "POST" })

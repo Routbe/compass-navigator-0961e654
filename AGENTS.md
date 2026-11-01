@@ -10,6 +10,7 @@
 <!-- LOVABLE:END -->
 
 ## Source import architecture
+- Workspace pricing uses a separate shared catalog for purchase intent; workspace creation validates plan_id and billing_cycle but never grants paid access from client input. Why: a pricing selection is not a verified subscription, and legacy entitlements require a separately reviewed migration and checkout.
 - Keep the imported TanStack Start file routes, server entry, MDX catalog, and source design system together; public pages rely on these shared conventions.
 - Preserve generated Lovable Cloud integrations and project settings; repository imports must not overwrite managed files or credentials.
 - The imported application still uses its existing Neon gateway and Better Auth account system; do not silently replace it or apply its database scripts to the Cloud database.
