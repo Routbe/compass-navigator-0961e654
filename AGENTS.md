@@ -16,3 +16,4 @@
 - Subdirectories may contain their own AGENTS.md; read them before changing files there.
 - Use the repository compiler and test configuration, including MDX virtual catalog support; its imported source was authored against those settings.
 - Documentation uses AppLayout for the same public header/footer and inherited theme as the homepage; MDX enhancements stay inside the article, never define a separate site palette. Why: public and developer information must remain recognizably ROUT.
+- External Vercel builds use build:vercel and the Vercel Nitro preset, while the Lovable wrapper retains its managed preview target; release configuration checks only report setting names. Why: catch mismatched origins and missing gateway credentials without exposing secrets or replacing the existing auth/database architecture.

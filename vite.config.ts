@@ -26,6 +26,8 @@ const docsCatalogPlugin = {
 };
 
 export default defineConfig({
+  // External Vercel releases are explicit; Lovable retains its managed target.
+  nitro: process.env["VERCEL"] === "1" ? { preset: "vercel" } : undefined,
   vite: { plugins: [docsCatalogPlugin, mdx({ include: /\.mdx$/, providerImportSource: "@mdx-js/react", remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter] })] },
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
