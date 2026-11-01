@@ -311,7 +311,7 @@ export default function Dashboard() {
         <div className="mb-3 flex items-center justify-between gap-3">
           <h2 className="text-sm font-medium">{t("studio.dashboard.recent")}</h2>
           <Link
-            to="/dashboard/qrs"
+            to="/dashboard/routes"
             className="shrink-0 text-xs font-medium text-primary hover:underline"
           >
             {t("studio.dashboard.all")}

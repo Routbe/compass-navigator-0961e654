@@ -948,10 +948,10 @@ export function VerificationPanel() {
             zonder invloed op je verificatie.
           </p>
           <a
-            href="/donate"
+            href="/info/tips"
             className="mt-3 inline-flex h-9 items-center rounded-xl bg-foreground px-3 text-xs font-medium text-background transition-opacity hover:opacity-90"
           >
-            Doneren via het portaal
+            Lees over fooien en steun
           </a>
         </div>
       )}
