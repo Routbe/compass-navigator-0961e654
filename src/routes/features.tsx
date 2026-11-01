@@ -1,5 +1,2 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { DocPage } from "@/components/mdx/DocPage";
-import { docHead } from "@/lib/docs-catalog";
-export const Route = createFileRoute("/features")({ head: () => docHead("/features"), component: Page });
-function Page() { return <DocPage path="/features" />; }
+import { createFileRoute, Outlet } from "@tanstack/react-router";
+export const Route = createFileRoute("/features")({ component: Outlet });

@@ -1,5 +1,2 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { DocPage } from "@/components/mdx/DocPage";
-import { docHead } from "@/lib/docs-catalog";
-export const Route = createFileRoute("/qr-code-generator/payment")({ head: () => docHead("/qr-code-generator/payment"), component: Page });
-function Page() { return <DocPage path="/qr-code-generator/payment" />; }
+import { createFileRoute, Outlet } from "@tanstack/react-router";
+export const Route = createFileRoute("/qr-code-generator/payment")({ component: Outlet });
