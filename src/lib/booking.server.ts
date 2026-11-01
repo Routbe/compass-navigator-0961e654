@@ -3,7 +3,7 @@
  * accept/decline-links, en bij aanvaarding een .ics-uitnodiging naar de gast
  * sturen. Server-only.
  */
-import { createHmac, timingSafeEqual } from "node:crypto";
+import { bookingSigningSecret, checkBookingToken, signBookingToken } from "@/lib/booking-token";
 import { sql } from "@/lib/neon";
 import {
   sendBookingRequestToHost,
@@ -24,28 +24,15 @@ function siteOrigin(): string {
   return (process.env["PUBLIC_SITE_URL"] ?? "https://rout.be").replace(/\/$/, "");
 }
 
-function tokenSecret(): string {
-  return (
-    process.env["BOOKING_TOKEN_SECRET"] ??
-    process.env["SESSION_SECRET"] ??
-    process.env["DATABASE_URL"] ??
-    "rout-booking-dev-secret"
-  );
-}
-
-/** Ondertekent één actie voor één aanvraag; niet raadbaar, niet herbruikbaar. */
+/** Signs one action for one request with an expiring HMAC-SHA256 token. */
 export function bookingToken(id: string, action: "accept" | "decline"): string {
-  return createHmac("sha256", tokenSecret()).update(`${id}:${action}`).digest("hex");
+  return signBookingToken(bookingSigningSecret(), id, action);
 }
 
-export function verifyBookingToken(
-  id: string,
-  action: "accept" | "decline",
-  token: string,
-): boolean {
-  const expected = Buffer.from(bookingToken(id, action));
-  const given = Buffer.from(token ?? "");
-  return expected.length === given.length && timingSafeEqual(expected, given);
+export function verifyBookingToken(id: string, action: "accept" | "decline", token: string): boolean {
+  let secret: string;
+  try { secret = bookingSigningSecret(); } catch { return false; }
+  return checkBookingToken(secret, id, action, token);
 }
 
 interface HostRow {
