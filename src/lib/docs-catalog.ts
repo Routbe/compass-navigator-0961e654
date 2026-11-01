@@ -14,9 +14,10 @@ export function parseDoc(source: string, file: string): DocEntry {
   const meta = schema.parse(parse(match[1]));
   const relative = file.replace(/^.*\/content\//, "").replace(/\.mdx$/, "");
   const path = `/${relative.replace(/\/index$/, "")}`;
-  if (!path.startsWith(`/${meta.category}`)) throw new Error(`Wrong category: ${file}`);
+  if (path !== `/${meta.category}` && !path.startsWith(`/${meta.category}/`)) throw new Error(`Wrong category: ${file}`);
   const seen = new Map<string, number>();
-  const headings = [...source.matchAll(/^(#{2,3}) (.+)$/gm)].map(m => {
+  const body = source.slice(match[0].length).replace(/^(`{3,}|~{3,})[^\n]*\n[\s\S]*?^\1[^\n]*$/gm, "");
+  const headings = [...body.matchAll(/^(#{2,3}) (.+)$/gm)].map(m => {
     const text = (m[2] ?? "").replace(/[`*_]/g, "");
     const base = headingId(text); const count = seen.get(base) ?? 0; seen.set(base, count + 1);
     return { id: count ? `${base}-${count}` : base, text, level: m[1]?.length ?? 2 };
@@ -25,7 +26,16 @@ export function parseDoc(source: string, file: string): DocEntry {
 }
 export const docs = Object.entries(sources).map(([file, source]) => parseDoc(source, file));
 export function getDoc(path: string) { return docs.find(d => d.path === path); }
-export function docsInCategory(category: DocCategory) { return docs.filter(d => d.category === category).sort((a, b) => a.path === `/${category}` ? -1 : b.path === `/${category}` ? 1 : 0); }
+const articleOrder: Record<DocCategory, string[]> = {
+  about: ["index", "manifesto", "ecosystem", "sovereignty", "open-source", "brand"],
+  info: ["index", "profiles", "usernames", "badges", "custom-badges", "credentials", "qr-studio", "wallet", "account-security", "account-merge"],
+  dev: ["index", "get-started", "identity-oidc", "identity", "credentials-api", "credentials", "webhooks", "ai-mcp", "design-system"],
+  safety: ["index", "architecture", "cryptography", "zero-knowledge", "compliance", "transparency", "privacy", "terms", "data-deletion", "security-advisories"],
+};
+export function docsInCategory(category: DocCategory) {
+  const rank = (doc: DocEntry) => { const slug = doc.path === `/${category}` ? "index" : doc.path.split("/").at(-1) ?? ""; const position = articleOrder[category].indexOf(slug); return position < 0 ? Number.MAX_SAFE_INTEGER : position; };
+  return docs.filter(d => d.category === category).sort((a, b) => rank(a) - rank(b) || a.path.localeCompare(b.path));
+}
 export function docHead(path: string) {
   const doc = getDoc(path);
   const title = `${doc?.title ?? "Documentatie"} — ROUT`;

@@ -15,3 +15,4 @@
 - The imported application still uses its existing Neon gateway and Better Auth account system; do not silently replace it or apply its database scripts to the Cloud database.
 - Subdirectories may contain their own AGENTS.md; read them before changing files there.
 - Use the repository compiler and test configuration, including MDX virtual catalog support; its imported source was authored against those settings.
+- Documentation uses AppLayout for the same public header/footer and inherited theme as the homepage; MDX enhancements stay inside the article, never define a separate site palette. Why: public and developer information must remain recognizably ROUT.
