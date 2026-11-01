@@ -8,7 +8,7 @@ export function PricingCard({ plan, cycle, selected, recommended, badge, onSelec
   const price = cycle === "yearly" ? Math.round(planAmountCents(plan, cycle) / 12) : plan.monthlyCents;
   return <div className={`workspace-pricing-card flex h-full flex-col rounded-lg border p-5 ${recommended ? "workspace-pricing-recommended border-primary" : "border-border bg-card/60"}`}>
     <div className="mb-5 min-h-12">
-      {recommended ? <span className="inline-flex max-w-full items-center gap-1.5 rounded-md bg-primary px-2 py-1 text-[11px] leading-4 text-primary-foreground"><CheckCircle2 className="size-3 shrink-0" />{badge}</span> : <span className="text-xs text-muted-foreground">{plan.id === "tier_starter" ? "Sans engagement" : plan.audience}</span>}
+      {recommended ? <span className="inline-flex max-w-full items-center gap-1.5 rounded-md bg-primary px-2 py-1 text-[11px] leading-4 text-primary-foreground"><CheckCircle2 className="size-3 shrink-0" />{badge}</span> : <span className="text-xs text-muted-foreground">{plan.id === "tier_starter" ? "Zonder verplichtingen" : plan.audience}</span>}
     </div>
     <h3 className="font-display text-3xl">{plan.label}</h3>
     <p className="mt-3 flex flex-wrap items-baseline gap-1"><span className="text-3xl font-semibold tabular-nums">{formatPlanPrice(price)}</span><span className="text-xs text-muted-foreground">/mnd</span></p>
