@@ -25,7 +25,7 @@ import {
 import { PAYMENT_METHODS, isPaymentType, PaymentId } from "@/lib/payments";
 import { useI18n } from "@/lib/i18n";
 import { PaymentBrandIcon } from "./PaymentBrandIcon";
-import { siSteam } from "simple-icons";
+import { Button } from "@/components/ui/button";
 
 export type QRType =
   | "url"
@@ -96,10 +96,22 @@ export const baseQrTypes: QRTypeOption[] = [
   { id: "maps", label: "Map location", labelKey: "type.maps" },
   { id: "meeting", label: "Meeting link", labelKey: "type.meeting" },
   { id: "feedback", label: "Feedback & Reviews", labelKey: "type.feedback" },
-  { id: "steam", label: "Steam profile", labelKey: "type.steam" },
 ];
 
-const byId = (id: QRType) => baseQrTypes.find((t) => t.id === id)!;
+const byId = (id: QRType) => {
+  const option = baseQrTypes.find((t) => t.id === id);
+  if (!option) throw new Error(`Unknown curated QR type: ${id}`);
+  return option;
+};
+
+export const PRIMARY_PAYMENT_IDS = ["iban", "wero", "paypal", "crypto"] as const;
+export const internationalPaymentTypes: QRTypeOption[] = PAYMENT_METHODS
+  .filter(m => !PRIMARY_PAYMENT_IDS.some(id => id === m.id))
+  .map(m => ({ id: m.id, label: m.label }));
+export function InternationalPaymentOptions({ selectedType, onSelect }: { selectedType: QRType; onSelect: (id: QRType) => void }) {
+  const [open, setOpen] = useState(false);
+  return <div className="col-span-full"><Button type="button" variant="ghost" className="mt-2 h-auto whitespace-normal text-left text-xs" aria-expanded={open} onClick={() => setOpen(!open)}>Bekijk {open ? "minder" : "meer"} internationale opties</Button>{open && <div className="mt-2 space-y-1">{internationalPaymentTypes.map(type => <QRTypeRow key={type.id} type={type} selected={type.id === selectedType} onSelect={onSelect} />)}</div>}</div>;
+}
 
 export interface QRTypeCategory {
   id: string;
@@ -116,14 +128,14 @@ export const qrTypeCategories: QRTypeCategory[] = [
     labelKey: "cat.link",
     label: "Link & Web",
     Icon: Link2,
-    types: [byId("url"), byId("app"), byId("social"), byId("steam")],
+    types: [byId("url"), byId("app"), byId("social")],
   },
   {
     id: "payment",
     labelKey: "cat.payment",
     label: "Payment",
     Icon: Wallet,
-    types: PAYMENT_METHODS.map((m) => ({ id: m.id as QRType, label: m.label })),
+    types: PRIMARY_PAYMENT_IDS.map(id => ({ id, label: PAYMENT_METHODS.find(m => m.id === id)?.label ?? id })),
   },
   {
     id: "contact",
@@ -149,10 +161,10 @@ export const qrTypeCategories: QRTypeCategory[] = [
 ];
 
 /** Flat lookup across every tier. */
-export const allQrTypes: QRTypeOption[] = qrTypeCategories.flatMap((c) => c.types);
+export const allQrTypes: QRTypeOption[] = [...qrTypeCategories.flatMap((c) => c.types), ...internationalPaymentTypes];
 
 export const categoryOf = (type: QRType) =>
-  qrTypeCategories.find((c) => c.types.some((t) => t.id === type)) ?? qrTypeCategories[0];
+  qrTypeCategories.find((c) => c.types.some((t) => t.id === type) || (c.id === "payment" && isPaymentType(type))) ?? qrTypeCategories[0];
 
 /** Uniform icon tile — brand logo for payments, line icon everywhere else. */
 export function QRTypeIcon({ id, fallback }: { id: QRType; fallback?: typeof Link2 }) {
@@ -160,15 +172,6 @@ export function QRTypeIcon({ id, fallback }: { id: QRType; fallback?: typeof Lin
     return (
       <span className="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center flex-shrink-0">
         <PaymentBrandIcon id={id} className="w-6 h-6" />
-      </span>
-    );
-  }
-  if (id === "steam") {
-    return (
-      <span className="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center flex-shrink-0">
-        <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current text-foreground" role="img" aria-label="Steam">
-          <path d={siSteam.path} />
-        </svg>
       </span>
     );
   }
@@ -298,6 +301,7 @@ export function QRTypeSelector({ selectedType, onTypeChange }: QRTypeSelectorPro
             fallbackIcon={active.Icon}
           />
         ))}
+        {active.id === "payment" && <InternationalPaymentOptions selectedType={selectedType} onSelect={onTypeChange} />}
       </div>
     </div>
   );
