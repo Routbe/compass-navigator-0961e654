@@ -1,10 +1,11 @@
 # Repository import
 
 ## Growth documentation and Studio cleanup
-- [ ] Curate QR types and add contextual Studio, dashboard, settings and workspace help.
-- [ ] Extend recursive MDX catalog with QR, product, design, solutions, comparisons, guides and support pages; shared layout, canonical metadata and JSON-LD.
-- [ ] Verify public routes, structured data, navigation and regression tests; authenticated UI checks depend on Neon/auth access.
-- [ ] Resolve restricted Neon access and persist workspace pricing intent/limits safely without granting unpaid entitlements.
+- [x] Remove Steam from QR choices; show four primary payments with international expansion; add Studio, dashboard, account and workspace guide links.
+- [x] Add 52 recursive MDX pages, explicit nested routes, shared public header/footer, canonical metadata, HowTo/FAQ JSON-LD, sitemap and permanent QR spoke redirects.
+- [x] Verify all 52 public routes return 200; SEPA/Wero/wifi render; FAQ schema, QR help, payment expansion, platform menu and phone layout pass browser checks without runtime errors. Manual typecheck exit 0; full suite 229 files / 1,311 tests passed; final targeted regression passed after QR deep-link fix.
+- [ ] Verify authenticated dashboard, account and workspace help end-to-end — blocked by original Neon/Better Auth access; public guide destinations verified.
+- [ ] Resolve restricted Neon access and persist workspace pricing intent/limits safely — reconnect completed but fresh query still identifies neondb_owner with BYPASSRLS; requires the existing rout_app connection, not a Neon management API key. No database or privilege changes made.
 
 ## Workspace pricing
 - [x] Implement four-tier price/limit presentation catalog and category recommendations; use final prices and annual totals of ten months.
